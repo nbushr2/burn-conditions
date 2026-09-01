@@ -1,0 +1,32 @@
+name: Update burn forecast
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Fetch and parse NWS forecasts
+        run: python3 scripts/fetch_forecasts.py
+
+      - name: Commit updated forecast
+        run: |
+          git config user.name "burnwise-bot"
+          git config user.email "actions@github.com"
+          git add docs/data/latest.json docs/data/zones_la.json || true
+          git diff --cached --quiet || git commit -m "Forecast update $(date -u +'%Y-%m-%d %H:%MZ')"
+          git push
