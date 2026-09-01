@@ -152,39 +152,63 @@ function parishLevel(name, periodIdx) {
 }
 
 function buildMap() {
-  MAP = L.map("map", { zoomSnap: 0.25, attributionControl: true, tap: true })
-    .setView([31.0, -92.0], 6.4);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
-    attribution: "&copy; OpenStreetMap, &copy; CARTO",
-    maxZoom: 12,
-  }).addTo(MAP);
+  MAP = L.map("map", { zoomSnap: 0.25, attributionControl: false, tap: true })
+    .setView([31.0, -91.9], 6.4);
+  /* No third-party basemap: the parishes themselves are the map. */
 
   LAYER = L.geoJSON(GEO, {
     style: (f) => styleFor(f.properties.name),
     onEachFeature: (f, layer) => {
       layer.on("click", () => selectParish(f.properties.name, false));
-      layer.bindTooltip(f.properties.name, { sticky: true });
+      layer.bindTooltip(f.properties.name, { permanent: false, direction: "center", className: "parish-label" });
     },
   }).addTo(MAP);
 
-  /* Small label so nobody mistakes tomorrow's colors for today's. */
-  const label = L.control({ position: "topright" });
-  label.onAdd = () => {
-    const div = L.DomUtil.create("div");
-    div.style.cssText = "background:#FFF;border:2px solid #1A1A1A;border-radius:8px;padding:4px 8px;font-weight:700;font-size:0.85rem;";
-    div.textContent = "Map shows: " + (periodName(MAP_PERIOD) || "\u2014");
+  /* Period selector: which forecast period the map colors represent. */
+  const ctl = L.control({ position: "topright" });
+  ctl.onAdd = () => {
+    const div = L.DomUtil.create("div", "map-period");
+    const names = allPeriodNames();
+    div.innerHTML = `<span>Map shows</span><select id="mapPeriod" aria-label="Forecast period shown on map">` +
+      names.map((n, i) => `<option value="${i}" ${i === MAP_PERIOD ? "selected" : ""}>${n}</option>`).join("") +
+      `</select>`;
+    L.DomEvent.disableClickPropagation(div);
     return div;
   };
-  label.addTo(MAP);
+  ctl.addTo(MAP);
+  $("mapPeriod").addEventListener("change", (e) => {
+    MAP_PERIOD = parseInt(e.target.value, 10);
+    LAYER.setStyle((f) => styleFor(f.properties.name));
+    if (selectedParish) { selectedPeriod = MAP_PERIOD; renderDetail(); }
+  });
+
+  /* Parish names appear once zoomed in enough to be readable. */
+  const updateLabels = () => {
+    const show = MAP.getZoom() >= 7.5;
+    LAYER.eachLayer((l) => {
+      const t = l.getTooltip();
+      if (!t) return;
+      if (show && !t.options.permanent) { l.unbindTooltip(); l.bindTooltip(l.feature.properties.name, { permanent: true, direction: "center", className: "parish-label" }); }
+      if (!show && t.options.permanent) { l.unbindTooltip(); l.bindTooltip(l.feature.properties.name, { permanent: false, direction: "center", className: "parish-label" }); }
+    });
+  };
+  MAP.on("zoomend", updateLabels);
+  updateLabels();
+}
+
+function allPeriodNames() {
+  const entries = Object.values(DATA.parishes || {});
+  const maxLen = Math.max(0, ...entries.map((e) => (e.periods || []).length));
+  return Array.from({ length: maxLen }, (_, i) => periodName(i) || `Period ${i + 1}`);
 }
 
 function styleFor(name) {
   const level = parishLevel(name, MAP_PERIOD);
   return {
     fillColor: LEVEL_COLOR[level],
-    fillOpacity: level === "nodata" ? 0.35 : 0.75,
-    color: "#1A1A1A",
-    weight: name === selectedParish ? 3 : 1,
+    fillOpacity: level === "nodata" ? 0.6 : 0.9,
+    color: name === selectedParish ? "#FFFFFF" : "#1A1A1A",
+    weight: name === selectedParish ? 4 : 1.2,
   };
 }
 
@@ -194,6 +218,7 @@ function selectParish(name, panMap) {
   selectedParish = name;
   selectedPeriod = MAP_PERIOD;
   LAYER.setStyle((f) => styleFor(f.properties.name));
+  LAYER.eachLayer((l) => { if (l.feature.properties.name === name) l.bringToFront(); });
   if (panMap) {
     LAYER.eachLayer((l) => {
       if (l.feature.properties.name === name) MAP.fitBounds(l.getBounds(), { maxZoom: 9 });
@@ -250,7 +275,7 @@ function renderDetail() {
   $("verdictWord").textContent = p.verdict ? p.verdict.verdict : "NO RATING";
   $("verdictDetail").textContent = p.verdict
     ? p.verdict.detail
-    : "NWS does not issue a Category Day for night periods. Do not burn without a rating.";
+    : "NWS did not issue a Category Day for this period (this office does not rate nights). Do not burn without a rating.";
 
   const facts = [];
   facts.push(["Category Day", p.category != null ? `${p.category} of 5` : "\u2014"]);
@@ -267,6 +292,7 @@ function renderDetail() {
     ["Chance of rain", p.precip_chance_pct != null ? p.precip_chance_pct + "%" : "\u2014"],
     ["Morning surface wind", windText(p.surface_wind_am)],
     ["Afternoon surface wind", windText(p.surface_wind_pm)],
+    ["NWS dispersion word", p.dispersion_text || "\u2014"],
   ];
   $("rawTable").innerHTML =
     "<table>" + rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join("") + "</table>";
