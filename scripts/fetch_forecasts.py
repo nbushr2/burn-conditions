@@ -58,9 +58,14 @@ CATEGORY_VERDICTS = {
 }
 
 # Words that can appear as period column headers in FWF matrices.
+# Real products use "Today / Tonight / Tue" in the morning issuance and
+# "Tonight / Tue / Tue Night / Wed" in the afternoon issuance. Both must match.
 PERIOD_WORD = re.compile(
-    r"^(Rest of )?(Today|Tonight|Tomorrow|Overnight|This Afternoon|"
-    r"Mon|Tue|Wed|Thu|Fri|Sat|Sun)(day|sday|nesday|rsday|urday)?$",
+    r"^(Rest of |This )?("
+    r"Today|Tonight|Tomorrow|Overnight|Afternoon|Evening|Morning|"
+    r"(Mon|Tue|Wed|Thu|Fri|Sat|Sun)(day|sday|nesday|rsday|urday)?"
+    r"( Night| Evening| Morning| Afternoon)?"
+    r")$",
     re.IGNORECASE,
 )
 
@@ -226,15 +231,24 @@ def parse_number(text: str):
 
 
 def parse_wind(text: str):
-    """'NE 3-7' -> ('NE', 3, 7); 'S 6' -> ('S', 6, 6); '' -> (None,)*3"""
+    """Returns (dir, lo, hi, gust) in the product's own units.
+    'NE 3-7'        -> ('NE', 3, 7, None)
+    'E 6-10 G18'    -> ('E', 6, 10, 18)
+    'S  6'          -> ('S', 6, 6, None)
+    'Lgt/Var'       -> ('Lgt/Var', 0, 5, None)   light and variable
+    ''              -> (None, None, None, None)"""
     if not text:
-        return None, None, None
-    m = re.match(r"([NSEW]{1,3})\s+(\d+)(?:\s*-\s*(\d+))?", text.strip())
+        return None, None, None, None
+    t = text.strip()
+    if re.match(r"^(Lgt|Light)\s*/?\s*(Var|Variable)", t, re.IGNORECASE) or t.lower() in ("calm", "light"):
+        return "Lgt/Var", 0, 5, None
+    m = re.match(r"([NSEW]{1,3})\s+(\d+)(?:\s*-\s*(\d+))?(?:\s+G(\d+))?", t)
     if not m:
-        return None, None, None
+        return None, None, None, None
     lo = int(m.group(2))
     hi = int(m.group(3)) if m.group(3) else lo
-    return m.group(1), lo, hi
+    gust = int(m.group(4)) if m.group(4) else None
+    return m.group(1), lo, hi, gust
 
 
 def parse_block(block: str, debug=False) -> dict | None:
@@ -264,9 +278,11 @@ def parse_block(block: str, debug=False) -> dict | None:
         raw = p["raw"]
 
         def get(*keys):
+            """Match a row label by whole word anywhere in the label, so
+            'Max/Min Temp' and 'Min/Max RH (%)' are found."""
             for label, v in raw.items():
                 for k in keys:
-                    if label.lower().startswith(k.lower()):
+                    if re.search(r"(?<![A-Za-z])" + re.escape(k) + r"(?![A-Za-z])", label, re.IGNORECASE):
                         return label, v
             return None, None
 
@@ -274,25 +290,26 @@ def parse_block(block: str, debug=False) -> dict | None:
         cat = parse_number(v) if v else None
         p["category"] = int(cat) if cat and 1 <= cat <= 5 else None
 
-        lab, v = get("Mixing Hgt", "Mixing Height")
+        lab, v = get("Mixing Hgt", "Mixing Height")  # word-match; excludes "Mrng Mxg Hgt"
         mh = parse_number(v)
         if mh is not None and lab and re.search(r"\(m\b|m-AGL", lab):
             mh = round(mh * M_TO_FT)
         p["mixing_height_ft"] = int(mh) if mh is not None else None
 
         lab, v = get("Transport Wind")
-        d, lo, hi = parse_wind(v)
+        d, lo, hi, g = parse_wind(v)
         if lo is not None and lab and "m/s" in lab.lower():
             lo, hi = round(lo * MS_TO_MPH), round(hi * MS_TO_MPH)
-        p["transport_wind"] = {"dir": d, "lo_mph": lo, "hi_mph": hi} if lo is not None else None
+            g = round(g * MS_TO_MPH) if g is not None else None
+        p["transport_wind"] = {"dir": d, "lo_mph": lo, "hi_mph": hi, "gust_mph": g} if lo is not None else None
 
-        _, v = get("20FT Wind/AM", "20 FT Wind/AM", "20ft Wind")
-        d, lo, hi = parse_wind(v)
-        p["surface_wind_am"] = {"dir": d, "lo_mph": lo, "hi_mph": hi} if lo is not None else None
+        _, v = get("20FT Wind/AM", "20 FT Wind/AM")
+        d, lo, hi, g = parse_wind(v)
+        p["surface_wind_am"] = {"dir": d, "lo_mph": lo, "hi_mph": hi, "gust_mph": g} if lo is not None else None
 
         _, v = get("20FT Wind/PM", "20 FT Wind/PM")
-        d, lo, hi = parse_wind(v)
-        p["surface_wind_pm"] = {"dir": d, "lo_mph": lo, "hi_mph": hi} if lo is not None else None
+        d, lo, hi, g = parse_wind(v)
+        p["surface_wind_pm"] = {"dir": d, "lo_mph": lo, "hi_mph": hi, "gust_mph": g} if lo is not None else None
 
         _, v = get("RH")
         p["rh_pct"] = int(parse_number(v)) if parse_number(v) is not None else None
