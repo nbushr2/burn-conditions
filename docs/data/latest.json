@@ -1,12 +1,22 @@
 {
  "schema_version": 2,
- "generated_at_utc": "2026-07-06T23:44:20.022961+00:00",
+ "generated_at_utc": "2026-09-01T05:36:11.920748+00:00",
  "offices": {
   "LIX": {
-   "issued": "2026-07-06T23:44:20.021737+00:00",
-   "product_id": "SAMPLE",
-   "zones_parsed": 2,
-   "ok": true
+   "ok": false,
+   "error": "LIX: product fetched but 0 Louisiana zones parsed (format change?)"
+  },
+  "SHV": {
+   "ok": false,
+   "error": "SHV: product fetched but 0 Louisiana zones parsed (format change?)"
+  },
+  "JAN": {
+   "ok": false,
+   "error": "JAN: product fetched but 0 Louisiana zones parsed (format change?)"
+  },
+  "LCH": {
+   "ok": false,
+   "error": "LCH: product fetched but 0 Louisiana zones parsed (format change?)"
   }
  },
  "parishes": {
@@ -136,7 +146,8 @@
     "East Feliciana",
     "Pointe Coupee",
     "West Baton Rouge"
-   ]
+   ],
+   "stale": true
   },
   "West Feliciana": {
    "office": "LIX",
@@ -264,7 +275,8 @@
     "East Feliciana",
     "Pointe Coupee",
     "West Baton Rouge"
-   ]
+   ],
+   "stale": true
   },
   "East Feliciana": {
    "office": "LIX",
@@ -392,7 +404,8 @@
     "East Feliciana",
     "Pointe Coupee",
     "West Baton Rouge"
-   ]
+   ],
+   "stale": true
   },
   "West Baton Rouge": {
    "office": "LIX",
@@ -520,7 +533,8 @@
     "East Feliciana",
     "Pointe Coupee",
     "West Baton Rouge"
-   ]
+   ],
+   "stale": true
   },
   "Livingston": {
    "office": "LIX",
@@ -647,7 +661,8 @@
     "Livingston",
     "Tangipahoa",
     "Northern St. Tammany"
-   ]
+   ],
+   "stale": true
   },
   "Tangipahoa": {
    "office": "LIX",
@@ -774,7 +789,8 @@
     "Livingston",
     "Tangipahoa",
     "Northern St. Tammany"
-   ]
+   ],
+   "stale": true
   },
   "St. Tammany": {
    "office": "LIX",
@@ -901,7 +917,8 @@
     "Livingston",
     "Tangipahoa",
     "Northern St. Tammany"
-   ]
+   ],
+   "stale": true
   }
  },
  "missing_parishes": [
@@ -964,7 +981,10 @@
   "Iberia"
  ],
  "warnings": [
-  "Official LAZ zone list unavailable; falling back to name matching restricted to blocks containing LAZ codes.",
+  "LIX: FAILED (LIX: product fetched but 0 Louisiana zones parsed (format change?)). Serving last good data for its parishes.",
+  "SHV: FAILED (SHV: product fetched but 0 Louisiana zones parsed (format change?)). Serving last good data for its parishes.",
+  "JAN: FAILED (JAN: product fetched but 0 Louisiana zones parsed (format change?)). Serving last good data for its parishes.",
+  "LCH: FAILED (LCH: product fetched but 0 Louisiana zones parsed (format change?)). Serving last good data for its parishes.",
   "No forecast matched for 57 parishes: Acadia, Bienville, East Baton Rouge, Jefferson Davis, Ouachita, St. Charles, Vernon, Winn, Lafourche, Lincoln, Natchitoches, Plaquemines, Rapides, Red River, Sabine, Ascension, St. Helena, St. James, St. Landry, St. Martin, Vermilion, Washington, Beauregard, Bossier, Caddo, Cameron, De Soto, East Carroll, Franklin, Grant, Jackson, Jefferson, Lafayette, St. John the Baptist, Union, Webster, Assumption, Caldwell, Catahoula, Iberville, La Salle, Morehouse, Richland, Madison, Orleans, St. Bernard, Evangeline, West Carroll, Calcasieu, Claiborne, Concordia, Allen, Avoyelles, St. Mary, Tensas, Terrebonne, Iberia"
  ],
  "disclaimer": "This tool translates National Weather Service forecasts and the Louisiana Smoke Management Guidelines. It does not authorize burning. It does not reflect parish or state burn bans. You are responsible for checking burn bans and complying with all regulations."
