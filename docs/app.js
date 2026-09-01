@@ -13,16 +13,17 @@ const STALE_HOURS = 12;
 const LEVEL_ICON = { good: "\u2713", fair: "\u26A0", poor: "\u26A0", no: "\u2715", nodata: "?" };
 const LEVEL_COLOR = { good: "#009E73", fair: "#E69F00", poor: "#D55E00", no: "#1A1A1A", nodata: "#C9C4BA" };
 
-/* Neighbor labels drawn on the map. Edit the Gulf wording here if your
-   office's style guide prefers a different name. */
+/* Neighbor labels drawn on the map. Gulf wording follows NWS usage and
+   Louisiana Executive Order JML 25-027; change the text here if needed. */
+const GULF_NAME = "Gulf of America";
 const MAP_LABELS = [
-  { text: "TEXAS", lat: 31.6, lng: -94.7 },
-  { text: "ARKANSAS", lat: 33.35, lng: -92.7 },
+  { text: "TEXAS", lat: 31.0, lng: -94.35 },
+  { text: "ARKANSAS", lat: 33.22, lng: -92.85 },
   { text: "MISSISSIPPI", lat: 32.4, lng: -90.0 },
-  { text: "Gulf of Mexico", lat: 28.7, lng: -91.2 },
+  { text: GULF_NAME, lat: 28.7, lng: -91.2 },
 ];
 
-let DATA = null, GEO = null, MAP = null, LAYER = null;
+let DATA = null, GEO = null, STATES = null, MAP = null, LAYER = null;
 let PERIODS = [];            /* [{key, date, is_night}] union across all parishes, sorted */
 let selectedParish = null, selectedKey = null, mapKey = null;
 
@@ -38,7 +39,10 @@ async function loadJSON(url) {
 
 async function init() {
   try {
-    [GEO, DATA] = await Promise.all([loadJSON("parishes.geojson"), loadJSON("data/latest.json")]);
+    [GEO, DATA, STATES] = await Promise.all([
+      loadJSON("parishes.geojson"), loadJSON("data/latest.json"),
+      loadJSON("states.geojson").catch(() => null),   /* backdrop only; optional */
+    ]);
   } catch (e) {
     if (!DATA) {
       showBanner("Could not load forecast data. Check your connection and pull to refresh.", true);
@@ -175,7 +179,15 @@ function parishAtPoint(lng, lat) {
 
 function buildMap() {
   MAP = L.map("map", { zoomSnap: 0.25, attributionControl: false, tap: true })
-    .setView([31.0, -91.9], 6.4);
+    .setView([31.25, -91.9], 6.3);
+
+  /* Neighboring states as a quiet backdrop (from the Census TIGER file). */
+  if (STATES) {
+    L.geoJSON(STATES, {
+      interactive: false,
+      style: { fillColor: "#EEECE7", fillOpacity: 1, color: "#B7B1A7", weight: 1 },
+    }).addTo(MAP);
+  }
 
   LAYER = L.geoJSON(GEO, {
     style: (f) => styleFor(f.properties.name),
