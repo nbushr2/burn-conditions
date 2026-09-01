@@ -6,8 +6,8 @@
    BUMP THE VERSION NUMBERS below every time app.js, style.css, or
    index.html change, or phones keep running the old copy. */
 
-const SHELL_CACHE = "burnwise-shell-v5";
-const DATA_CACHE = "burnwise-data-v5";
+const SHELL_CACHE = "burnwise-shell-v9";
+const DATA_CACHE = "burnwise-data-v9";
 
 const SHELL = [
   "./",
@@ -16,9 +16,11 @@ const SHELL = [
   "app.js",
   "parishes.geojson",
   "states.geojson",
+  "reference.geojson",
   "manifest.json",
   "icons/icon-192.png",
   "icons/icon-512.png",
+  "icons/icon-maskable-512.png",
   "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
   "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
 ];
