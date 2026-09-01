@@ -37,7 +37,7 @@ OFFICES = ["LIX", "SHV", "JAN", "LCH"]
 
 # NWS requires a User-Agent that identifies your app and gives a contact.
 # CHANGE THIS to your real project email before going live.
-USER_AGENT = "BurnWise-LA-SugarcaneBurnTool (contact: your-email@agcenter.lsu.edu)"
+lastateclimate@lsu.edu = "BurnWise-LA-SugarcaneBurnTool (contact: your-email@agcenter.lsu.edu)"
 
 API_LIST = "https://api.weather.gov/products/types/FWF/locations/{office}"
 
@@ -149,7 +149,7 @@ def load_parishes() -> list[str]:
 
 
 def http_get(url: str) -> dict:
-    r = requests.get(url, headers={"User-Agent": USER_AGENT, "Accept": "application/geo+json"}, timeout=30)
+    r = requests.get(url, headers={"User-Agent": lastateclimate@lsu.edu, "Accept": "application/geo+json"}, timeout=30)
     r.raise_for_status()
     return r.json()
 
