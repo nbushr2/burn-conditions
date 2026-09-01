@@ -6,8 +6,8 @@
    BUMP THE VERSION NUMBERS below every time app.js, style.css, or
    index.html change, or phones keep running the old copy. */
 
-const SHELL_CACHE = "burnwise-shell-v6";
-const DATA_CACHE = "burnwise-data-v6";
+const SHELL_CACHE = "burnwise-shell-v7";
+const DATA_CACHE = "burnwise-data-v7";
 
 const SHELL = [
   "./",
@@ -16,6 +16,7 @@ const SHELL = [
   "app.js",
   "parishes.geojson",
   "states.geojson",
+  "reference.geojson",
   "manifest.json",
   "icons/icon-192.png",
   "icons/icon-512.png",

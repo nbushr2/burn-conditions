@@ -18,9 +18,14 @@ const LEVEL_COLOR = { good: "#009E73", fair: "#E69F00", poor: "#D55E00", no: "#1
    roads/towns/rivers), "osm" (OpenStreetMap), or "none" (plain water-blue
    background; fully offline). When a basemap is on, the state backdrop and
    hand-placed labels below are unnecessary and are switched off. */
-const BASEMAP = "usgs";
-const SHOW_STATE_BACKDROP = BASEMAP === "none";
-const SHOW_REGION_LABELS = BASEMAP === "none";
+/*   "minimal" (default): no tiles; interstates, US highways and the ten
+     largest cities drawn from public-domain Natural Earth data. Quiet,
+     offline-capable, no outside server. "usgs" and "osm" fetch full
+     street/topo tiles from those services. "none" is parishes only. */
+const BASEMAP = "minimal";
+const SHOW_STATE_BACKDROP = BASEMAP === "none" || BASEMAP === "minimal";
+const SHOW_REGION_LABELS = BASEMAP === "none" || BASEMAP === "minimal";
+const SHOW_REFERENCE = BASEMAP === "minimal";
 const BASEMAPS = {
   usgs: {
     url: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}",
@@ -43,7 +48,7 @@ const MAP_LABELS = [
   { text: GULF_NAME, lat: 28.7, lng: -91.2 },
 ];
 
-let DATA = null, GEO = null, STATES = null, MAP = null, LAYER = null;
+let DATA = null, GEO = null, STATES = null, REF = null, MAP = null, LAYER = null;
 let PERIODS = [];            /* [{key, date, is_night}] union across all parishes, sorted */
 let selectedParish = null, selectedKey = null, mapKey = null;
 
@@ -59,9 +64,10 @@ async function loadJSON(url) {
 
 async function init() {
   try {
-    [GEO, DATA, STATES] = await Promise.all([
+    [GEO, DATA, STATES, REF] = await Promise.all([
       loadJSON("parishes.geojson"), loadJSON("data/latest.json"),
       loadJSON("states.geojson").catch(() => null),   /* backdrop only; optional */
+      loadJSON("reference.geojson").catch(() => null), /* roads + cities; optional */
     ]);
   } catch (e) {
     if (!DATA) {
@@ -230,6 +236,31 @@ function buildMap() {
     }).addTo(MAP);
   }
 
+  if (SHOW_REFERENCE && REF) {
+    L.geoJSON(REF, {
+      interactive: false,
+      filter: (f) => f.geometry.type !== "Point",
+      style: (f) => f.properties.cls === "interstate"
+        ? { color: "#FFFFFF", weight: 2.2, opacity: 0.95 }
+        : { color: "#FFFFFF", weight: 1, opacity: 0.7 },
+    }).addTo(MAP);
+    const cities = L.layerGroup().addTo(MAP);
+    const drawCities = () => {
+      cities.clearLayers();
+      const z = MAP.getZoom();
+      for (const f of REF.features) {
+        if (f.geometry.type !== "Point") continue;
+        if (!f.properties.major && z < 7.5) continue;
+        const [lng, lat] = f.geometry.coordinates;
+        L.circleMarker([lat, lng], { radius: 3.5, color: "#1A1A1A", weight: 1.5, fillColor: "#FFFFFF", fillOpacity: 1, interactive: false }).addTo(cities);
+        L.marker([lat, lng], { interactive: false,
+          icon: L.divIcon({ className: "city-label", html: f.properties.name, iconSize: [90, 14], iconAnchor: [-6, 7] }) }).addTo(cities);
+      }
+    };
+    MAP.on("zoomend", drawCities);
+    drawCities();
+  }
+
   const ctl = L.control({ position: "topright" });
   ctl.onAdd = () => {
     const div = L.DomUtil.create("div", "map-period");
@@ -264,7 +295,7 @@ function styleFor(name) {
   const level = v ? v.level : "nodata";
   return {
     fillColor: LEVEL_COLOR[level],
-    fillOpacity: BASEMAP === "none" ? (level === "nodata" ? 0.6 : 0.9) : (level === "nodata" ? 0.35 : 0.6),
+    fillOpacity: (BASEMAP === "none" || BASEMAP === "minimal") ? (level === "nodata" ? 0.6 : 0.9) : (level === "nodata" ? 0.35 : 0.6),
     color: name === selectedParish ? "#FFFFFF" : "#1A1A1A",
     weight: name === selectedParish ? 4 : 1.2,
   };
