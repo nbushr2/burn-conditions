@@ -62,7 +62,7 @@ body { font-size: 16px; line-height: 1.45; }
 #map { height: 46vh; min-height: 300px; border-top: 2px solid var(--ink);
        border-bottom: 2px solid var(--ink); background: var(--water); }
 .leaflet-container { font: inherit; }
-.leaflet-control-attribution { font-size: 10px; background: rgba(255,255,255,0.8); }
+.leaflet-control-attribution { display: none; }
 
 .map-period {
   background: var(--paper); border: 2px solid var(--ink); border-radius: 8px;
@@ -149,9 +149,3 @@ body { font-size: 16px; line-height: 1.45; }
 }
 .periods { flex-wrap: wrap; }
 .periods button { flex: 1 1 22%; min-width: 70px; }
-
-/* city labels for the minimal basemap */
-.city-label {
-  font-size: 11px; font-weight: 700; color: #1A1A1A; white-space: nowrap;
-  text-shadow: 0 0 3px #FFF, 0 0 3px #FFF, 0 0 3px #FFF; pointer-events: none;
-}

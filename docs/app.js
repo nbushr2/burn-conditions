@@ -13,49 +13,16 @@ const STALE_HOURS = 12;
 const LEVEL_ICON = { good: "\u2713", fair: "\u26A0", poor: "\u26A0", no: "\u2715", nodata: "?" };
 const LEVEL_COLOR = { good: "#009E73", fair: "#E69F00", poor: "#D55E00", no: "#1A1A1A", nodata: "#C9C4BA" };
 
-/* ---------------- map settings ----------------
-   BASEMAP: "usgs" (default: USGS The National Map, public domain, no key,
-   roads/towns/rivers), "osm" (OpenStreetMap), or "none" (plain water-blue
-   background; fully offline). When a basemap is on, the state backdrop and
-   hand-placed labels below are unnecessary and are switched off. */
-/*   "minimal" (default): no tiles; interstates, US highways and the ten
-     largest cities drawn from public-domain Natural Earth data. Quiet,
-     offline-capable, no outside server. "usgs" and "osm" fetch full
-     street/topo tiles from those services. "none" is parishes only. */
-const BASEMAP = "minimal";
-const SHOW_STATE_BACKDROP = BASEMAP === "none" || BASEMAP === "minimal";
-const SHOW_REGION_LABELS = BASEMAP === "none" || BASEMAP === "minimal";
-const SHOW_REFERENCE = BASEMAP === "minimal";
-/* How much reference detail to draw in "minimal" mode:
-   ROADS: "interstates" or "none".  CITIES_ALWAYS: how many of the largest
-   cities show at state zoom (the rest appear when zoomed in).
-   PARISH_LABEL_ZOOM: zoom level at which parish names appear. */
-const ROADS = "interstates";
-const CITIES_ALWAYS = 4;
-const PARISH_LABEL_ZOOM = 8;
-const BASEMAPS = {
-  usgs: {
-    url: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}",
-    attribution: "USGS The National Map",
-    maxZoom: 16,
-  },
-  osm: {
-    url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-    attribution: "&copy; OpenStreetMap contributors",
-    maxZoom: 18,
-  },
-};
-
-/* Gulf wording follows NWS usage and Louisiana Executive Order JML 25-027. */
-const GULF_NAME = "Gulf of America";
+/* Neighbor labels drawn on the map. Edit the Gulf wording here if your
+   office's style guide prefers a different name. */
 const MAP_LABELS = [
-  { text: "TEXAS", lat: 31.0, lng: -94.35 },
-  { text: "ARKANSAS", lat: 33.22, lng: -92.85 },
+  { text: "TEXAS", lat: 31.6, lng: -94.7 },
+  { text: "ARKANSAS", lat: 33.35, lng: -92.7 },
   { text: "MISSISSIPPI", lat: 32.4, lng: -90.0 },
-  { text: GULF_NAME, lat: 28.7, lng: -91.2 },
+  { text: "Gulf of Mexico", lat: 28.7, lng: -91.2 },
 ];
 
-let DATA = null, GEO = null, STATES = null, REF = null, MAP = null, LAYER = null;
+let DATA = null, GEO = null, MAP = null, LAYER = null;
 let PERIODS = [];            /* [{key, date, is_night}] union across all parishes, sorted */
 let selectedParish = null, selectedKey = null, mapKey = null;
 
@@ -71,11 +38,7 @@ async function loadJSON(url) {
 
 async function init() {
   try {
-    [GEO, DATA, STATES, REF] = await Promise.all([
-      loadJSON("parishes.geojson"), loadJSON("data/latest.json"),
-      loadJSON("states.geojson").catch(() => null),   /* backdrop only; optional */
-      loadJSON("reference.geojson").catch(() => null), /* roads + cities; optional */
-    ]);
+    [GEO, DATA] = await Promise.all([loadJSON("parishes.geojson"), loadJSON("data/latest.json")]);
   } catch (e) {
     if (!DATA) {
       showBanner("Could not load forecast data. Check your connection and pull to refresh.", true);
@@ -211,22 +174,8 @@ function parishAtPoint(lng, lat) {
 /* ---------------- map ---------------- */
 
 function buildMap() {
-  MAP = L.map("map", { zoomSnap: 0.25, attributionControl: true, tap: true })
-    .setView([31.25, -91.9], 6.3);
-  MAP.attributionControl.setPrefix(false);
-
-  if (BASEMAPS[BASEMAP]) {
-    const b = BASEMAPS[BASEMAP];
-    L.tileLayer(b.url, { attribution: b.attribution, maxZoom: b.maxZoom, crossOrigin: true }).addTo(MAP);
-  }
-
-  /* Neighboring states as a quiet backdrop (from the Census TIGER file). */
-  if (SHOW_STATE_BACKDROP && STATES) {
-    L.geoJSON(STATES, {
-      interactive: false,
-      style: { fillColor: "#EEECE7", fillOpacity: 1, color: "#B7B1A7", weight: 1 },
-    }).addTo(MAP);
-  }
+  MAP = L.map("map", { zoomSnap: 0.25, attributionControl: false, tap: true })
+    .setView([31.0, -91.9], 6.4);
 
   LAYER = L.geoJSON(GEO, {
     style: (f) => styleFor(f.properties.name),
@@ -236,38 +185,11 @@ function buildMap() {
     },
   }).addTo(MAP);
 
-  for (const l of SHOW_REGION_LABELS ? MAP_LABELS : []) {
+  for (const l of MAP_LABELS) {
     L.marker([l.lat, l.lng], {
       interactive: false,
       icon: L.divIcon({ className: "region-label", html: l.text, iconSize: [140, 20], iconAnchor: [70, 10] }),
     }).addTo(MAP);
-  }
-
-  if (SHOW_REFERENCE && REF) {
-    if (ROADS !== "none") {
-      L.geoJSON(REF, {
-        interactive: false,
-        filter: (f) => f.geometry.type !== "Point" && f.properties.cls === "interstate",
-        style: { color: "#FFFFFF", weight: 1.5, opacity: 0.55 },
-      }).addTo(MAP);
-    }
-    const ranked = REF.features.filter((f) => f.geometry.type === "Point")
-      .sort((a, b) => (b.properties.pop || 0) - (a.properties.pop || 0));
-    const alwaysShow = new Set(ranked.slice(0, CITIES_ALWAYS).map((f) => f.properties.name));
-    const cities = L.layerGroup().addTo(MAP);
-    const drawCities = () => {
-      cities.clearLayers();
-      const z = MAP.getZoom();
-      for (const f of ranked) {
-        if (!alwaysShow.has(f.properties.name) && z < PARISH_LABEL_ZOOM) continue;
-        const [lng, lat] = f.geometry.coordinates;
-        L.circleMarker([lat, lng], { radius: 3.5, color: "#1A1A1A", weight: 1.5, fillColor: "#FFFFFF", fillOpacity: 1, interactive: false }).addTo(cities);
-        L.marker([lat, lng], { interactive: false,
-          icon: L.divIcon({ className: "city-label", html: f.properties.name, iconSize: [90, 14], iconAnchor: [-6, 7] }) }).addTo(cities);
-      }
-    };
-    MAP.on("zoomend", drawCities);
-    drawCities();
   }
 
   const ctl = L.control({ position: "topright" });
@@ -287,7 +209,7 @@ function buildMap() {
   });
 
   const updateLabels = () => {
-    const show = MAP.getZoom() >= PARISH_LABEL_ZOOM;
+    const show = MAP.getZoom() >= 7.5;
     LAYER.eachLayer((l) => {
       const t = l.getTooltip();
       if (!t || t.options.permanent === show) return;
@@ -304,7 +226,7 @@ function styleFor(name) {
   const level = v ? v.level : "nodata";
   return {
     fillColor: LEVEL_COLOR[level],
-    fillOpacity: (BASEMAP === "none" || BASEMAP === "minimal") ? (level === "nodata" ? 0.6 : 0.9) : (level === "nodata" ? 0.35 : 0.6),
+    fillOpacity: level === "nodata" ? 0.6 : 0.9,
     color: name === selectedParish ? "#FFFFFF" : "#1A1A1A",
     weight: name === selectedParish ? 4 : 1.2,
   };
