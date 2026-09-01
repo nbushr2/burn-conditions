@@ -13,6 +13,7 @@ const LEVEL_COLOR = { good: "#009E73", fair: "#E69F00", poor: "#D55E00", no: "#1
 
 let DATA = null, GEO = null, MAP = null, LAYER = null;
 let selectedParish = null, selectedPeriod = 0;
+let MAP_PERIOD = 0; /* index of the period the map is colored by */
 
 const $ = (id) => document.getElementById(id);
 
@@ -31,17 +32,33 @@ async function init() {
       loadJSON("data/latest.json"),
     ]);
   } catch (e) {
-    // Offline: the service worker may have served cached copies; if even
-    // that failed, tell the user plainly what to do.
     if (!DATA) {
       showBanner("Could not load forecast data. Check your connection and pull to refresh.", true);
       return;
     }
   }
+  MAP_PERIOD = firstRatedPeriodIndex();
   renderChrome();
   buildDropdown();
   buildMap();
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+}
+
+/* NWS issues no Category Day for night periods. In the evening issuance the
+   first column is "Tonight", so the map and default tab use the first period
+   that actually carries a rating (usually tomorrow). */
+function firstRatedPeriodIndex() {
+  const entries = Object.values(DATA.parishes || {});
+  const maxLen = Math.max(0, ...entries.map((e) => (e.periods || []).length));
+  for (let i = 0; i < maxLen; i++) {
+    if (entries.some((e) => e.periods && e.periods[i] && e.periods[i].verdict)) return i;
+  }
+  return 0;
+}
+
+function periodName(i) {
+  const e = Object.values(DATA.parishes || {}).find((x) => x.periods && x.periods[i]);
+  return e ? e.periods[i].name : "";
 }
 
 /* ---------------- chrome: issued time, staleness, warnings ---------------- */
@@ -127,7 +144,7 @@ function parishAtPoint(lng, lat) {
 
 /* ---------------- map ---------------- */
 
-function parishLevel(name, periodIdx = 0) {
+function parishLevel(name, periodIdx) {
   const e = DATA.parishes[name];
   const p = e && e.periods && e.periods[periodIdx];
   if (!p || !p.verdict) return "nodata";
@@ -149,10 +166,20 @@ function buildMap() {
       layer.bindTooltip(f.properties.name, { sticky: true });
     },
   }).addTo(MAP);
+
+  /* Small label so nobody mistakes tomorrow's colors for today's. */
+  const label = L.control({ position: "topright" });
+  label.onAdd = () => {
+    const div = L.DomUtil.create("div");
+    div.style.cssText = "background:#FFF;border:2px solid #1A1A1A;border-radius:8px;padding:4px 8px;font-weight:700;font-size:0.85rem;";
+    div.textContent = "Map shows: " + (periodName(MAP_PERIOD) || "\u2014");
+    return div;
+  };
+  label.addTo(MAP);
 }
 
 function styleFor(name) {
-  const level = parishLevel(name, 0); /* map always shows TODAY */
+  const level = parishLevel(name, MAP_PERIOD);
   return {
     fillColor: LEVEL_COLOR[level],
     fillOpacity: level === "nodata" ? 0.35 : 0.75,
@@ -165,7 +192,7 @@ function styleFor(name) {
 
 function selectParish(name, panMap) {
   selectedParish = name;
-  selectedPeriod = 0;
+  selectedPeriod = MAP_PERIOD;
   LAYER.setStyle((f) => styleFor(f.properties.name));
   if (panMap) {
     LAYER.eachLayer((l) => {
@@ -175,6 +202,14 @@ function selectParish(name, panMap) {
   $("parishSelect").value = name;
   renderDetail();
   $("detail").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function windText(w) {
+  if (!w) return "\u2014";
+  if (w.dir === "Lgt/Var") return "Light, variable";
+  const range = w.lo_mph === w.hi_mph ? `${w.lo_mph}` : `${w.lo_mph}\u2013${w.hi_mph}`;
+  const gust = w.gust_mph ? `, gusts ${w.gust_mph}` : "";
+  return `${w.dir} ${range} mph${gust}`;
 }
 
 function renderDetail() {
@@ -215,15 +250,12 @@ function renderDetail() {
   $("verdictWord").textContent = p.verdict ? p.verdict.verdict : "NO RATING";
   $("verdictDetail").textContent = p.verdict
     ? p.verdict.detail
-    : "NWS did not issue a Category Day for this period (common for nighttime). Do not burn without a rating.";
+    : "NWS does not issue a Category Day for night periods. Do not burn without a rating.";
 
   const facts = [];
-  const cat = p.category != null ? `${p.category} of 5` : "\u2014";
-  facts.push(["Category Day", cat]);
-  const sw = p.surface_wind_pm || p.surface_wind_am;
-  facts.push(["Surface wind", sw ? `${sw.dir} ${sw.lo_mph}\u2013${sw.hi_mph} mph` : "\u2014"]);
-  const tw = p.transport_wind;
-  facts.push(["Transport wind", tw ? `${tw.dir} ${tw.lo_mph === tw.hi_mph ? tw.lo_mph : tw.lo_mph + "\u2013" + tw.hi_mph} mph` : "\u2014"]);
+  facts.push(["Category Day", p.category != null ? `${p.category} of 5` : "\u2014"]);
+  facts.push(["Surface wind (PM)", windText(p.surface_wind_pm || p.surface_wind_am)]);
+  facts.push(["Transport wind", windText(p.transport_wind)]);
   $("keyFacts").innerHTML = facts
     .map(([k, v]) => `<div class="fact"><div class="v">${v}</div><div class="k">${k}</div></div>`)
     .join("");
@@ -233,8 +265,8 @@ function renderDetail() {
     ["Humidity", p.rh_pct != null ? p.rh_pct + "%" : "\u2014"],
     ["Temperature", p.temp_f != null ? p.temp_f + " \u00B0F" : "\u2014"],
     ["Chance of rain", p.precip_chance_pct != null ? p.precip_chance_pct + "%" : "\u2014"],
-    ["Morning surface wind", p.surface_wind_am ? `${p.surface_wind_am.dir} ${p.surface_wind_am.lo_mph}\u2013${p.surface_wind_am.hi_mph} mph` : "\u2014"],
-    ["Afternoon surface wind", p.surface_wind_pm ? `${p.surface_wind_pm.dir} ${p.surface_wind_pm.lo_mph}\u2013${p.surface_wind_pm.hi_mph} mph` : "\u2014"],
+    ["Morning surface wind", windText(p.surface_wind_am)],
+    ["Afternoon surface wind", windText(p.surface_wind_pm)],
   ];
   $("rawTable").innerHTML =
     "<table>" + rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join("") + "</table>";
