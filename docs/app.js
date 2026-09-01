@@ -13,8 +13,28 @@ const STALE_HOURS = 12;
 const LEVEL_ICON = { good: "\u2713", fair: "\u26A0", poor: "\u26A0", no: "\u2715", nodata: "?" };
 const LEVEL_COLOR = { good: "#009E73", fair: "#E69F00", poor: "#D55E00", no: "#1A1A1A", nodata: "#C9C4BA" };
 
-/* Neighbor labels drawn on the map. Gulf wording follows NWS usage and
-   Louisiana Executive Order JML 25-027; change the text here if needed. */
+/* ---------------- map settings ----------------
+   BASEMAP: "usgs" (default: USGS The National Map, public domain, no key,
+   roads/towns/rivers), "osm" (OpenStreetMap), or "none" (plain water-blue
+   background; fully offline). When a basemap is on, the state backdrop and
+   hand-placed labels below are unnecessary and are switched off. */
+const BASEMAP = "usgs";
+const SHOW_STATE_BACKDROP = BASEMAP === "none";
+const SHOW_REGION_LABELS = BASEMAP === "none";
+const BASEMAPS = {
+  usgs: {
+    url: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}",
+    attribution: "USGS The National Map",
+    maxZoom: 16,
+  },
+  osm: {
+    url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    attribution: "&copy; OpenStreetMap contributors",
+    maxZoom: 18,
+  },
+};
+
+/* Gulf wording follows NWS usage and Louisiana Executive Order JML 25-027. */
 const GULF_NAME = "Gulf of America";
 const MAP_LABELS = [
   { text: "TEXAS", lat: 31.0, lng: -94.35 },
@@ -178,11 +198,17 @@ function parishAtPoint(lng, lat) {
 /* ---------------- map ---------------- */
 
 function buildMap() {
-  MAP = L.map("map", { zoomSnap: 0.25, attributionControl: false, tap: true })
+  MAP = L.map("map", { zoomSnap: 0.25, attributionControl: true, tap: true })
     .setView([31.25, -91.9], 6.3);
+  MAP.attributionControl.setPrefix(false);
+
+  if (BASEMAPS[BASEMAP]) {
+    const b = BASEMAPS[BASEMAP];
+    L.tileLayer(b.url, { attribution: b.attribution, maxZoom: b.maxZoom, crossOrigin: true }).addTo(MAP);
+  }
 
   /* Neighboring states as a quiet backdrop (from the Census TIGER file). */
-  if (STATES) {
+  if (SHOW_STATE_BACKDROP && STATES) {
     L.geoJSON(STATES, {
       interactive: false,
       style: { fillColor: "#EEECE7", fillOpacity: 1, color: "#B7B1A7", weight: 1 },
@@ -197,7 +223,7 @@ function buildMap() {
     },
   }).addTo(MAP);
 
-  for (const l of MAP_LABELS) {
+  for (const l of SHOW_REGION_LABELS ? MAP_LABELS : []) {
     L.marker([l.lat, l.lng], {
       interactive: false,
       icon: L.divIcon({ className: "region-label", html: l.text, iconSize: [140, 20], iconAnchor: [70, 10] }),
@@ -238,7 +264,7 @@ function styleFor(name) {
   const level = v ? v.level : "nodata";
   return {
     fillColor: LEVEL_COLOR[level],
-    fillOpacity: level === "nodata" ? 0.6 : 0.9,
+    fillOpacity: BASEMAP === "none" ? (level === "nodata" ? 0.6 : 0.9) : (level === "nodata" ? 0.35 : 0.6),
     color: name === selectedParish ? "#FFFFFF" : "#1A1A1A",
     weight: name === selectedParish ? 4 : 1.2,
   };
