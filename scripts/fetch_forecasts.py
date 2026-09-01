@@ -277,48 +277,59 @@ def parse_block(block: str, debug=False) -> dict | None:
     for p in periods:
         raw = p["raw"]
 
-        def get(*keys):
-            """Match a row label by whole word anywhere in the label, so
-            'Max/Min Temp' and 'Min/Max RH (%)' are found."""
-            for label, v in raw.items():
-                for k in keys:
-                    if re.search(r"(?<![A-Za-z])" + re.escape(k) + r"(?![A-Za-z])", label, re.IGNORECASE):
-                        return label, v
-            return None, None
+        def find(pattern, prefer=None):
+            """Return (label, value) for the first row whose label matches
+            `pattern` (regex, case-insensitive). If `prefer` is given and
+            some matching row's label also matches it, that row wins.
+            The four NWS offices label the same rows differently:
+              LIX: 20FT Wind/PM(mph)      Transport Wind (m/s)  Mixing Hgt (m-AGL/MSL)
+              LCH: 20ftWnd-rdg/PM(mph)   Transport wnd (mph)   Mixing hgt(ft-AGL/MSL)
+              SHV: Wind 20ft/late(mph)   Transport Wnd (mph)   Mixing Hgt(ft-agl/msl)
+              JAN: 20ftWnd-PM(mph)       Transport Wnd (mph)   Mixing Hgt(ft AGL)"""
+            hits = [(l, v) for l, v in raw.items() if re.search(pattern, l, re.IGNORECASE)]
+            if not hits:
+                return None, None
+            if prefer:
+                for l, v in hits:
+                    if re.search(prefer, l, re.IGNORECASE):
+                        return l, v
+            return hits[0]
 
-        lab, v = get("Category Day")
+        _, v = find(r"Category\s*Day")
         cat = parse_number(v) if v else None
         p["category"] = int(cat) if cat and 1 <= cat <= 5 else None
 
-        lab, v = get("Mixing Hgt", "Mixing Height")  # word-match; excludes "Mrng Mxg Hgt"
+        lab, v = find(r"^Mixing\s*H(eigh|g)t", prefer=r"\bft\b|ft-|\(ft")
         mh = parse_number(v)
-        if mh is not None and lab and re.search(r"\(m\b|m-AGL", lab):
-            mh = round(mh * M_TO_FT)
+        if mh is not None and lab and not re.search(r"\bft\b|ft-|\(ft", lab, re.IGNORECASE):
+            mh = round(mh * M_TO_FT)  # meters row only; convert
         p["mixing_height_ft"] = int(mh) if mh is not None else None
 
-        lab, v = get("Transport Wind")
+        lab, v = find(r"Transport\s*W(i?n)?d", prefer=r"mph")
         d, lo, hi, g = parse_wind(v)
         if lo is not None and lab and "m/s" in lab.lower():
             lo, hi = round(lo * MS_TO_MPH), round(hi * MS_TO_MPH)
             g = round(g * MS_TO_MPH) if g is not None else None
         p["transport_wind"] = {"dir": d, "lo_mph": lo, "hi_mph": hi, "gust_mph": g} if lo is not None else None
 
-        _, v = get("20FT Wind/AM", "20 FT Wind/AM")
+        _, v = find(r"20\s*ft.*w(i?n)?d.*(\bAM\b|early)|w(i?n)?d.*20\s*ft.*(\bAM\b|early)")
         d, lo, hi, g = parse_wind(v)
         p["surface_wind_am"] = {"dir": d, "lo_mph": lo, "hi_mph": hi, "gust_mph": g} if lo is not None else None
 
-        _, v = get("20FT Wind/PM", "20 FT Wind/PM")
+        _, v = find(r"20\s*ft.*w(i?n)?d.*(\bPM\b|late)|w(i?n)?d.*20\s*ft.*(\bPM\b|late)")
         d, lo, hi, g = parse_wind(v)
         p["surface_wind_pm"] = {"dir": d, "lo_mph": lo, "hi_mph": hi, "gust_mph": g} if lo is not None else None
 
-        _, v = get("RH")
-        p["rh_pct"] = int(parse_number(v)) if parse_number(v) is not None else None
-        _, v = get("Temp")
+        _, v = find(r"\bTemp\b")
         p["temp_f"] = int(parse_number(v)) if parse_number(v) is not None else None
-        _, v = get("Chance Precip")
+        _, v = find(r"\bRH\b")
+        p["rh_pct"] = int(parse_number(v)) if parse_number(v) is not None else None
+        _, v = find(r"Chance\s*Precip")
         p["precip_chance_pct"] = int(parse_number(v)) if parse_number(v) is not None else None
-        _, v = get("Vent Rate")
+        _, v = find(r"Vent\s*(Rate|Index)")
         p["vent_rate"] = parse_number(v)
+        _, v = find(r"^Dispersion")
+        p["dispersion_text"] = v.strip() if v else None
 
     return {"zone_names": zone_names, "periods": periods}
 
