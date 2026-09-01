@@ -1,0 +1,108 @@
+/* Louisiana Burn Conditions
+   Design rules:
+   - White background, near-black ink: maximum legibility in direct sunlight.
+   - Okabe-Ito colorblind-safe palette. Color is NEVER the only signal:
+     every rating also has a word and an icon, and DO NOT BURN is black,
+     so the scale survives full grayscale.
+   - System fonts: fastest possible render on cheap rural Android phones. */
+
+:root {
+  --ink: #1A1A1A;
+  --paper: #FFFFFF;
+  --line: #D9D4CC;
+  --good: #009E73;     /* Okabe-Ito bluish green */
+  --fair: #E69F00;     /* Okabe-Ito orange */
+  --poor: #D55E00;     /* Okabe-Ito vermillion */
+  --no:   #1A1A1A;     /* black: unmistakable, grayscale-proof */
+  --nodata: #B7B1A7;
+  --tap: 44px;         /* minimum touch target */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); }
+body { font-size: 16px; line-height: 1.45; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- header ---------- */
+.topbar {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 8px; padding: 10px 14px; border-bottom: 3px solid var(--ink);
+}
+.brand-name { font-weight: 800; letter-spacing: 0.06em; font-size: 1rem; display: block; }
+.brand-sub  { font-size: 0.78rem; color: #555; display: block; }
+.issued { font-size: 0.78rem; text-align: right; color: #555; max-width: 45%; }
+
+/* ---------- banners ---------- */
+.banner {
+  padding: 10px 14px; font-weight: 700; font-size: 0.95rem;
+  background: var(--fair); color: var(--ink); border-bottom: 2px solid var(--ink);
+}
+.banner.severe { background: var(--ink); color: var(--paper); }
+.hidden { display: none; }
+
+/* ---------- parish finder ---------- */
+.finder { display: flex; gap: 8px; padding: 10px 14px; }
+.finder select, .finder button {
+  min-height: var(--tap); font-size: 1rem; border: 2px solid var(--ink);
+  border-radius: 8px; background: var(--paper); color: var(--ink); padding: 0 10px;
+}
+.finder select { flex: 1 1 60%; }
+.finder button { flex: 1 1 40%; font-weight: 700; cursor: pointer; }
+.finder button:active { background: var(--ink); color: var(--paper); }
+
+/* ---------- map ---------- */
+#map { height: 44vh; min-height: 280px; border-top: 2px solid var(--ink);
+       border-bottom: 2px solid var(--ink); background: #EFEDE8; }
+.leaflet-container { font: inherit; }
+
+/* ---------- detail panel ---------- */
+.detail { padding: 12px 14px 4px; }
+.detail h2 { margin: 0 0 8px; font-size: 1.35rem; }
+
+.periods { display: flex; gap: 6px; margin-bottom: 10px; }
+.periods button {
+  flex: 1; min-height: var(--tap); border: 2px solid var(--ink); background: var(--paper);
+  color: var(--ink); border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer;
+}
+.periods button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+
+/* The signature element: one giant verdict readable at arm's length. */
+.verdict {
+  display: flex; align-items: center; gap: 14px;
+  border: 3px solid var(--ink); border-radius: 14px;
+  padding: 16px; margin-bottom: 12px; color: var(--paper);
+}
+.verdict.good   { background: var(--good); }
+.verdict.fair   { background: var(--fair); color: var(--ink); }
+.verdict.poor   { background: var(--poor); }
+.verdict.no     { background: var(--no); }
+.verdict.nodata { background: var(--nodata); color: var(--ink); }
+.verdict-icon { font-size: 2.6rem; line-height: 1; }
+.verdict-word { font-size: clamp(1.6rem, 8vw, 2.4rem); font-weight: 900; letter-spacing: 0.02em; }
+.verdict-detail { font-size: 0.95rem; margin-top: 2px; }
+
+/* three key numbers */
+.keyfacts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.fact { border: 2px solid var(--line); border-radius: 10px; padding: 8px; text-align: center; }
+.fact .v { font-size: 1.2rem; font-weight: 800; }
+.fact .k { font-size: 0.72rem; color: #555; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.raw summary { min-height: var(--tap); display: flex; align-items: center;
+               font-weight: 700; cursor: pointer; }
+.raw table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.raw td, .raw th { border-bottom: 1px solid var(--line); padding: 6px 4px; text-align: left; }
+.source { font-size: 0.8rem; color: #555; }
+
+.disclaimer { padding: 14px; font-size: 0.8rem; color: #555;
+              border-top: 2px solid var(--line); margin-top: 12px; }
+
+@media (min-width: 760px) {
+  body { max-width: 900px; margin: 0 auto; }
+  #map { height: 52vh; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

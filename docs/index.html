@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Louisiana Burn Conditions</title>
+<meta name="description" content="Parish-by-parish sugarcane burn conditions from National Weather Service fire weather forecasts.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-name">LA BURN CONDITIONS</span>
+    <span class="brand-sub">NWS Fire Weather, by parish</span>
+  </div>
+  <div class="issued" id="issued">Loading&hellip;</div>
+</header>
+
+<div id="banner" class="banner hidden" role="alert"></div>
+
+<div class="finder">
+  <label class="visually-hidden" for="parishSelect">Choose your parish</label>
+  <select id="parishSelect">
+    <option value="">Choose your parish&hellip;</option>
+  </select>
+  <button id="locateBtn" type="button">Use my location</button>
+</div>
+
+<div id="map" role="application" aria-label="Louisiana parish map. Tap a parish to see burn conditions."></div>
+
+<section id="detail" class="detail hidden" aria-live="polite">
+  <h2 id="parishName"></h2>
+
+  <div class="periods" id="periodTabs" role="tablist"></div>
+
+  <div id="verdictCard" class="verdict">
+    <div class="verdict-icon" id="verdictIcon"></div>
+    <div class="verdict-text">
+      <div class="verdict-word" id="verdictWord"></div>
+      <div class="verdict-detail" id="verdictDetail"></div>
+    </div>
+  </div>
+
+  <div class="keyfacts" id="keyFacts"></div>
+
+  <details class="raw">
+    <summary>Full forecast details</summary>
+    <div id="rawTable"></div>
+    <p class="source" id="sourceNote"></p>
+  </details>
+</section>
+
+<footer class="disclaimer" id="disclaimer"></footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

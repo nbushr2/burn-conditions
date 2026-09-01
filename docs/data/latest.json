@@ -1,0 +1,971 @@
+{
+ "schema_version": 2,
+ "generated_at_utc": "2026-07-06T23:44:20.022961+00:00",
+ "offices": {
+  "LIX": {
+   "issued": "2026-07-06T23:44:20.021737+00:00",
+   "product_id": "SAMPLE",
+   "zones_parsed": 2,
+   "ok": true
+  }
+ },
+ "parishes": {
+  "Pointe Coupee": {
+   "office": "LIX",
+   "issued": "2026-07-06T23:44:20.021737+00:00",
+   "periods": [
+    {
+     "name": "Today",
+     "raw": {
+      "Cloud Cover": "Sunny",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "88",
+      "RH (%)": "45",
+      "20FT Wind/AM(mph)": "N 3-7",
+      "20FT Wind/PM(mph)": "NE 5-9",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)1524",
+      "Transport Wind (m/s)": "NE 4",
+      "Vent Rate (m**2/s)": "6096",
+      "Category Day": "4"
+     },
+     "category": 4,
+     "mixing_height_ft": 5000,
+     "transport_wind": {
+      "dir": "NE",
+      "lo_mph": 9,
+      "hi_mph": 9
+     },
+     "surface_wind_am": {
+      "dir": "N",
+      "lo_mph": 3,
+      "hi_mph": 7
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 5,
+      "hi_mph": 9
+     },
+     "rh_pct": 45,
+     "temp_f": 88,
+     "precip_chance_pct": 0,
+     "vent_rate": 6096.0,
+     "verdict": {
+      "verdict": "GOOD",
+      "detail": "Category 4: good dispersal. Confirm surface and transport winds fit your plan.",
+      "level": "good"
+     }
+    },
+    {
+     "name": "Tonight",
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "64",
+      "RH (%)": "92",
+      "20FT Wind/PM(mph)": "E 1-5",
+      "Avg Pcpn Amt (in)": "0.00"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5
+     },
+     "rh_pct": 92,
+     "temp_f": 64,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "verdict": null
+    },
+    {
+     "name": "Tue",
+     "raw": {
+      "Cloud Cover": "Pcldy",
+      "Precip Type": "Showers",
+      "Chance Precip (%)": "30",
+      "Temp": "86",
+      "RH (%)": "58",
+      "20FT Wind/AM(mph)": "SE 2-6",
+      "20FT Wind/PM(mph)": "S 5-9",
+      "Avg Pcpn Amt (in)": "0.10",
+      "Mixing Hgt (m-AGL/MS": "930",
+      "Transport Wind (m/s)": "S 6",
+      "Vent Rate (m**2/s)": "5580",
+      "Category Day": "3"
+     },
+     "category": 3,
+     "mixing_height_ft": 3051,
+     "transport_wind": {
+      "dir": "S",
+      "lo_mph": 13,
+      "hi_mph": 13
+     },
+     "surface_wind_am": {
+      "dir": "SE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "S",
+      "lo_mph": 5,
+      "hi_mph": 9
+     },
+     "rh_pct": 58,
+     "temp_f": 86,
+     "precip_chance_pct": 30,
+     "vent_rate": 5580.0,
+     "verdict": {
+      "verdict": "FAIR",
+      "detail": "Category 3: fair dispersal. Review winds and your burn plan carefully.",
+      "level": "fair"
+     }
+    }
+   ],
+   "zones": [
+    "West Feliciana",
+    "East Feliciana",
+    "Pointe Coupee",
+    "West Baton Rouge"
+   ]
+  },
+  "West Feliciana": {
+   "office": "LIX",
+   "issued": "2026-07-06T23:44:20.021737+00:00",
+   "periods": [
+    {
+     "name": "Today",
+     "raw": {
+      "Cloud Cover": "Sunny",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "88",
+      "RH (%)": "45",
+      "20FT Wind/AM(mph)": "N 3-7",
+      "20FT Wind/PM(mph)": "NE 5-9",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)1524",
+      "Transport Wind (m/s)": "NE 4",
+      "Vent Rate (m**2/s)": "6096",
+      "Category Day": "4"
+     },
+     "category": 4,
+     "mixing_height_ft": 5000,
+     "transport_wind": {
+      "dir": "NE",
+      "lo_mph": 9,
+      "hi_mph": 9
+     },
+     "surface_wind_am": {
+      "dir": "N",
+      "lo_mph": 3,
+      "hi_mph": 7
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 5,
+      "hi_mph": 9
+     },
+     "rh_pct": 45,
+     "temp_f": 88,
+     "precip_chance_pct": 0,
+     "vent_rate": 6096.0,
+     "verdict": {
+      "verdict": "GOOD",
+      "detail": "Category 4: good dispersal. Confirm surface and transport winds fit your plan.",
+      "level": "good"
+     }
+    },
+    {
+     "name": "Tonight",
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "64",
+      "RH (%)": "92",
+      "20FT Wind/PM(mph)": "E 1-5",
+      "Avg Pcpn Amt (in)": "0.00"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5
+     },
+     "rh_pct": 92,
+     "temp_f": 64,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "verdict": null
+    },
+    {
+     "name": "Tue",
+     "raw": {
+      "Cloud Cover": "Pcldy",
+      "Precip Type": "Showers",
+      "Chance Precip (%)": "30",
+      "Temp": "86",
+      "RH (%)": "58",
+      "20FT Wind/AM(mph)": "SE 2-6",
+      "20FT Wind/PM(mph)": "S 5-9",
+      "Avg Pcpn Amt (in)": "0.10",
+      "Mixing Hgt (m-AGL/MS": "930",
+      "Transport Wind (m/s)": "S 6",
+      "Vent Rate (m**2/s)": "5580",
+      "Category Day": "3"
+     },
+     "category": 3,
+     "mixing_height_ft": 3051,
+     "transport_wind": {
+      "dir": "S",
+      "lo_mph": 13,
+      "hi_mph": 13
+     },
+     "surface_wind_am": {
+      "dir": "SE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "S",
+      "lo_mph": 5,
+      "hi_mph": 9
+     },
+     "rh_pct": 58,
+     "temp_f": 86,
+     "precip_chance_pct": 30,
+     "vent_rate": 5580.0,
+     "verdict": {
+      "verdict": "FAIR",
+      "detail": "Category 3: fair dispersal. Review winds and your burn plan carefully.",
+      "level": "fair"
+     }
+    }
+   ],
+   "zones": [
+    "West Feliciana",
+    "East Feliciana",
+    "Pointe Coupee",
+    "West Baton Rouge"
+   ]
+  },
+  "East Feliciana": {
+   "office": "LIX",
+   "issued": "2026-07-06T23:44:20.021737+00:00",
+   "periods": [
+    {
+     "name": "Today",
+     "raw": {
+      "Cloud Cover": "Sunny",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "88",
+      "RH (%)": "45",
+      "20FT Wind/AM(mph)": "N 3-7",
+      "20FT Wind/PM(mph)": "NE 5-9",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)1524",
+      "Transport Wind (m/s)": "NE 4",
+      "Vent Rate (m**2/s)": "6096",
+      "Category Day": "4"
+     },
+     "category": 4,
+     "mixing_height_ft": 5000,
+     "transport_wind": {
+      "dir": "NE",
+      "lo_mph": 9,
+      "hi_mph": 9
+     },
+     "surface_wind_am": {
+      "dir": "N",
+      "lo_mph": 3,
+      "hi_mph": 7
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 5,
+      "hi_mph": 9
+     },
+     "rh_pct": 45,
+     "temp_f": 88,
+     "precip_chance_pct": 0,
+     "vent_rate": 6096.0,
+     "verdict": {
+      "verdict": "GOOD",
+      "detail": "Category 4: good dispersal. Confirm surface and transport winds fit your plan.",
+      "level": "good"
+     }
+    },
+    {
+     "name": "Tonight",
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "64",
+      "RH (%)": "92",
+      "20FT Wind/PM(mph)": "E 1-5",
+      "Avg Pcpn Amt (in)": "0.00"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5
+     },
+     "rh_pct": 92,
+     "temp_f": 64,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "verdict": null
+    },
+    {
+     "name": "Tue",
+     "raw": {
+      "Cloud Cover": "Pcldy",
+      "Precip Type": "Showers",
+      "Chance Precip (%)": "30",
+      "Temp": "86",
+      "RH (%)": "58",
+      "20FT Wind/AM(mph)": "SE 2-6",
+      "20FT Wind/PM(mph)": "S 5-9",
+      "Avg Pcpn Amt (in)": "0.10",
+      "Mixing Hgt (m-AGL/MS": "930",
+      "Transport Wind (m/s)": "S 6",
+      "Vent Rate (m**2/s)": "5580",
+      "Category Day": "3"
+     },
+     "category": 3,
+     "mixing_height_ft": 3051,
+     "transport_wind": {
+      "dir": "S",
+      "lo_mph": 13,
+      "hi_mph": 13
+     },
+     "surface_wind_am": {
+      "dir": "SE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "S",
+      "lo_mph": 5,
+      "hi_mph": 9
+     },
+     "rh_pct": 58,
+     "temp_f": 86,
+     "precip_chance_pct": 30,
+     "vent_rate": 5580.0,
+     "verdict": {
+      "verdict": "FAIR",
+      "detail": "Category 3: fair dispersal. Review winds and your burn plan carefully.",
+      "level": "fair"
+     }
+    }
+   ],
+   "zones": [
+    "West Feliciana",
+    "East Feliciana",
+    "Pointe Coupee",
+    "West Baton Rouge"
+   ]
+  },
+  "West Baton Rouge": {
+   "office": "LIX",
+   "issued": "2026-07-06T23:44:20.021737+00:00",
+   "periods": [
+    {
+     "name": "Today",
+     "raw": {
+      "Cloud Cover": "Sunny",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "88",
+      "RH (%)": "45",
+      "20FT Wind/AM(mph)": "N 3-7",
+      "20FT Wind/PM(mph)": "NE 5-9",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)1524",
+      "Transport Wind (m/s)": "NE 4",
+      "Vent Rate (m**2/s)": "6096",
+      "Category Day": "4"
+     },
+     "category": 4,
+     "mixing_height_ft": 5000,
+     "transport_wind": {
+      "dir": "NE",
+      "lo_mph": 9,
+      "hi_mph": 9
+     },
+     "surface_wind_am": {
+      "dir": "N",
+      "lo_mph": 3,
+      "hi_mph": 7
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 5,
+      "hi_mph": 9
+     },
+     "rh_pct": 45,
+     "temp_f": 88,
+     "precip_chance_pct": 0,
+     "vent_rate": 6096.0,
+     "verdict": {
+      "verdict": "GOOD",
+      "detail": "Category 4: good dispersal. Confirm surface and transport winds fit your plan.",
+      "level": "good"
+     }
+    },
+    {
+     "name": "Tonight",
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "64",
+      "RH (%)": "92",
+      "20FT Wind/PM(mph)": "E 1-5",
+      "Avg Pcpn Amt (in)": "0.00"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5
+     },
+     "rh_pct": 92,
+     "temp_f": 64,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "verdict": null
+    },
+    {
+     "name": "Tue",
+     "raw": {
+      "Cloud Cover": "Pcldy",
+      "Precip Type": "Showers",
+      "Chance Precip (%)": "30",
+      "Temp": "86",
+      "RH (%)": "58",
+      "20FT Wind/AM(mph)": "SE 2-6",
+      "20FT Wind/PM(mph)": "S 5-9",
+      "Avg Pcpn Amt (in)": "0.10",
+      "Mixing Hgt (m-AGL/MS": "930",
+      "Transport Wind (m/s)": "S 6",
+      "Vent Rate (m**2/s)": "5580",
+      "Category Day": "3"
+     },
+     "category": 3,
+     "mixing_height_ft": 3051,
+     "transport_wind": {
+      "dir": "S",
+      "lo_mph": 13,
+      "hi_mph": 13
+     },
+     "surface_wind_am": {
+      "dir": "SE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "S",
+      "lo_mph": 5,
+      "hi_mph": 9
+     },
+     "rh_pct": 58,
+     "temp_f": 86,
+     "precip_chance_pct": 30,
+     "vent_rate": 5580.0,
+     "verdict": {
+      "verdict": "FAIR",
+      "detail": "Category 3: fair dispersal. Review winds and your burn plan carefully.",
+      "level": "fair"
+     }
+    }
+   ],
+   "zones": [
+    "West Feliciana",
+    "East Feliciana",
+    "Pointe Coupee",
+    "West Baton Rouge"
+   ]
+  },
+  "Livingston": {
+   "office": "LIX",
+   "issued": "2026-07-06T23:44:20.021737+00:00",
+   "periods": [
+    {
+     "name": "Today",
+     "raw": {
+      "Cloud Cover": "Sunny",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "89",
+      "RH (%)": "48",
+      "20FT Wind/AM(mph)": "N 2-6",
+      "20FT Wind/PM(mph)": "NE 4-8",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)490",
+      "Transport Wind (m/s)": "NE 2",
+      "Vent Rate (m**2/s)": "980",
+      "Category Day": "1"
+     },
+     "category": 1,
+     "mixing_height_ft": 1608,
+     "transport_wind": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 4
+     },
+     "surface_wind_am": {
+      "dir": "N",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 8
+     },
+     "rh_pct": 48,
+     "temp_f": 89,
+     "precip_chance_pct": 0,
+     "vent_rate": 980.0,
+     "verdict": {
+      "verdict": "DO NOT BURN",
+      "detail": "Category 1: burning is not allowed under the Louisiana Smoke Management Guidelines.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Tonight",
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "10",
+      "Temp": "66",
+      "RH (%)": "95",
+      "20FT Wind/PM(mph)": "NE 2-6",
+      "Avg Pcpn Amt (in)": "0.00"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "rh_pct": 95,
+     "temp_f": 66,
+     "precip_chance_pct": 10,
+     "vent_rate": null,
+     "verdict": null
+    },
+    {
+     "name": "Tue",
+     "raw": {
+      "Cloud Cover": "Mcldy",
+      "Precip Type": "Tstms",
+      "Chance Precip (%)": "40",
+      "Temp": "85",
+      "RH (%)": "62",
+      "20FT Wind/AM(mph)": "SE 3-7",
+      "20FT Wind/PM(mph)": "S 6-10",
+      "Avg Pcpn Amt (in)": "0.15",
+      "Mixing Hgt (m-AGL/MS": "880",
+      "Transport Wind (m/s)": "S 5",
+      "Vent Rate (m**2/s)": "4400",
+      "Category Day": "3"
+     },
+     "category": 3,
+     "mixing_height_ft": 2887,
+     "transport_wind": {
+      "dir": "S",
+      "lo_mph": 11,
+      "hi_mph": 11
+     },
+     "surface_wind_am": {
+      "dir": "SE",
+      "lo_mph": 3,
+      "hi_mph": 7
+     },
+     "surface_wind_pm": {
+      "dir": "S",
+      "lo_mph": 6,
+      "hi_mph": 10
+     },
+     "rh_pct": 62,
+     "temp_f": 85,
+     "precip_chance_pct": 40,
+     "vent_rate": 4400.0,
+     "verdict": {
+      "verdict": "FAIR",
+      "detail": "Category 3: fair dispersal. Review winds and your burn plan carefully.",
+      "level": "fair"
+     }
+    }
+   ],
+   "zones": [
+    "Livingston",
+    "Tangipahoa",
+    "Northern St. Tammany"
+   ]
+  },
+  "Tangipahoa": {
+   "office": "LIX",
+   "issued": "2026-07-06T23:44:20.021737+00:00",
+   "periods": [
+    {
+     "name": "Today",
+     "raw": {
+      "Cloud Cover": "Sunny",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "89",
+      "RH (%)": "48",
+      "20FT Wind/AM(mph)": "N 2-6",
+      "20FT Wind/PM(mph)": "NE 4-8",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)490",
+      "Transport Wind (m/s)": "NE 2",
+      "Vent Rate (m**2/s)": "980",
+      "Category Day": "1"
+     },
+     "category": 1,
+     "mixing_height_ft": 1608,
+     "transport_wind": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 4
+     },
+     "surface_wind_am": {
+      "dir": "N",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 8
+     },
+     "rh_pct": 48,
+     "temp_f": 89,
+     "precip_chance_pct": 0,
+     "vent_rate": 980.0,
+     "verdict": {
+      "verdict": "DO NOT BURN",
+      "detail": "Category 1: burning is not allowed under the Louisiana Smoke Management Guidelines.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Tonight",
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "10",
+      "Temp": "66",
+      "RH (%)": "95",
+      "20FT Wind/PM(mph)": "NE 2-6",
+      "Avg Pcpn Amt (in)": "0.00"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "rh_pct": 95,
+     "temp_f": 66,
+     "precip_chance_pct": 10,
+     "vent_rate": null,
+     "verdict": null
+    },
+    {
+     "name": "Tue",
+     "raw": {
+      "Cloud Cover": "Mcldy",
+      "Precip Type": "Tstms",
+      "Chance Precip (%)": "40",
+      "Temp": "85",
+      "RH (%)": "62",
+      "20FT Wind/AM(mph)": "SE 3-7",
+      "20FT Wind/PM(mph)": "S 6-10",
+      "Avg Pcpn Amt (in)": "0.15",
+      "Mixing Hgt (m-AGL/MS": "880",
+      "Transport Wind (m/s)": "S 5",
+      "Vent Rate (m**2/s)": "4400",
+      "Category Day": "3"
+     },
+     "category": 3,
+     "mixing_height_ft": 2887,
+     "transport_wind": {
+      "dir": "S",
+      "lo_mph": 11,
+      "hi_mph": 11
+     },
+     "surface_wind_am": {
+      "dir": "SE",
+      "lo_mph": 3,
+      "hi_mph": 7
+     },
+     "surface_wind_pm": {
+      "dir": "S",
+      "lo_mph": 6,
+      "hi_mph": 10
+     },
+     "rh_pct": 62,
+     "temp_f": 85,
+     "precip_chance_pct": 40,
+     "vent_rate": 4400.0,
+     "verdict": {
+      "verdict": "FAIR",
+      "detail": "Category 3: fair dispersal. Review winds and your burn plan carefully.",
+      "level": "fair"
+     }
+    }
+   ],
+   "zones": [
+    "Livingston",
+    "Tangipahoa",
+    "Northern St. Tammany"
+   ]
+  },
+  "St. Tammany": {
+   "office": "LIX",
+   "issued": "2026-07-06T23:44:20.021737+00:00",
+   "periods": [
+    {
+     "name": "Today",
+     "raw": {
+      "Cloud Cover": "Sunny",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp": "89",
+      "RH (%)": "48",
+      "20FT Wind/AM(mph)": "N 2-6",
+      "20FT Wind/PM(mph)": "NE 4-8",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)490",
+      "Transport Wind (m/s)": "NE 2",
+      "Vent Rate (m**2/s)": "980",
+      "Category Day": "1"
+     },
+     "category": 1,
+     "mixing_height_ft": 1608,
+     "transport_wind": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 4
+     },
+     "surface_wind_am": {
+      "dir": "N",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 8
+     },
+     "rh_pct": 48,
+     "temp_f": 89,
+     "precip_chance_pct": 0,
+     "vent_rate": 980.0,
+     "verdict": {
+      "verdict": "DO NOT BURN",
+      "detail": "Category 1: burning is not allowed under the Louisiana Smoke Management Guidelines.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Tonight",
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "10",
+      "Temp": "66",
+      "RH (%)": "95",
+      "20FT Wind/PM(mph)": "NE 2-6",
+      "Avg Pcpn Amt (in)": "0.00"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 2,
+      "hi_mph": 6
+     },
+     "rh_pct": 95,
+     "temp_f": 66,
+     "precip_chance_pct": 10,
+     "vent_rate": null,
+     "verdict": null
+    },
+    {
+     "name": "Tue",
+     "raw": {
+      "Cloud Cover": "Mcldy",
+      "Precip Type": "Tstms",
+      "Chance Precip (%)": "40",
+      "Temp": "85",
+      "RH (%)": "62",
+      "20FT Wind/AM(mph)": "SE 3-7",
+      "20FT Wind/PM(mph)": "S 6-10",
+      "Avg Pcpn Amt (in)": "0.15",
+      "Mixing Hgt (m-AGL/MS": "880",
+      "Transport Wind (m/s)": "S 5",
+      "Vent Rate (m**2/s)": "4400",
+      "Category Day": "3"
+     },
+     "category": 3,
+     "mixing_height_ft": 2887,
+     "transport_wind": {
+      "dir": "S",
+      "lo_mph": 11,
+      "hi_mph": 11
+     },
+     "surface_wind_am": {
+      "dir": "SE",
+      "lo_mph": 3,
+      "hi_mph": 7
+     },
+     "surface_wind_pm": {
+      "dir": "S",
+      "lo_mph": 6,
+      "hi_mph": 10
+     },
+     "rh_pct": 62,
+     "temp_f": 85,
+     "precip_chance_pct": 40,
+     "vent_rate": 4400.0,
+     "verdict": {
+      "verdict": "FAIR",
+      "detail": "Category 3: fair dispersal. Review winds and your burn plan carefully.",
+      "level": "fair"
+     }
+    }
+   ],
+   "zones": [
+    "Livingston",
+    "Tangipahoa",
+    "Northern St. Tammany"
+   ]
+  }
+ },
+ "missing_parishes": [
+  "Acadia",
+  "Bienville",
+  "East Baton Rouge",
+  "Jefferson Davis",
+  "Ouachita",
+  "St. Charles",
+  "Vernon",
+  "Winn",
+  "Lafourche",
+  "Lincoln",
+  "Natchitoches",
+  "Plaquemines",
+  "Rapides",
+  "Red River",
+  "Sabine",
+  "Ascension",
+  "St. Helena",
+  "St. James",
+  "St. Landry",
+  "St. Martin",
+  "Vermilion",
+  "Washington",
+  "Beauregard",
+  "Bossier",
+  "Caddo",
+  "Cameron",
+  "De Soto",
+  "East Carroll",
+  "Franklin",
+  "Grant",
+  "Jackson",
+  "Jefferson",
+  "Lafayette",
+  "St. John the Baptist",
+  "Union",
+  "Webster",
+  "Assumption",
+  "Caldwell",
+  "Catahoula",
+  "Iberville",
+  "La Salle",
+  "Morehouse",
+  "Richland",
+  "Madison",
+  "Orleans",
+  "St. Bernard",
+  "Evangeline",
+  "West Carroll",
+  "Calcasieu",
+  "Claiborne",
+  "Concordia",
+  "Allen",
+  "Avoyelles",
+  "St. Mary",
+  "Tensas",
+  "Terrebonne",
+  "Iberia"
+ ],
+ "warnings": [
+  "Official LAZ zone list unavailable; falling back to name matching restricted to blocks containing LAZ codes.",
+  "No forecast matched for 57 parishes: Acadia, Bienville, East Baton Rouge, Jefferson Davis, Ouachita, St. Charles, Vernon, Winn, Lafourche, Lincoln, Natchitoches, Plaquemines, Rapides, Red River, Sabine, Ascension, St. Helena, St. James, St. Landry, St. Martin, Vermilion, Washington, Beauregard, Bossier, Caddo, Cameron, De Soto, East Carroll, Franklin, Grant, Jackson, Jefferson, Lafayette, St. John the Baptist, Union, Webster, Assumption, Caldwell, Catahoula, Iberville, La Salle, Morehouse, Richland, Madison, Orleans, St. Bernard, Evangeline, West Carroll, Calcasieu, Claiborne, Concordia, Allen, Avoyelles, St. Mary, Tensas, Terrebonne, Iberia"
+ ],
+ "disclaimer": "This tool translates National Weather Service forecasts and the Louisiana Smoke Management Guidelines. It does not authorize burning. It does not reflect parish or state burn bans. You are responsible for checking burn bans and complying with all regulations."
+}

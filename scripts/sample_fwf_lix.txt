@@ -1,0 +1,82 @@
+000
+FNUS54 KLIX 061050
+FWFLIX
+
+Fire Weather Planning Forecast for S MS and SE LA
+National Weather Service New Orleans LA
+450 AM CST Mon Jul 6 2026
+
+.DISCUSSION...
+High pressure will build over the region today providing good
+ventilation this afternoon. Winds become light tonight.
+
+LAZ034>037-062300-
+West Feliciana-East Feliciana-Pointe Coupee-West Baton Rouge-
+Including the cities of St. Francisville, Clinton, New Roads,
+and Port Allen
+450 AM CST Mon Jul 6 2026
+
+.RED FLAG...None.
+
+                      Today        Tonight      Tue
+
+Cloud Cover           Sunny        Clear        Pcldy
+Precip Type           None         None         Showers
+Chance Precip (%)     0            0            30
+Temp                  88           64           86
+RH (%)                45           92           58
+20FT Wind/AM(mph)     N 3-7                     SE 2-6
+20FT Wind/PM(mph)     NE 5-9       E 1-5        S 5-9
+Avg Pcpn Amt (in)     0.00         0.00         0.10
+Mixing Hgt (m-AGL/MSL)1524                      930
+Transport Wind (m/s)  NE 4                      S 6
+Vent Rate (m**2/s)    6096                      5580
+Category Day          4                         3
+
+$$
+
+LAZ046-057-058-062300-
+Livingston-Tangipahoa-Northern St. Tammany-
+Including the cities of Denham Springs, Hammond, and Covington
+450 AM CST Mon Jul 6 2026
+
+.RED FLAG...None.
+
+                      Today        Tonight      Tue
+
+Cloud Cover           Sunny        Clear        Mcldy
+Precip Type           None         None         Tstms
+Chance Precip (%)     0            10           40
+Temp                  89           66           85
+RH (%)                48           95           62
+20FT Wind/AM(mph)     N 2-6                     SE 3-7
+20FT Wind/PM(mph)     NE 4-8       NE 2-6       S 6-10
+Avg Pcpn Amt (in)     0.00         0.00         0.15
+Mixing Hgt (m-AGL/MSL)490                       880
+Transport Wind (m/s)  NE 2                      S 5
+Vent Rate (m**2/s)    980                       4400
+Category Day          1                         3
+
+$$
+
+MSZ068>071-062300-
+Wilkinson-Amite-Pike-Walthall-
+Including the cities of Centreville, Woodville, Liberty,
+McComb, and Tylertown
+450 AM CST Mon Jul 6 2026
+
+.RED FLAG...None.
+
+                      Today        Tonight      Tue
+
+Cloud Cover           Pcldy        Pcldy        Mcldy
+Chance Precip (%)     10           10           30
+Temp                  87           63           84
+RH (%)                50           96           65
+20FT Wind/AM(mph)     N 2-6                     SE 2-6
+20FT Wind/PM(mph)     NE 3-7       E 1-5        S 5-9
+Mixing Hgt (m-AGL/MSL)1200                      850
+Transport Wind (m/s)  NE 3                      S 5
+Category Day          3                         2
+
+$$
