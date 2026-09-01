@@ -41,7 +41,7 @@ USER_AGENT = "BurnWise-LA-SugarcaneBurnTool (contact: lastateclimate@lsu.edu)"
 
 API_LIST = "https://api.weather.gov/products/types/FWF/locations/{office}"
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 # Category Day meaning under the Louisiana Voluntary Smoke Management
 # Guidelines: scale 1..5 based on ventilation rate, 1 = poor, 5 = excellent.
@@ -159,6 +159,56 @@ def http_get(url: str) -> dict:
     return r.json()
 
 
+# ---------------------------------------------------------------- periods
+
+WEEKDAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+TIMESTAMP_LINE = re.compile(
+    r"^(\d{3,4}) (AM|PM) [A-Z]{3,4} (Mon|Tue|Wed|Thu|Fri|Sat|Sun) (\w{3}) (\d{1,2}) (\d{4})")
+
+
+def block_local_date(block: str):
+    """The block's own timestamp line, e.g. '537 AM CDT Mon Aug 31 2026'."""
+    from datetime import date
+    months = {m: i for i, m in enumerate(
+        ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], 1)}
+    for line in block.splitlines():
+        m = TIMESTAMP_LINE.match(line.strip())
+        if m:
+            hhmm, ampm, _wd, mon, day, year = m.groups()
+            hour = int(hhmm[:-2]) % 12 + (12 if ampm == "PM" else 0)
+            return date(int(year), months[mon.lower()], int(day)), hour
+    return None, None
+
+
+def canonical_period(name: str, issue_date, issue_hour):
+    """Turn a column header into (key, date, is_night) so that the same
+    calendar period gets the same key in every office. Examples, issued
+    Mon Aug 31:  'Today' -> 2026-08-31-day, 'Tonight' -> 2026-08-31-night,
+    'Tue' -> 2026-09-01-day, 'Tue Night' -> 2026-09-01-night."""
+    from datetime import timedelta
+    if issue_date is None:
+        return None, None, None
+    n = name.strip().lower()
+    is_night = "night" in n or n in ("tonight", "overnight", "evening")
+    n = n.replace("rest of ", "").replace("this ", "")
+    if n in ("today", "tonight", "afternoon", "morning", "evening", "overnight"):
+        d = issue_date
+        if n == "overnight" and issue_hour is not None and issue_hour < 6:
+            d = issue_date - timedelta(days=1)
+    elif n == "tomorrow":
+        d = issue_date + timedelta(days=1)
+    else:
+        wd = n.split()[0][:3]
+        if wd not in WEEKDAYS:
+            return None, None, None
+        target = WEEKDAYS.index(wd)
+        delta = (target - issue_date.weekday()) % 7
+        # A weekday equal to the issue day means today only if the column
+        # is the first one (e.g. 'Mon' at 3 AM Monday); otherwise next week.
+        d = issue_date + timedelta(days=delta)
+    return f"{d.isoformat()}-{'night' if is_night else 'day'}", d.isoformat(), is_night
+
+
 # ---------------------------------------------------------------- parsing
 
 def split_zone_blocks(product_text: str) -> list[str]:
@@ -260,7 +310,11 @@ def parse_block(block: str, debug=False) -> dict | None:
             print("  ! Skipped block (no header/names):", (zone_names or ["?"])[:3], file=sys.stderr)
         return None
 
-    periods = [{"name": name, "raw": {}} for name, _ in cols]
+    issue_date, issue_hour = block_local_date(block)
+    periods = []
+    for name, _ in cols:
+        key, date_iso, is_night = canonical_period(name, issue_date, issue_hour)
+        periods.append({"name": name, "key": key, "date": date_iso, "is_night": is_night, "raw": {}})
 
     for line in lines[hdr_idx + 1:]:
         if not line.strip():
@@ -391,22 +445,28 @@ def run(sample_path=None, debug=False):
             b = parse_block(bl, debug)
             if b:
                 b["la_codes"] = la_codes
+                b["la_only"] = len(la_codes) == len(codes)
                 parsed.append(b)
         if not parsed:
             raise RuntimeError(f"{office}: product fetched but 0 Louisiana zones parsed (format change?)")
         offices_meta[office] = {"issued": issued, "product_id": product_id,
                                 "zones_parsed": len(parsed), "ok": True}
         for z in parsed:
-            # Prefer official code->name lookup; fall back to header names.
-            if zone_names_official:
-                names_to_match = [zone_names_official[c] for c in z["la_codes"]
-                                  if c in zone_names_official]
-                unknown = [c for c in z["la_codes"] if c not in zone_names_official]
-                if unknown:
-                    warnings.append(f"{office}: unknown LAZ codes {unknown}; "
-                                    "refresh docs/data/zones_la.json")
+            # Which names may be matched to parishes?
+            #  - Block contains ONLY Louisiana codes: every header name is a
+            #    Louisiana place, so header names are safe. Also add official
+            #    names for the codes (belt and braces).
+            #  - Block mixes states (rare): header names are ambiguous
+            #    (Mississippi has a Franklin, Madison, Union...), so use only
+            #    the official code->name lookup; if that is empty, warn.
+            official = [zone_names_official[c] for c in z["la_codes"] if c in zone_names_official]
+            if z["la_only"]:
+                names_to_match = list(dict.fromkeys(z["zone_names"] + official))
             else:
-                names_to_match = z["zone_names"]
+                names_to_match = official
+                if not official:
+                    warnings.append(f"{office}: mixed-state block {z['la_codes'][:3]} could not be "
+                                    "matched safely (official zone list unavailable)")
             matched = set()
             for zn in names_to_match:
                 n = norm(zn)
@@ -422,14 +482,26 @@ def run(sample_path=None, debug=False):
                 if entry["periods"] is None:
                     entry["periods"] = [dict(p) for p in z["periods"]]
                 else:  # parish in multiple zones: keep the worst category per period
-                    for old, new in zip(entry["periods"], z["periods"]):
+                    by_key = {p.get("key"): p for p in entry["periods"]}
+                    for new in z["periods"]:
+                        old = by_key.get(new.get("key"))
+                        if old is None:
+                            entry["periods"].append(dict(new))
+                            continue
                         oc, nc = old.get("category"), new.get("category")
                         if nc is not None and (oc is None or nc < oc):
                             old.update({k: v for k, v in new.items() if k != "name"})
+                    entry["periods"].sort(key=lambda p: p.get("key") or "")
 
     if sample_path:
-        text = Path(sample_path).read_text()
-        ingest("LIX", text, datetime.now(timezone.utc).isoformat(), "SAMPLE")
+        for item in (sample_path if isinstance(sample_path, list) else [sample_path]):
+            office, _, path = item.rpartition("=")
+            office = office or "LIX"
+            text = Path(path).read_text()
+            try:
+                ingest(office, text, datetime.now(timezone.utc).isoformat(), "SAMPLE")
+            except Exception as e:
+                warnings.append(f"{office}: FAILED ({e})")
     else:
         for office in OFFICES:
             try:
@@ -481,7 +553,8 @@ def run(sample_path=None, debug=False):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--sample", help="Parse a local FWF text file instead of fetching")
+    ap.add_argument("--sample", action="append",
+                    help="Parse a local FWF text file instead of fetching; OFFICE=path, repeatable")
     ap.add_argument("--debug", action="store_true")
     args = ap.parse_args()
     run(sample_path=args.sample, debug=args.debug)
