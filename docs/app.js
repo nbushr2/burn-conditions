@@ -26,6 +26,13 @@ const BASEMAP = "minimal";
 const SHOW_STATE_BACKDROP = BASEMAP === "none" || BASEMAP === "minimal";
 const SHOW_REGION_LABELS = BASEMAP === "none" || BASEMAP === "minimal";
 const SHOW_REFERENCE = BASEMAP === "minimal";
+/* How much reference detail to draw in "minimal" mode:
+   ROADS: "interstates" or "none".  CITIES_ALWAYS: how many of the largest
+   cities show at state zoom (the rest appear when zoomed in).
+   PARISH_LABEL_ZOOM: zoom level at which parish names appear. */
+const ROADS = "interstates";
+const CITIES_ALWAYS = 4;
+const PARISH_LABEL_ZOOM = 8;
 const BASEMAPS = {
   usgs: {
     url: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}",
@@ -237,20 +244,22 @@ function buildMap() {
   }
 
   if (SHOW_REFERENCE && REF) {
-    L.geoJSON(REF, {
-      interactive: false,
-      filter: (f) => f.geometry.type !== "Point",
-      style: (f) => f.properties.cls === "interstate"
-        ? { color: "#FFFFFF", weight: 2.2, opacity: 0.95 }
-        : { color: "#FFFFFF", weight: 1, opacity: 0.7 },
-    }).addTo(MAP);
+    if (ROADS !== "none") {
+      L.geoJSON(REF, {
+        interactive: false,
+        filter: (f) => f.geometry.type !== "Point" && f.properties.cls === "interstate",
+        style: { color: "#FFFFFF", weight: 1.5, opacity: 0.55 },
+      }).addTo(MAP);
+    }
+    const ranked = REF.features.filter((f) => f.geometry.type === "Point")
+      .sort((a, b) => (b.properties.pop || 0) - (a.properties.pop || 0));
+    const alwaysShow = new Set(ranked.slice(0, CITIES_ALWAYS).map((f) => f.properties.name));
     const cities = L.layerGroup().addTo(MAP);
     const drawCities = () => {
       cities.clearLayers();
       const z = MAP.getZoom();
-      for (const f of REF.features) {
-        if (f.geometry.type !== "Point") continue;
-        if (!f.properties.major && z < 7.5) continue;
+      for (const f of ranked) {
+        if (!alwaysShow.has(f.properties.name) && z < PARISH_LABEL_ZOOM) continue;
         const [lng, lat] = f.geometry.coordinates;
         L.circleMarker([lat, lng], { radius: 3.5, color: "#1A1A1A", weight: 1.5, fillColor: "#FFFFFF", fillOpacity: 1, interactive: false }).addTo(cities);
         L.marker([lat, lng], { interactive: false,
@@ -278,7 +287,7 @@ function buildMap() {
   });
 
   const updateLabels = () => {
-    const show = MAP.getZoom() >= 7.5;
+    const show = MAP.getZoom() >= PARISH_LABEL_ZOOM;
     LAYER.eachLayer((l) => {
       const t = l.getTooltip();
       if (!t || t.options.permanent === show) return;
