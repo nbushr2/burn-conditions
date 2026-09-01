@@ -1,19 +1,30 @@
 /* Louisiana Burn Conditions: front-end logic.
    Rules mirrored from the backend:
    - The app never computes a rating. It only displays what the pipeline
-     produced from NWS data. No math on the phone means no drift between
-     what the farmer sees and what the pipeline validated.
-   - Stale or missing data is shown loudly, never hidden. */
+     produced from NWS data.
+   - Stale or missing data is shown loudly, never hidden.
+   - Forecast periods are identified by calendar date + day/night ("key"),
+     never by column position, because the four NWS offices issue at
+     different times with different column layouts. */
 
 "use strict";
 
 const STALE_HOURS = 12;
 const LEVEL_ICON = { good: "\u2713", fair: "\u26A0", poor: "\u26A0", no: "\u2715", nodata: "?" };
-const LEVEL_COLOR = { good: "#009E73", fair: "#E69F00", poor: "#D55E00", no: "#1A1A1A", nodata: "#B7B1A7" };
+const LEVEL_COLOR = { good: "#009E73", fair: "#E69F00", poor: "#D55E00", no: "#1A1A1A", nodata: "#C9C4BA" };
+
+/* Neighbor labels drawn on the map. Edit the Gulf wording here if your
+   office's style guide prefers a different name. */
+const MAP_LABELS = [
+  { text: "TEXAS", lat: 31.6, lng: -94.7 },
+  { text: "ARKANSAS", lat: 33.35, lng: -92.7 },
+  { text: "MISSISSIPPI", lat: 32.4, lng: -90.0 },
+  { text: "Gulf of Mexico", lat: 28.7, lng: -91.2 },
+];
 
 let DATA = null, GEO = null, MAP = null, LAYER = null;
-let selectedParish = null, selectedPeriod = 0;
-let MAP_PERIOD = 0; /* index of the period the map is colored by */
+let PERIODS = [];            /* [{key, date, is_night}] union across all parishes, sorted */
+let selectedParish = null, selectedKey = null, mapKey = null;
 
 const $ = (id) => document.getElementById(id);
 
@@ -27,41 +38,63 @@ async function loadJSON(url) {
 
 async function init() {
   try {
-    [GEO, DATA] = await Promise.all([
-      loadJSON("parishes.geojson"),
-      loadJSON("data/latest.json"),
-    ]);
+    [GEO, DATA] = await Promise.all([loadJSON("parishes.geojson"), loadJSON("data/latest.json")]);
   } catch (e) {
     if (!DATA) {
       showBanner("Could not load forecast data. Check your connection and pull to refresh.", true);
       return;
     }
   }
-  MAP_PERIOD = firstRatedPeriodIndex();
+  buildPeriods();
   renderChrome();
   buildDropdown();
   buildMap();
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
 }
 
-/* NWS issues no Category Day for night periods. In the evening issuance the
-   first column is "Tonight", so the map and default tab use the first period
-   that actually carries a rating (usually tomorrow). */
-function firstRatedPeriodIndex() {
-  const entries = Object.values(DATA.parishes || {});
-  const maxLen = Math.max(0, ...entries.map((e) => (e.periods || []).length));
-  for (let i = 0; i < maxLen; i++) {
-    if (entries.some((e) => e.periods && e.periods[i] && e.periods[i].verdict)) return i;
+/* ---------------- periods ---------------- */
+
+function buildPeriods() {
+  const seen = new Map();
+  for (const e of Object.values(DATA.parishes || {})) {
+    for (const p of e.periods || []) {
+      if (p.key && !seen.has(p.key)) seen.set(p.key, { key: p.key, date: p.date, is_night: !!p.is_night });
+    }
   }
-  return 0;
+  PERIODS = [...seen.values()].sort((a, b) => a.key.localeCompare(b.key));
+  /* Drop periods more than a day in the past: they can only come from an
+     office whose feed is stale, and the stale banner covers that case. */
+  const cutoff = localISODate(new Date(Date.now() - 36 * 3.6e6));
+  const fresh = PERIODS.filter((p) => p.date >= cutoff);
+  if (fresh.length) PERIODS = fresh;
+  /* Default: first period that has a rating anywhere. */
+  mapKey = (PERIODS.find((p) => Object.values(DATA.parishes).some((e) => ratingFor(e, p.key))) || PERIODS[0] || {}).key;
 }
 
-function periodName(i) {
-  const e = Object.values(DATA.parishes || {}).find((x) => x.periods && x.periods[i]);
-  return e ? e.periods[i].name : "";
+function localISODate(d) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-/* ---------------- chrome: issued time, staleness, warnings ---------------- */
+/* One label function, used by BOTH the map dropdown and the tabs. */
+function periodLabel(p) {
+  const today = localISODate(new Date());
+  const tomorrow = localISODate(new Date(Date.now() + 24 * 3.6e6));
+  if (p.date === today) return p.is_night ? "Tonight" : "Today";
+  if (p.date === tomorrow) return p.is_night ? "Tomorrow night" : "Tomorrow";
+  const [y, m, d] = p.date.split("-").map(Number);
+  const wd = new Date(y, m - 1, d).toLocaleDateString([], { weekday: "short" });
+  return p.is_night ? `${wd} night` : `${wd} ${m}/${d}`;
+}
+
+function periodOf(entry, key) {
+  return entry && entry.periods ? entry.periods.find((p) => p.key === key) : null;
+}
+function ratingFor(entry, key) {
+  const p = periodOf(entry, key);
+  return p && p.verdict ? p.verdict : null;
+}
+
+/* ---------------- chrome ---------------- */
 
 function renderChrome() {
   const gen = new Date(DATA.generated_at_utc);
@@ -76,7 +109,7 @@ function renderChrome() {
   } else {
     const officeFailures = Object.entries(DATA.offices || {}).filter(([, o]) => !o.ok);
     if (officeFailures.length) {
-      showBanner(`Data problem at NWS office(s): ${officeFailures.map(([k]) => k).join(", ")}. Affected parishes show older data.`, false);
+      showBanner(`Data problem at NWS office(s): ${officeFailures.map(([k]) => k).join(", ")}. Affected parishes show older data or no data.`, false);
     }
   }
 }
@@ -92,15 +125,12 @@ function showBanner(msg, severe) {
 
 function buildDropdown() {
   const sel = $("parishSelect");
-  GEO.features
-    .map((f) => f.properties.name)
-    .sort()
-    .forEach((name) => {
-      const o = document.createElement("option");
-      o.value = name;
-      o.textContent = name + " Parish";
-      sel.appendChild(o);
-    });
+  GEO.features.map((f) => f.properties.name).sort().forEach((name) => {
+    const o = document.createElement("option");
+    o.value = name;
+    o.textContent = name + " Parish";
+    sel.appendChild(o);
+  });
   sel.addEventListener("change", () => sel.value && selectParish(sel.value, true));
 
   $("locateBtn").addEventListener("click", () => {
@@ -122,7 +152,6 @@ function buildDropdown() {
   });
 }
 
-/* Ray-casting point-in-polygon over the parish GeoJSON. */
 function parishAtPoint(lng, lat) {
   const inRing = (ring) => {
     let inside = false;
@@ -144,17 +173,9 @@ function parishAtPoint(lng, lat) {
 
 /* ---------------- map ---------------- */
 
-function parishLevel(name, periodIdx) {
-  const e = DATA.parishes[name];
-  const p = e && e.periods && e.periods[periodIdx];
-  if (!p || !p.verdict) return "nodata";
-  return p.verdict.level;
-}
-
 function buildMap() {
   MAP = L.map("map", { zoomSnap: 0.25, attributionControl: false, tap: true })
     .setView([31.0, -91.9], 6.4);
-  /* No third-party basemap: the parishes themselves are the map. */
 
   LAYER = L.geoJSON(GEO, {
     style: (f) => styleFor(f.properties.name),
@@ -164,46 +185,45 @@ function buildMap() {
     },
   }).addTo(MAP);
 
-  /* Period selector: which forecast period the map colors represent. */
+  for (const l of MAP_LABELS) {
+    L.marker([l.lat, l.lng], {
+      interactive: false,
+      icon: L.divIcon({ className: "region-label", html: l.text, iconSize: [140, 20], iconAnchor: [70, 10] }),
+    }).addTo(MAP);
+  }
+
   const ctl = L.control({ position: "topright" });
   ctl.onAdd = () => {
     const div = L.DomUtil.create("div", "map-period");
-    const names = allPeriodNames();
     div.innerHTML = `<span>Map shows</span><select id="mapPeriod" aria-label="Forecast period shown on map">` +
-      names.map((n, i) => `<option value="${i}" ${i === MAP_PERIOD ? "selected" : ""}>${n}</option>`).join("") +
+      PERIODS.map((p) => `<option value="${p.key}" ${p.key === mapKey ? "selected" : ""}>${periodLabel(p)}</option>`).join("") +
       `</select>`;
     L.DomEvent.disableClickPropagation(div);
     return div;
   };
   ctl.addTo(MAP);
   $("mapPeriod").addEventListener("change", (e) => {
-    MAP_PERIOD = parseInt(e.target.value, 10);
+    mapKey = e.target.value;
     LAYER.setStyle((f) => styleFor(f.properties.name));
-    if (selectedParish) { selectedPeriod = MAP_PERIOD; renderDetail(); }
+    if (selectedParish) { selectedKey = mapKey; renderDetail(); }
   });
 
-  /* Parish names appear once zoomed in enough to be readable. */
   const updateLabels = () => {
     const show = MAP.getZoom() >= 7.5;
     LAYER.eachLayer((l) => {
       const t = l.getTooltip();
-      if (!t) return;
-      if (show && !t.options.permanent) { l.unbindTooltip(); l.bindTooltip(l.feature.properties.name, { permanent: true, direction: "center", className: "parish-label" }); }
-      if (!show && t.options.permanent) { l.unbindTooltip(); l.bindTooltip(l.feature.properties.name, { permanent: false, direction: "center", className: "parish-label" }); }
+      if (!t || t.options.permanent === show) return;
+      l.unbindTooltip();
+      l.bindTooltip(l.feature.properties.name, { permanent: show, direction: "center", className: "parish-label" });
     });
   };
   MAP.on("zoomend", updateLabels);
   updateLabels();
 }
 
-function allPeriodNames() {
-  const entries = Object.values(DATA.parishes || {});
-  const maxLen = Math.max(0, ...entries.map((e) => (e.periods || []).length));
-  return Array.from({ length: maxLen }, (_, i) => periodName(i) || `Period ${i + 1}`);
-}
-
 function styleFor(name) {
-  const level = parishLevel(name, MAP_PERIOD);
+  const v = ratingFor(DATA.parishes[name], mapKey);
+  const level = v ? v.level : "nodata";
   return {
     fillColor: LEVEL_COLOR[level],
     fillOpacity: level === "nodata" ? 0.6 : 0.9,
@@ -216,7 +236,7 @@ function styleFor(name) {
 
 function selectParish(name, panMap) {
   selectedParish = name;
-  selectedPeriod = MAP_PERIOD;
+  selectedKey = mapKey;
   LAYER.setStyle((f) => styleFor(f.properties.name));
   LAYER.eachLayer((l) => { if (l.feature.properties.name === name) l.bringToFront(); });
   if (panMap) {
@@ -237,53 +257,71 @@ function windText(w) {
   return `${w.dir} ${range} mph${gust}`;
 }
 
+function setCard(level, icon, word, detail) {
+  $("verdictCard").className = "verdict " + level;
+  $("verdictIcon").textContent = icon;
+  $("verdictWord").textContent = word;
+  $("verdictDetail").textContent = detail;
+}
+
 function renderDetail() {
   const entry = DATA.parishes[selectedParish];
   $("detail").classList.remove("hidden");
   $("parishName").textContent = selectedParish + " Parish";
 
+  /* Tabs = the same global period list as the map dropdown, same labels. */
   const tabs = $("periodTabs");
   tabs.innerHTML = "";
-  const periods = entry ? entry.periods : [];
-  periods.forEach((p, i) => {
+  PERIODS.forEach((p) => {
     const b = document.createElement("button");
     b.role = "tab";
-    b.textContent = p.name;
-    b.setAttribute("aria-selected", i === selectedPeriod);
-    b.addEventListener("click", () => { selectedPeriod = i; renderDetail(); });
+    b.textContent = periodLabel(p);
+    b.setAttribute("aria-selected", p.key === selectedKey);
+    b.addEventListener("click", () => { selectedKey = p.key; renderDetail(); });
     tabs.appendChild(b);
   });
 
-  const card = $("verdictCard");
-  const p = periods[selectedPeriod];
+  const per = PERIODS.find((p) => p.key === selectedKey);
+  const p = periodOf(entry, selectedKey);
+  $("keyFacts").innerHTML = "";
+  $("rawTable").innerHTML = "";
+  $("sourceNote").textContent = "";
 
-  if (!entry || !p) {
-    card.className = "verdict nodata";
-    $("verdictIcon").textContent = "?";
-    $("verdictWord").textContent = "NO DATA";
-    $("verdictDetail").textContent =
-      "No forecast matched this parish. Check weather.gov or call your NWS office before burning.";
-    $("keyFacts").innerHTML = "";
-    $("rawTable").innerHTML = "";
-    $("sourceNote").textContent = "";
+  if (!entry) {
+    setCard("nodata", "?", "NO DATA",
+      "No forecast matched this parish in the latest update. Check weather.gov or call your NWS office before burning.");
+    return;
+  }
+  if (!p) {
+    const firstKey = (entry.periods || []).map((x) => x.key).filter(Boolean).sort()[0] || "";
+    const label = per ? periodLabel(per).toLowerCase() : "this period";
+    if (selectedKey < firstKey) {
+      setCard("nodata", "?", "PERIOD PASSED",
+        `NWS ${entry.office}'s latest forecast starts after ${label}; that period is no longer covered.`);
+    } else {
+      setCard("nodata", "?", "NOT ISSUED YET",
+        `NWS ${entry.office}'s current forecast does not reach ${label} yet. Offices issue new forecasts around 4 AM and 4 PM; check back then.`);
+    }
     return;
   }
 
-  const level = p.verdict ? p.verdict.level : "nodata";
-  card.className = "verdict " + level;
-  $("verdictIcon").textContent = LEVEL_ICON[level];
-  $("verdictWord").textContent = p.verdict ? p.verdict.verdict : "NO RATING";
-  $("verdictDetail").textContent = p.verdict
-    ? p.verdict.detail
-    : "NWS did not issue a Category Day for this period (this office does not rate nights). Do not burn without a rating.";
+  if (p.verdict) {
+    setCard(p.verdict.level, LEVEL_ICON[p.verdict.level], p.verdict.verdict, p.verdict.detail);
+  } else if (p.is_night) {
+    setCard("nodata", "?", "NO NIGHT RATING",
+      `NWS ${entry.office} does not issue a Category Day for night periods. Do not burn without a rating.`);
+  } else {
+    setCard("nodata", "?", "NO RATING",
+      `NWS ${entry.office} did not include a Category Day for this period. Check weather.gov before burning.`);
+  }
 
-  const facts = [];
-  facts.push(["Category Day", p.category != null ? `${p.category} of 5` : "\u2014"]);
-  facts.push(["Surface wind (PM)", windText(p.surface_wind_pm || p.surface_wind_am)]);
-  facts.push(["Transport wind", windText(p.transport_wind)]);
+  const facts = [
+    ["Category Day", p.category != null ? `${p.category} of 5` : "\u2014"],
+    ["Surface wind (PM)", windText(p.surface_wind_pm || p.surface_wind_am)],
+    ["Transport wind", windText(p.transport_wind)],
+  ];
   $("keyFacts").innerHTML = facts
-    .map(([k, v]) => `<div class="fact"><div class="v">${v}</div><div class="k">${k}</div></div>`)
-    .join("");
+    .map(([k, v]) => `<div class="fact"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
 
   const rows = [
     ["Smoke rises to (mixing height)", p.mixing_height_ft != null ? p.mixing_height_ft.toLocaleString() + " ft" : "\u2014"],
@@ -294,8 +332,7 @@ function renderDetail() {
     ["Afternoon surface wind", windText(p.surface_wind_pm)],
     ["NWS dispersion word", p.dispersion_text || "\u2014"],
   ];
-  $("rawTable").innerHTML =
-    "<table>" + rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join("") + "</table>";
+  $("rawTable").innerHTML = "<table>" + rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join("") + "</table>";
 
   const issued = entry.issued ? new Date(entry.issued).toLocaleString() : "unknown time";
   $("sourceNote").textContent =

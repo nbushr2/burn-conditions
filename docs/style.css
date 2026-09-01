@@ -140,3 +140,12 @@ body { font-size: 16px; line-height: 1.45; }
   #map { height: 54vh; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* neighbor state / gulf labels */
+.region-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: #6B6B6B;
+  text-align: center; white-space: nowrap; pointer-events: none;
+  text-shadow: 0 0 3px #FFF, 0 0 3px #FFF;
+}
+.periods { flex-wrap: wrap; }
+.periods button { flex: 1 1 22%; min-width: 70px; }
