@@ -41,20 +41,62 @@ USER_AGENT = "BurnWise-LA-SugarcaneBurnTool (contact: lastateclimate@lsu.edu)"
 
 API_LIST = "https://api.weather.gov/products/types/FWF/locations/{office}"
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 
-# Category Day meaning under the Louisiana Voluntary Smoke Management
-# Guidelines: scale 1..5 based on ventilation rate, 1 = poor, 5 = excellent.
-# "No burning ... is allowed, under the LA Smoke Management Guidelines,
-#  during Category 1 periods."
-# VERIFY the label wording with your LSU AgCenter / LDAF contact before
-# release. The numbers-to-verdict mapping below is deliberately conservative.
+# ---------------------------------------------------------------------------
+# OFFICIAL SMOKE CATEGORY DAY RECOMMENDATIONS
+# ---------------------------------------------------------------------------
+# Source: "Smoke Category Days Defined" table supplied by Dr. Jay Grymes
+# (Louisiana State Climatologist) on 2026-10-05, which is the table the
+# Louisiana Office of State Climatology and the American Sugar Cane League
+# have sent to sugarcane producers for the last two decades.
+#
+# The "detail" text below is VERBATIM from that table and must not be
+# reworded without written approval. The "verdict" headline is a short
+# restatement of the same instruction so it fits on a phone screen.
+#
+# COLORS follow the table exactly, including Category 5 = YELLOW (caution)
+# because of unstable and windy conditions:
+#     Category 1        -> red     ("no")
+#     Categories 2 and 5 -> yellow ("caution")
+#     Categories 3 and 4 -> green  ("burn")
 CATEGORY_VERDICTS = {
-    1: {"verdict": "DO NOT BURN", "detail": "Category 1: burning is not allowed under the Louisiana Smoke Management Guidelines.", "level": "no"},
-    2: {"verdict": "POOR", "detail": "Category 2: poor smoke dispersal. Burning is strongly discouraged.", "level": "poor"},
-    3: {"verdict": "FAIR", "detail": "Category 3: fair dispersal. Review winds and your burn plan carefully.", "level": "fair"},
-    4: {"verdict": "GOOD", "detail": "Category 4: good dispersal. Confirm surface and transport winds fit your plan.", "level": "good"},
-    5: {"verdict": "EXCELLENT", "detail": "Category 5: excellent dispersal conditions.", "level": "good"},
+    1: {
+        "verdict": "NO BURNING",
+        "detail": "No burning.",
+        "level": "no",
+    },
+    2: {
+        "verdict": "NO BURNING BEFORE 11 AM",
+        "detail": ("No burning until after 11 a.m. and not before surface inversion "
+                   "has lifted. Fires should be burned out by 4 p.m."),
+        "level": "caution",
+    },
+    3: {
+        "verdict": "BURN AFTER INVERSION LIFTS",
+        "detail": ("Burning after the surface inversion has lifted. Fires should be "
+                   "burned out by 4 p.m."),
+        "level": "burn",
+    },
+    4: {
+        "verdict": "BURNING ALLOWED",
+        "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+        "level": "burn",
+    },
+    5: {
+        "verdict": "BURN WITH CAUTION",
+        "detail": ("Unstable and Windy. Excellent smoke dispersal. Burn with caution. "
+                   "Fires should be burned out by 4 p.m."),
+        "level": "caution",
+    },
+}
+
+# Shown on every night period. Night burning is not permitted, so the app
+# states the rule instead of showing a rating that NWS may not even issue.
+NIGHT_NOTICE = {
+    "verdict": "NO BURNING AT NIGHT",
+    "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+    "level": "no",
 }
 
 # Words that can appear as period column headers in FWF matrices.
@@ -385,6 +427,16 @@ def parse_block(block: str, debug=False) -> dict | None:
         _, v = find(r"^Dispersion")
         p["dispersion_text"] = v.strip() if v else None
 
+        # SILT = Surface Inversion Lifted Temperature: the surface temperature
+        # that must be reached to break the inversion. NWS Jackson documents it
+        # as "SILT 500 m...Surface Inversion Lifted Temperature (temp needed to
+        # reach at surface to break inversion)". Labels differ by office:
+        #   LIX / JAN: "SILT/500m MLT (F)"      LCH / SHV: "Mix Hgt 500"
+        # The pattern must NOT match "Mixing Hgt", which is a different field.
+        _, v = find(r"SILT|500\s*m\s*MLT|(?<![a-z])Mix\s+Hgt\s*500")
+        silt = parse_number(v)
+        p["silt_f"] = int(silt) if silt is not None and 0 <= silt <= 130 else None
+
     return {"zone_names": zone_names, "periods": periods}
 
 
@@ -517,11 +569,17 @@ def run(sample_path=None, debug=False):
                         entry["stale"] = True
                         parish_data[name] = entry
 
-    # Attach verdicts (deterministic, from the verified Category Day scale)
+    # Attach verdicts (deterministic, from the official Category Day table).
+    # Night periods always carry the no-night-burning notice, whatever the
+    # issuing office does: Lake Charles rates nights, the other three do not,
+    # and burning at night is not permitted either way.
     for name, entry in parish_data.items():
         for p in entry.get("periods") or []:
             cat = p.get("category")
-            p["verdict"] = CATEGORY_VERDICTS.get(cat) if cat else None
+            if p.get("is_night"):
+                p["verdict"] = dict(NIGHT_NOTICE)
+            else:
+                p["verdict"] = CATEGORY_VERDICTS.get(cat) if cat else None
 
     missing = [p for p in parishes if p not in parish_data]
     if missing:

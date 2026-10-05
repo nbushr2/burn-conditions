@@ -10,8 +10,17 @@
 "use strict";
 
 const STALE_HOURS = 12;
-const LEVEL_ICON = { good: "\u2713", fair: "\u26A0", poor: "\u26A0", no: "\u2715", nodata: "?" };
-const LEVEL_COLOR = { good: "#009E73", fair: "#E69F00", poor: "#D55E00", no: "#1A1A1A", nodata: "#C9C4BA" };
+/* Colors follow the official "Smoke Category Days Defined" table used by the
+   LA Office of State Climatology and the American Sugar Cane League:
+     Category 1 red, Categories 2 and 5 yellow, Categories 3 and 4 green.
+   Red and green are hard to tell apart for about 8% of men, so color is
+   never the only signal: every rating also carries an icon and a word, and
+   red parishes are drawn with diagonal stripes on the map (see PATTERNS). */
+const LEVEL_ICON  = { no: "\u2715", caution: "\u26A0", burn: "\u2713", nodata: "?" };
+const LEVEL_COLOR = { no: "#E8112D", caution: "#FFE800", burn: "#00A14B", nodata: "#C9C4BA" };
+/* An unrecognized level (e.g. forecast data written by an older version of
+   the pipeline) is shown as "no rating" gray rather than a wrong color. */
+const levelOf = (v) => (v && LEVEL_COLOR[v.level] ? v.level : "nodata");
 
 /* Neighbor labels drawn on the map. Gulf wording follows NWS usage and
    Louisiana Executive Order JML 25-027; change the text here if needed. */
@@ -217,6 +226,7 @@ function buildMap() {
   $("mapPeriod").addEventListener("change", (e) => {
     mapKey = e.target.value;
     LAYER.setStyle((f) => styleFor(f.properties.name));
+    applyStripes();
     if (selectedParish) { selectedKey = mapKey; renderDetail(); }
   });
 
@@ -231,16 +241,52 @@ function buildMap() {
   };
   MAP.on("zoomend", updateLabels);
   updateLabels();
+  applyStripes();
+}
+
+/* Diagonal stripes over "no burning" parishes. Leaflet draws each parish as
+   an SVG <path>, so we define a pattern once and point the path's fill at it.
+   This makes red parishes distinguishable from green ones without relying on
+   color, including in grayscale or bright sun. */
+function ensurePattern() {
+  const svg = MAP.getPanes().overlayPane.querySelector("svg");
+  if (!svg || svg.querySelector("#stripeNo")) return;
+  const NS = "http://www.w3.org/2000/svg";
+  const defs = document.createElementNS(NS, "defs");
+  const pat = document.createElementNS(NS, "pattern");
+  pat.setAttribute("id", "stripeNo");
+  pat.setAttribute("patternUnits", "userSpaceOnUse");
+  pat.setAttribute("width", "8");
+  pat.setAttribute("height", "8");
+  pat.setAttribute("patternTransform", "rotate(45)");
+  const bg = document.createElementNS(NS, "rect");
+  bg.setAttribute("width", "8"); bg.setAttribute("height", "8");
+  bg.setAttribute("fill", LEVEL_COLOR.no);
+  const line = document.createElementNS(NS, "rect");
+  line.setAttribute("width", "3"); line.setAttribute("height", "8");
+  line.setAttribute("fill", "#7A0012");
+  pat.appendChild(bg); pat.appendChild(line);
+  defs.appendChild(pat); svg.insertBefore(defs, svg.firstChild);
+}
+
+function applyStripes() {
+  ensurePattern();
+  LAYER.eachLayer((l) => {
+    if (!l._path) return;
+    const level = levelOf(ratingFor(DATA.parishes[l.feature.properties.name], mapKey));
+    if (level === "no") l._path.setAttribute("fill", "url(#stripeNo)");
+    else l._path.setAttribute("fill", LEVEL_COLOR[level]);
+  });
 }
 
 function styleFor(name) {
-  const v = ratingFor(DATA.parishes[name], mapKey);
-  const level = v ? v.level : "nodata";
+  const level = levelOf(ratingFor(DATA.parishes[name], mapKey));
   return {
     fillColor: LEVEL_COLOR[level],
     fillOpacity: level === "nodata" ? 0.6 : 0.9,
-    color: name === selectedParish ? "#FFFFFF" : "#1A1A1A",
-    weight: name === selectedParish ? 4 : 1.2,
+    /* Dark heavy outline for the selected parish: white vanishes on yellow. */
+    color: "#1A1A1A",
+    weight: name === selectedParish ? 4.5 : 1.2,
   };
 }
 
@@ -250,6 +296,7 @@ function selectParish(name, panMap) {
   selectedParish = name;
   selectedKey = mapKey;
   LAYER.setStyle((f) => styleFor(f.properties.name));
+  applyStripes();
   LAYER.eachLayer((l) => { if (l.feature.properties.name === name) l.bringToFront(); });
   if (panMap) {
     LAYER.eachLayer((l) => {
@@ -270,7 +317,9 @@ function windText(w) {
 }
 
 function setCard(level, icon, word, detail) {
-  $("verdictCard").className = "verdict " + level;
+  /* Long instructions like "BURN AFTER INVERSION LIFTS" need a smaller size
+     so they stay to two lines on a phone. */
+  $("verdictCard").className = "verdict " + level + (word.length > 16 ? " long" : "");
   $("verdictIcon").textContent = icon;
   $("verdictWord").textContent = word;
   $("verdictDetail").textContent = detail;
@@ -318,17 +367,20 @@ function renderDetail() {
   }
 
   if (p.verdict) {
-    setCard(p.verdict.level, LEVEL_ICON[p.verdict.level], p.verdict.verdict, p.verdict.detail);
-  } else if (p.is_night) {
-    setCard("nodata", "?", "NO NIGHT RATING",
-      `NWS ${entry.office} does not issue a Category Day for night periods. Do not burn without a rating.`);
+    const lvl = levelOf(p.verdict);
+    setCard(lvl, LEVEL_ICON[lvl], p.verdict.verdict, p.verdict.detail);
   } else {
     setCard("nodata", "?", "NO RATING",
       `NWS ${entry.office} did not include a Category Day for this period. Check weather.gov before burning.`);
   }
 
+  /* Key numbers. SILT (Surface Inversion Lifted Temperature) is the surface
+     temperature that must be reached to break the inversion, so it is what a
+     farmer watches on Category 2 and 3 days. It sits beside the Category Day
+     for that reason. */
   const facts = [
     ["Category Day", p.category != null ? `${p.category} of 5` : "\u2014"],
+    ["Inversion lifts at", p.silt_f != null ? `${p.silt_f} \u00B0F` : "\u2014"],
     ["Surface wind (PM)", windText(p.surface_wind_pm || p.surface_wind_am)],
     ["Transport wind", windText(p.transport_wind)],
   ];
@@ -336,6 +388,7 @@ function renderDetail() {
     .map(([k, v]) => `<div class="fact"><div class="v">${v}</div><div class="k">${k}</div></div>`).join("");
 
   const rows = [
+    ["Inversion lifts at (SILT / 500 m mixing temp)", p.silt_f != null ? p.silt_f + " \u00B0F" : "\u2014"],
     ["Smoke rises to (mixing height)", p.mixing_height_ft != null ? p.mixing_height_ft.toLocaleString() + " ft" : "\u2014"],
     ["Humidity", p.rh_pct != null ? p.rh_pct + "%" : "\u2014"],
     ["Temperature", p.temp_f != null ? p.temp_f + " \u00B0F" : "\u2014"],
