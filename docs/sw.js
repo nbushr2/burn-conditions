@@ -6,8 +6,8 @@
    BUMP THE VERSION NUMBERS below every time app.js, style.css, or
    index.html change, or phones keep running the old copy. */
 
-const SHELL_CACHE = "burnwise-shell-v10";
-const DATA_CACHE = "burnwise-data-v10";
+const SHELL_CACHE = "burnwise-shell-v11";
+const DATA_CACHE = "burnwise-data-v11";
 
 const SHELL = [
   "./",

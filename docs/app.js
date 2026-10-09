@@ -67,21 +67,58 @@ async function init() {
 
 /* ---------------- periods ---------------- */
 
+/* The four NWS offices issue twice a day, at DIFFERENT times: a morning
+   product (roughly 1-4 a.m.) covering Today / Tonight / Tomorrow, and an
+   afternoon product (roughly 1-4 p.m.) that REPLACES it and begins at
+   Tonight. So for part of the day some offices still offer "Today" while
+   others have already moved past it. Taking the plain union of every
+   office's periods therefore produces tabs that most parishes cannot fill.
+   Two filters keep the tab row to periods that are actually usable. */
+
+/* A daytime period stops being useful once the burn window closes. The
+   official guidance is "fires should be burned out by 4 p.m.", so 4 p.m.
+   local is the cutoff. A night period ends at daybreak the next morning. */
+const DAY_ENDS_HOUR = 16;    /* 4 p.m. */
+const NIGHT_ENDS_HOUR = 6;   /* 6 a.m. the following day */
+/* A period offered by only a minority of parishes is one office's leading
+   or trailing edge. Showing it means most parishes have nothing to show. */
+const MIN_COVERAGE = 0.5;
+
+function periodIsOver(per, now) {
+  const [y, m, d] = per.date.split("-").map(Number);
+  const end = new Date(y, m - 1, d);
+  if (per.is_night) end.setDate(end.getDate() + 1);
+  end.setHours(per.is_night ? NIGHT_ENDS_HOUR : DAY_ENDS_HOUR, 0, 0, 0);
+  return now >= end;
+}
+
 function buildPeriods() {
+  const entries = Object.values(DATA.parishes || {});
   const seen = new Map();
-  for (const e of Object.values(DATA.parishes || {})) {
+  const count = new Map();
+  for (const e of entries) {
     for (const p of e.periods || []) {
-      if (p.key && !seen.has(p.key)) seen.set(p.key, { key: p.key, date: p.date, is_night: !!p.is_night });
+      if (!p.key) continue;
+      if (!seen.has(p.key)) seen.set(p.key, { key: p.key, date: p.date, is_night: !!p.is_night });
+      count.set(p.key, (count.get(p.key) || 0) + 1);
     }
   }
-  PERIODS = [...seen.values()].sort((a, b) => a.key.localeCompare(b.key));
-  /* Drop periods more than a day in the past: they can only come from an
-     office whose feed is stale, and the stale banner covers that case. */
-  const cutoff = localISODate(new Date(Date.now() - 36 * 3.6e6));
-  const fresh = PERIODS.filter((p) => p.date >= cutoff);
-  if (fresh.length) PERIODS = fresh;
-  /* Default: first period that has a rating anywhere. */
-  mapKey = (PERIODS.find((p) => Object.values(DATA.parishes).some((e) => ratingFor(e, p.key))) || PERIODS[0] || {}).key;
+  const all = [...seen.values()].sort((a, b) => a.key.localeCompare(b.key));
+
+  const now = new Date();
+  const current = all.filter((per) => !periodIsOver(per, now));
+  const withParishes = entries.filter((e) => (e.periods || []).length).length || 1;
+  const wellCovered = current.filter((per) => (count.get(per.key) || 0) / withParishes >= MIN_COVERAGE);
+
+  /* Fall back rather than ever showing an empty app. */
+  PERIODS = wellCovered.length ? wellCovered : (current.length ? current : all);
+
+  /* Land on the next period a producer can actually burn in: the first
+     DAYTIME period that carries a rating. In the late afternoon that is
+     tomorrow, which is what someone planning a burn needs to see. */
+  const hasRating = (per) => entries.some((e) => ratingFor(e, per.key));
+  const firstDay = PERIODS.find((per) => !per.is_night && hasRating(per));
+  mapKey = (firstDay || PERIODS.find(hasRating) || PERIODS[0] || {}).key;
 }
 
 function localISODate(d) {
@@ -354,14 +391,20 @@ function renderDetail() {
     return;
   }
   if (!p) {
-    const firstKey = (entry.periods || []).map((x) => x.key).filter(Boolean).sort()[0] || "";
+    /* This office's current product does not contain the selected period.
+       Explain which way, in plain terms, instead of a bare "period passed". */
+    const keys = (entry.periods || []).map((x) => x.key).filter(Boolean).sort();
     const label = per ? periodLabel(per).toLowerCase() : "this period";
-    if (selectedKey < firstKey) {
-      setCard("nodata", "?", "PERIOD PASSED",
-        `NWS ${entry.office}'s latest forecast starts after ${label}; that period is no longer covered.`);
+    if (keys.length && selectedKey < keys[0]) {
+      const nextPer = PERIODS.find((x) => x.key === keys[0]);
+      const nextLabel = nextPer ? periodLabel(nextPer).toLowerCase() : "its next period";
+      setCard("nodata", "\u24D8", "FORECAST HAS MOVED ON",
+        `NWS ${entry.office} has replaced its forecast for ${label} with a newer one that begins with ${nextLabel}. ` +
+        `Fires should be burned out by 4 p.m.`);
     } else {
-      setCard("nodata", "?", "NOT ISSUED YET",
-        `NWS ${entry.office}'s current forecast does not reach ${label} yet. Offices issue new forecasts around 4 AM and 4 PM; check back then.`);
+      setCard("nodata", "\u24D8", "NOT ISSUED YET",
+        `NWS ${entry.office} has not issued a forecast for ${label} yet. New forecasts come out in the early morning ` +
+        `and again in the early afternoon.`);
     }
     return;
   }

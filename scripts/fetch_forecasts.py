@@ -41,7 +41,7 @@ USER_AGENT = "BurnWise-LA-SugarcaneBurnTool (contact: lastateclimate@lsu.edu)"
 
 API_LIST = "https://api.weather.gov/products/types/FWF/locations/{office}"
 
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 
 # ---------------------------------------------------------------------------
 # OFFICIAL SMOKE CATEGORY DAY RECOMMENDATIONS
@@ -79,7 +79,9 @@ CATEGORY_VERDICTS = {
         "level": "burn",
     },
     4: {
-        "verdict": "BURNING ALLOWED",
+        # Headline reworded at Dr. Gravois's request (2026-10-09):
+        # "Favorable Conditions" reads better than "Burning Allowed".
+        "verdict": "FAVORABLE CONDITIONS",
         "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
         "level": "burn",
     },
