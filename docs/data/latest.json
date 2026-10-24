@@ -1,10 +1,10 @@
 {
  "schema_version": 5,
- "generated_at_utc": "2026-10-24T01:21:06.417153+00:00",
+ "generated_at_utc": "2026-10-24T06:10:48.839379+00:00",
  "offices": {
   "LIX": {
-   "issued": "2026-10-23T22:38:00+00:00",
-   "product_id": "875e1dfd-0055-48b2-bd43-f883c3698844",
+   "issued": "2026-10-24T04:12:00+00:00",
+   "product_id": "1cfe6662-d54f-46fb-8ca9-ab868c9b3d48",
    "zones_parsed": 4,
    "ok": true
   },
@@ -28,9 +28,9 @@
   }
  },
  "parishes": {
-  "West Feliciana": {
+  "Iberville": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -299,276 +299,7 @@
   },
   "West Baton Rouge": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
-   "periods": [
-    {
-     "name": "Tonight",
-     "key": "2026-10-23-night",
-     "date": "2026-10-23",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "53",
-      "Max/Min RH (%)": "96",
-      "20FT Wind/PM(mph)": "E 1-5",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "L)",
-      "ADI Early": "4 Very Poor",
-      "ADI Late": "4 Very Poor",
-      "Max LVORI Early": "3",
-      "Max LVORI Late": "5",
-      "Stagnation Index": "3",
-      "Stability Class": "F",
-      ".FORECAST FOR DAYS 3": "THROUGH 7...",
-      ".SUNDAY NIGHT...Part": "ly cloudy. Lows",
-      "80 percent. Northeas": "t winds around",
-      ".MONDAY...Mostly sun": "ny. Highs in th",
-      "42 percent. Northeas": "t winds around",
-      ".MONDAY NIGHT...Part": "ly cloudy. Lows",
-      "100 percent. Light w": "inds.",
-      ".TUESDAY...Mostly su": "nny. Highs in t",
-      "46 percent. Northeas": "t winds around",
-      ".TUESDAY NIGHT...Par": "tly cloudy. Low",
-      ".WEDNESDAY...Mostly": "sunny. Highs in",
-      "43 percent. Northeas": "t winds around",
-      ".WEDNESDAY NIGHT...M": "ostly clear. Lo",
-      "RH 100 percent. Ligh": "t winds.",
-      ".THURSDAY...Sunny. H": "ighs in the low",
-      "Northeast winds arou": "nd 5 mph.",
-      ".THURSDAY NIGHT...Mo": "stly clear. Low",
-      "100 percent. Northea": "st winds around",
-      ".FRIDAY...Mostly sun": "ny. Highs in th",
-      "41 percent. East win": "ds 5 to 10 mph."
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": null,
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 1,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 53,
-     "rh_pct": 96,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sat",
-     "key": "2026-10-24-day",
-     "date": "2026-10-24",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "82",
-      "Max/Min RH (%)": "22",
-      "20FT Wind/AM(mph)": "E 2-6",
-      "20FT Wind/PM(mph)": "E 4-8",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "1770",
-      "Transport Wind (m/s)": "E  5",
-      "Vent Rate (m**2/s)": "8850",
-      "Category Day": "4",
-      "ADI Early": "39 Fair",
-      "ADI Late": "62 Good",
-      "Max LVORI Early": "6",
-      "Max LVORI Late": "1",
-      "SILT/500m MLT (F)": "66",
-      "Mrng Mxg Hgt (m)": "500",
-      "Stagnation Index": "3",
-      "Stability Class": "B",
-      ".SUNDAY NIGHT...Part": "in the mid 5",
-      "80 percent. Northeas": "5 mph.",
-      ".MONDAY...Mostly sun": "e lower 80s.",
-      "42 percent. Northeas": "5 mph.",
-      ".MONDAY NIGHT...Part": "in the mid 5",
-      ".TUESDAY...Mostly su": "he lower 80s.",
-      "46 percent. Northeas": "5 mph.",
-      ".TUESDAY NIGHT...Par": "s in the mid",
-      ".WEDNESDAY...Mostly": "the lower 80",
-      "43 percent. Northeas": "5 mph.",
-      ".WEDNESDAY NIGHT...M": "ws in the low",
-      ".THURSDAY...Sunny. H": "er 80s. Minim",
-      ".THURSDAY NIGHT...Mo": "s in the lowe",
-      "100 percent. Northea": "5 mph.",
-      ".FRIDAY...Mostly sun": "e mid 80s. Mi"
-     },
-     "category": 4,
-     "mixing_height_ft": 5807,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 11,
-      "hi_mph": 11,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "E",
-      "lo_mph": 2,
-      "hi_mph": 6,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 4,
-      "hi_mph": 8,
-      "gust_mph": null
-     },
-     "temp_f": 82,
-     "rh_pct": 22,
-     "precip_chance_pct": 0,
-     "vent_rate": 8850.0,
-     "dispersion_text": null,
-     "silt_f": 66,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    },
-    {
-     "name": "Sat Night",
-     "key": "2026-10-24-night",
-     "date": "2026-10-24",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "50",
-      "Max/Min RH (%)": "86",
-      "20FT Wind/PM(mph)": "E 2-6",
-      "Avg Pcpn Amt (in)": "0.00",
-      "ADI Early": "4 Very Poor",
-      "ADI Late": "4 Very Poor",
-      "Max LVORI Early": "2",
-      "Max LVORI Late": "2",
-      "Stagnation Index": "3",
-      "Stability Class": "F",
-      ".SUNDAY NIGHT...Part": "0s. Maximum R",
-      ".MONDAY...Mostly sun": "Minimum RH",
-      ".MONDAY NIGHT...Part": "0s. Maximum R",
-      ".TUESDAY...Mostly su": "Minimum RH",
-      ".TUESDAY NIGHT...Par": "50s. Maximum",
-      ".WEDNESDAY...Mostly": "s. Minimum RH",
-      ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
-      ".THURSDAY...Sunny. H": "um RH 39 perc",
-      ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
-      ".FRIDAY...Mostly sun": "nimum RH"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": null,
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 2,
-      "hi_mph": 6,
-      "gust_mph": null
-     },
-     "temp_f": 50,
-     "rh_pct": 86,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sun",
-     "key": "2026-10-25-day",
-     "date": "2026-10-25",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "81",
-      "Max/Min RH (%)": "28",
-      "20FT Wind/AM(mph)": "NE 4-8",
-      "20FT Wind/PM(mph)": "E 4-8",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "1790",
-      "Transport Wind (m/s)": "E  5",
-      "Vent Rate (m**2/s)": "8950",
-      "Category Day": "4",
-      "SILT/500m MLT (F)": "64",
-      "Mrng Mxg Hgt (m)": "500",
-      "Stagnation Index": "3",
-      "Stability Class": "B",
-      ".SUNDAY NIGHT...Part": "H",
-      ".MONDAY NIGHT...Part": "H",
-      ".TUESDAY NIGHT...Par": "RH",
-      ".WEDNESDAY NIGHT...M": "um",
-      ".THURSDAY...Sunny. H": "ent.",
-      ".THURSDAY NIGHT...Mo": "m RH"
-     },
-     "category": 4,
-     "mixing_height_ft": 5873,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 11,
-      "hi_mph": 11,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "NE",
-      "lo_mph": 4,
-      "hi_mph": 8,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 4,
-      "hi_mph": 8,
-      "gust_mph": null
-     },
-     "temp_f": 81,
-     "rh_pct": 28,
-     "precip_chance_pct": 0,
-     "vent_rate": 8950.0,
-     "dispersion_text": null,
-     "silt_f": 64,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    }
-   ],
-   "zones": [
-    "Pointe Coupee",
-    "West Feliciana",
-    "East Feliciana",
-    "St. Helena",
-    "Iberville",
-    "West Baton Rouge",
-    "East Baton Rouge",
-    "Northern Livingston",
-    "Southern Livingston",
-    "Western Ascension",
-    "Eastern Ascension"
-   ]
-  },
-  "Ascension": {
-   "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -837,7 +568,7 @@
   },
   "Pointe Coupee": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -1104,9 +835,278 @@
     "Eastern Ascension"
    ]
   },
-  "St. Helena": {
+  "West Feliciana": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
+   "periods": [
+    {
+     "name": "Tonight",
+     "key": "2026-10-23-night",
+     "date": "2026-10-23",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "53",
+      "Max/Min RH (%)": "96",
+      "20FT Wind/PM(mph)": "E 1-5",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)",
+      "ADI Early": "4 Very Poor",
+      "ADI Late": "4 Very Poor",
+      "Max LVORI Early": "3",
+      "Max LVORI Late": "5",
+      "Stagnation Index": "3",
+      "Stability Class": "F",
+      ".FORECAST FOR DAYS 3": "THROUGH 7...",
+      ".SUNDAY NIGHT...Part": "ly cloudy. Lows",
+      "80 percent. Northeas": "t winds around",
+      ".MONDAY...Mostly sun": "ny. Highs in th",
+      "42 percent. Northeas": "t winds around",
+      ".MONDAY NIGHT...Part": "ly cloudy. Lows",
+      "100 percent. Light w": "inds.",
+      ".TUESDAY...Mostly su": "nny. Highs in t",
+      "46 percent. Northeas": "t winds around",
+      ".TUESDAY NIGHT...Par": "tly cloudy. Low",
+      ".WEDNESDAY...Mostly": "sunny. Highs in",
+      "43 percent. Northeas": "t winds around",
+      ".WEDNESDAY NIGHT...M": "ostly clear. Lo",
+      "RH 100 percent. Ligh": "t winds.",
+      ".THURSDAY...Sunny. H": "ighs in the low",
+      "Northeast winds arou": "nd 5 mph.",
+      ".THURSDAY NIGHT...Mo": "stly clear. Low",
+      "100 percent. Northea": "st winds around",
+      ".FRIDAY...Mostly sun": "ny. Highs in th",
+      "41 percent. East win": "ds 5 to 10 mph."
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": null,
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 53,
+     "rh_pct": 96,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sat",
+     "key": "2026-10-24-day",
+     "date": "2026-10-24",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "82",
+      "Max/Min RH (%)": "22",
+      "20FT Wind/AM(mph)": "E 2-6",
+      "20FT Wind/PM(mph)": "E 4-8",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "1770",
+      "Transport Wind (m/s)": "E  5",
+      "Vent Rate (m**2/s)": "8850",
+      "Category Day": "4",
+      "ADI Early": "39 Fair",
+      "ADI Late": "62 Good",
+      "Max LVORI Early": "6",
+      "Max LVORI Late": "1",
+      "SILT/500m MLT (F)": "66",
+      "Mrng Mxg Hgt (m)": "500",
+      "Stagnation Index": "3",
+      "Stability Class": "B",
+      ".SUNDAY NIGHT...Part": "in the mid 5",
+      "80 percent. Northeas": "5 mph.",
+      ".MONDAY...Mostly sun": "e lower 80s.",
+      "42 percent. Northeas": "5 mph.",
+      ".MONDAY NIGHT...Part": "in the mid 5",
+      ".TUESDAY...Mostly su": "he lower 80s.",
+      "46 percent. Northeas": "5 mph.",
+      ".TUESDAY NIGHT...Par": "s in the mid",
+      ".WEDNESDAY...Mostly": "the lower 80",
+      "43 percent. Northeas": "5 mph.",
+      ".WEDNESDAY NIGHT...M": "ws in the low",
+      ".THURSDAY...Sunny. H": "er 80s. Minim",
+      ".THURSDAY NIGHT...Mo": "s in the lowe",
+      "100 percent. Northea": "5 mph.",
+      ".FRIDAY...Mostly sun": "e mid 80s. Mi"
+     },
+     "category": 4,
+     "mixing_height_ft": 5807,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 11,
+      "hi_mph": 11,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 2,
+      "hi_mph": 6,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 4,
+      "hi_mph": 8,
+      "gust_mph": null
+     },
+     "temp_f": 82,
+     "rh_pct": 22,
+     "precip_chance_pct": 0,
+     "vent_rate": 8850.0,
+     "dispersion_text": null,
+     "silt_f": 66,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    },
+    {
+     "name": "Sat Night",
+     "key": "2026-10-24-night",
+     "date": "2026-10-24",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "50",
+      "Max/Min RH (%)": "86",
+      "20FT Wind/PM(mph)": "E 2-6",
+      "Avg Pcpn Amt (in)": "0.00",
+      "ADI Early": "4 Very Poor",
+      "ADI Late": "4 Very Poor",
+      "Max LVORI Early": "2",
+      "Max LVORI Late": "2",
+      "Stagnation Index": "3",
+      "Stability Class": "F",
+      ".SUNDAY NIGHT...Part": "0s. Maximum R",
+      ".MONDAY...Mostly sun": "Minimum RH",
+      ".MONDAY NIGHT...Part": "0s. Maximum R",
+      ".TUESDAY...Mostly su": "Minimum RH",
+      ".TUESDAY NIGHT...Par": "50s. Maximum",
+      ".WEDNESDAY...Mostly": "s. Minimum RH",
+      ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
+      ".THURSDAY...Sunny. H": "um RH 39 perc",
+      ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
+      ".FRIDAY...Mostly sun": "nimum RH"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": null,
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 2,
+      "hi_mph": 6,
+      "gust_mph": null
+     },
+     "temp_f": 50,
+     "rh_pct": 86,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sun",
+     "key": "2026-10-25-day",
+     "date": "2026-10-25",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "81",
+      "Max/Min RH (%)": "28",
+      "20FT Wind/AM(mph)": "NE 4-8",
+      "20FT Wind/PM(mph)": "E 4-8",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "1790",
+      "Transport Wind (m/s)": "E  5",
+      "Vent Rate (m**2/s)": "8950",
+      "Category Day": "4",
+      "SILT/500m MLT (F)": "64",
+      "Mrng Mxg Hgt (m)": "500",
+      "Stagnation Index": "3",
+      "Stability Class": "B",
+      ".SUNDAY NIGHT...Part": "H",
+      ".MONDAY NIGHT...Part": "H",
+      ".TUESDAY NIGHT...Par": "RH",
+      ".WEDNESDAY NIGHT...M": "um",
+      ".THURSDAY...Sunny. H": "ent.",
+      ".THURSDAY NIGHT...Mo": "m RH"
+     },
+     "category": 4,
+     "mixing_height_ft": 5873,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 11,
+      "hi_mph": 11,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 8,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 4,
+      "hi_mph": 8,
+      "gust_mph": null
+     },
+     "temp_f": 81,
+     "rh_pct": 28,
+     "precip_chance_pct": 0,
+     "vent_rate": 8950.0,
+     "dispersion_text": null,
+     "silt_f": 64,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    }
+   ],
+   "zones": [
+    "Pointe Coupee",
+    "West Feliciana",
+    "East Feliciana",
+    "St. Helena",
+    "Iberville",
+    "West Baton Rouge",
+    "East Baton Rouge",
+    "Northern Livingston",
+    "Southern Livingston",
+    "Western Ascension",
+    "Eastern Ascension"
+   ]
+  },
+  "Ascension": {
+   "office": "LIX",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -1375,7 +1375,276 @@
   },
   "East Baton Rouge": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
+   "periods": [
+    {
+     "name": "Tonight",
+     "key": "2026-10-23-night",
+     "date": "2026-10-23",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "53",
+      "Max/Min RH (%)": "96",
+      "20FT Wind/PM(mph)": "E 1-5",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)",
+      "ADI Early": "4 Very Poor",
+      "ADI Late": "4 Very Poor",
+      "Max LVORI Early": "3",
+      "Max LVORI Late": "5",
+      "Stagnation Index": "3",
+      "Stability Class": "F",
+      ".FORECAST FOR DAYS 3": "THROUGH 7...",
+      ".SUNDAY NIGHT...Part": "ly cloudy. Lows",
+      "80 percent. Northeas": "t winds around",
+      ".MONDAY...Mostly sun": "ny. Highs in th",
+      "42 percent. Northeas": "t winds around",
+      ".MONDAY NIGHT...Part": "ly cloudy. Lows",
+      "100 percent. Light w": "inds.",
+      ".TUESDAY...Mostly su": "nny. Highs in t",
+      "46 percent. Northeas": "t winds around",
+      ".TUESDAY NIGHT...Par": "tly cloudy. Low",
+      ".WEDNESDAY...Mostly": "sunny. Highs in",
+      "43 percent. Northeas": "t winds around",
+      ".WEDNESDAY NIGHT...M": "ostly clear. Lo",
+      "RH 100 percent. Ligh": "t winds.",
+      ".THURSDAY...Sunny. H": "ighs in the low",
+      "Northeast winds arou": "nd 5 mph.",
+      ".THURSDAY NIGHT...Mo": "stly clear. Low",
+      "100 percent. Northea": "st winds around",
+      ".FRIDAY...Mostly sun": "ny. Highs in th",
+      "41 percent. East win": "ds 5 to 10 mph."
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": null,
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 53,
+     "rh_pct": 96,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sat",
+     "key": "2026-10-24-day",
+     "date": "2026-10-24",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "82",
+      "Max/Min RH (%)": "22",
+      "20FT Wind/AM(mph)": "E 2-6",
+      "20FT Wind/PM(mph)": "E 4-8",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "1770",
+      "Transport Wind (m/s)": "E  5",
+      "Vent Rate (m**2/s)": "8850",
+      "Category Day": "4",
+      "ADI Early": "39 Fair",
+      "ADI Late": "62 Good",
+      "Max LVORI Early": "6",
+      "Max LVORI Late": "1",
+      "SILT/500m MLT (F)": "66",
+      "Mrng Mxg Hgt (m)": "500",
+      "Stagnation Index": "3",
+      "Stability Class": "B",
+      ".SUNDAY NIGHT...Part": "in the mid 5",
+      "80 percent. Northeas": "5 mph.",
+      ".MONDAY...Mostly sun": "e lower 80s.",
+      "42 percent. Northeas": "5 mph.",
+      ".MONDAY NIGHT...Part": "in the mid 5",
+      ".TUESDAY...Mostly su": "he lower 80s.",
+      "46 percent. Northeas": "5 mph.",
+      ".TUESDAY NIGHT...Par": "s in the mid",
+      ".WEDNESDAY...Mostly": "the lower 80",
+      "43 percent. Northeas": "5 mph.",
+      ".WEDNESDAY NIGHT...M": "ws in the low",
+      ".THURSDAY...Sunny. H": "er 80s. Minim",
+      ".THURSDAY NIGHT...Mo": "s in the lowe",
+      "100 percent. Northea": "5 mph.",
+      ".FRIDAY...Mostly sun": "e mid 80s. Mi"
+     },
+     "category": 4,
+     "mixing_height_ft": 5807,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 11,
+      "hi_mph": 11,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 2,
+      "hi_mph": 6,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 4,
+      "hi_mph": 8,
+      "gust_mph": null
+     },
+     "temp_f": 82,
+     "rh_pct": 22,
+     "precip_chance_pct": 0,
+     "vent_rate": 8850.0,
+     "dispersion_text": null,
+     "silt_f": 66,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    },
+    {
+     "name": "Sat Night",
+     "key": "2026-10-24-night",
+     "date": "2026-10-24",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "50",
+      "Max/Min RH (%)": "86",
+      "20FT Wind/PM(mph)": "E 2-6",
+      "Avg Pcpn Amt (in)": "0.00",
+      "ADI Early": "4 Very Poor",
+      "ADI Late": "4 Very Poor",
+      "Max LVORI Early": "2",
+      "Max LVORI Late": "2",
+      "Stagnation Index": "3",
+      "Stability Class": "F",
+      ".SUNDAY NIGHT...Part": "0s. Maximum R",
+      ".MONDAY...Mostly sun": "Minimum RH",
+      ".MONDAY NIGHT...Part": "0s. Maximum R",
+      ".TUESDAY...Mostly su": "Minimum RH",
+      ".TUESDAY NIGHT...Par": "50s. Maximum",
+      ".WEDNESDAY...Mostly": "s. Minimum RH",
+      ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
+      ".THURSDAY...Sunny. H": "um RH 39 perc",
+      ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
+      ".FRIDAY...Mostly sun": "nimum RH"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": null,
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 2,
+      "hi_mph": 6,
+      "gust_mph": null
+     },
+     "temp_f": 50,
+     "rh_pct": 86,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sun",
+     "key": "2026-10-25-day",
+     "date": "2026-10-25",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "81",
+      "Max/Min RH (%)": "28",
+      "20FT Wind/AM(mph)": "NE 4-8",
+      "20FT Wind/PM(mph)": "E 4-8",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "1790",
+      "Transport Wind (m/s)": "E  5",
+      "Vent Rate (m**2/s)": "8950",
+      "Category Day": "4",
+      "SILT/500m MLT (F)": "64",
+      "Mrng Mxg Hgt (m)": "500",
+      "Stagnation Index": "3",
+      "Stability Class": "B",
+      ".SUNDAY NIGHT...Part": "H",
+      ".MONDAY NIGHT...Part": "H",
+      ".TUESDAY NIGHT...Par": "RH",
+      ".WEDNESDAY NIGHT...M": "um",
+      ".THURSDAY...Sunny. H": "ent.",
+      ".THURSDAY NIGHT...Mo": "m RH"
+     },
+     "category": 4,
+     "mixing_height_ft": 5873,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 11,
+      "hi_mph": 11,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 8,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 4,
+      "hi_mph": 8,
+      "gust_mph": null
+     },
+     "temp_f": 81,
+     "rh_pct": 28,
+     "precip_chance_pct": 0,
+     "vent_rate": 8950.0,
+     "dispersion_text": null,
+     "silt_f": 64,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    }
+   ],
+   "zones": [
+    "Pointe Coupee",
+    "West Feliciana",
+    "East Feliciana",
+    "St. Helena",
+    "Iberville",
+    "West Baton Rouge",
+    "East Baton Rouge",
+    "Northern Livingston",
+    "Southern Livingston",
+    "Western Ascension",
+    "Eastern Ascension"
+   ]
+  },
+  "St. Helena": {
+   "office": "LIX",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -1644,7 +1913,7 @@
   },
   "Livingston": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -1913,7 +2182,7 @@
   },
   "East Feliciana": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -2180,278 +2449,9 @@
     "Eastern Ascension"
    ]
   },
-  "Iberville": {
+  "Washington": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
-   "periods": [
-    {
-     "name": "Tonight",
-     "key": "2026-10-23-night",
-     "date": "2026-10-23",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "53",
-      "Max/Min RH (%)": "96",
-      "20FT Wind/PM(mph)": "E 1-5",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "L)",
-      "ADI Early": "4 Very Poor",
-      "ADI Late": "4 Very Poor",
-      "Max LVORI Early": "3",
-      "Max LVORI Late": "5",
-      "Stagnation Index": "3",
-      "Stability Class": "F",
-      ".FORECAST FOR DAYS 3": "THROUGH 7...",
-      ".SUNDAY NIGHT...Part": "ly cloudy. Lows",
-      "80 percent. Northeas": "t winds around",
-      ".MONDAY...Mostly sun": "ny. Highs in th",
-      "42 percent. Northeas": "t winds around",
-      ".MONDAY NIGHT...Part": "ly cloudy. Lows",
-      "100 percent. Light w": "inds.",
-      ".TUESDAY...Mostly su": "nny. Highs in t",
-      "46 percent. Northeas": "t winds around",
-      ".TUESDAY NIGHT...Par": "tly cloudy. Low",
-      ".WEDNESDAY...Mostly": "sunny. Highs in",
-      "43 percent. Northeas": "t winds around",
-      ".WEDNESDAY NIGHT...M": "ostly clear. Lo",
-      "RH 100 percent. Ligh": "t winds.",
-      ".THURSDAY...Sunny. H": "ighs in the low",
-      "Northeast winds arou": "nd 5 mph.",
-      ".THURSDAY NIGHT...Mo": "stly clear. Low",
-      "100 percent. Northea": "st winds around",
-      ".FRIDAY...Mostly sun": "ny. Highs in th",
-      "41 percent. East win": "ds 5 to 10 mph."
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": null,
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 1,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 53,
-     "rh_pct": 96,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sat",
-     "key": "2026-10-24-day",
-     "date": "2026-10-24",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "82",
-      "Max/Min RH (%)": "22",
-      "20FT Wind/AM(mph)": "E 2-6",
-      "20FT Wind/PM(mph)": "E 4-8",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "1770",
-      "Transport Wind (m/s)": "E  5",
-      "Vent Rate (m**2/s)": "8850",
-      "Category Day": "4",
-      "ADI Early": "39 Fair",
-      "ADI Late": "62 Good",
-      "Max LVORI Early": "6",
-      "Max LVORI Late": "1",
-      "SILT/500m MLT (F)": "66",
-      "Mrng Mxg Hgt (m)": "500",
-      "Stagnation Index": "3",
-      "Stability Class": "B",
-      ".SUNDAY NIGHT...Part": "in the mid 5",
-      "80 percent. Northeas": "5 mph.",
-      ".MONDAY...Mostly sun": "e lower 80s.",
-      "42 percent. Northeas": "5 mph.",
-      ".MONDAY NIGHT...Part": "in the mid 5",
-      ".TUESDAY...Mostly su": "he lower 80s.",
-      "46 percent. Northeas": "5 mph.",
-      ".TUESDAY NIGHT...Par": "s in the mid",
-      ".WEDNESDAY...Mostly": "the lower 80",
-      "43 percent. Northeas": "5 mph.",
-      ".WEDNESDAY NIGHT...M": "ws in the low",
-      ".THURSDAY...Sunny. H": "er 80s. Minim",
-      ".THURSDAY NIGHT...Mo": "s in the lowe",
-      "100 percent. Northea": "5 mph.",
-      ".FRIDAY...Mostly sun": "e mid 80s. Mi"
-     },
-     "category": 4,
-     "mixing_height_ft": 5807,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 11,
-      "hi_mph": 11,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "E",
-      "lo_mph": 2,
-      "hi_mph": 6,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 4,
-      "hi_mph": 8,
-      "gust_mph": null
-     },
-     "temp_f": 82,
-     "rh_pct": 22,
-     "precip_chance_pct": 0,
-     "vent_rate": 8850.0,
-     "dispersion_text": null,
-     "silt_f": 66,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    },
-    {
-     "name": "Sat Night",
-     "key": "2026-10-24-night",
-     "date": "2026-10-24",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "50",
-      "Max/Min RH (%)": "86",
-      "20FT Wind/PM(mph)": "E 2-6",
-      "Avg Pcpn Amt (in)": "0.00",
-      "ADI Early": "4 Very Poor",
-      "ADI Late": "4 Very Poor",
-      "Max LVORI Early": "2",
-      "Max LVORI Late": "2",
-      "Stagnation Index": "3",
-      "Stability Class": "F",
-      ".SUNDAY NIGHT...Part": "0s. Maximum R",
-      ".MONDAY...Mostly sun": "Minimum RH",
-      ".MONDAY NIGHT...Part": "0s. Maximum R",
-      ".TUESDAY...Mostly su": "Minimum RH",
-      ".TUESDAY NIGHT...Par": "50s. Maximum",
-      ".WEDNESDAY...Mostly": "s. Minimum RH",
-      ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
-      ".THURSDAY...Sunny. H": "um RH 39 perc",
-      ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
-      ".FRIDAY...Mostly sun": "nimum RH"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": null,
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 2,
-      "hi_mph": 6,
-      "gust_mph": null
-     },
-     "temp_f": 50,
-     "rh_pct": 86,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sun",
-     "key": "2026-10-25-day",
-     "date": "2026-10-25",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "81",
-      "Max/Min RH (%)": "28",
-      "20FT Wind/AM(mph)": "NE 4-8",
-      "20FT Wind/PM(mph)": "E 4-8",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "1790",
-      "Transport Wind (m/s)": "E  5",
-      "Vent Rate (m**2/s)": "8950",
-      "Category Day": "4",
-      "SILT/500m MLT (F)": "64",
-      "Mrng Mxg Hgt (m)": "500",
-      "Stagnation Index": "3",
-      "Stability Class": "B",
-      ".SUNDAY NIGHT...Part": "H",
-      ".MONDAY NIGHT...Part": "H",
-      ".TUESDAY NIGHT...Par": "RH",
-      ".WEDNESDAY NIGHT...M": "um",
-      ".THURSDAY...Sunny. H": "ent.",
-      ".THURSDAY NIGHT...Mo": "m RH"
-     },
-     "category": 4,
-     "mixing_height_ft": 5873,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 11,
-      "hi_mph": 11,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "NE",
-      "lo_mph": 4,
-      "hi_mph": 8,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 4,
-      "hi_mph": 8,
-      "gust_mph": null
-     },
-     "temp_f": 81,
-     "rh_pct": 28,
-     "precip_chance_pct": 0,
-     "vent_rate": 8950.0,
-     "dispersion_text": null,
-     "silt_f": 64,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    }
-   ],
-   "zones": [
-    "Pointe Coupee",
-    "West Feliciana",
-    "East Feliciana",
-    "St. Helena",
-    "Iberville",
-    "West Baton Rouge",
-    "East Baton Rouge",
-    "Northern Livingston",
-    "Southern Livingston",
-    "Western Ascension",
-    "Eastern Ascension"
-   ]
-  },
-  "Tangipahoa": {
-   "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -2527,7 +2527,7 @@
       "Min/Max Temp": "82",
       "Max/Min RH (%)": "23",
       "20FT Wind/AM(mph)": "E 3-7",
-      "20FT Wind/PM(mph)": "E 5-9 G17",
+      "20FT Wind/PM(mph)": "E 5-9",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1650",
       "Transport Wind (m/s)": "E  6",
@@ -2574,7 +2574,7 @@
       "dir": "E",
       "lo_mph": 5,
       "hi_mph": 9,
-      "gust_mph": 17
+      "gust_mph": null
      },
      "temp_f": 82,
      "rh_pct": 23,
@@ -2651,7 +2651,7 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "82",
       "Max/Min RH (%)": "32",
-      "20FT Wind/AM(mph)": "NE 4-8",
+      "20FT Wind/AM(mph)": "NE 4-8 G18",
       "20FT Wind/PM(mph)": "E 4-8",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1710",
@@ -2683,7 +2683,7 @@
       "dir": "NE",
       "lo_mph": 4,
       "hi_mph": 8,
-      "gust_mph": null
+      "gust_mph": 18
      },
      "surface_wind_pm": {
       "dir": "E",
@@ -2714,9 +2714,9 @@
     "Lower Tangipahoa"
    ]
   },
-  "Washington": {
+  "Tangipahoa": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -2792,7 +2792,7 @@
       "Min/Max Temp": "82",
       "Max/Min RH (%)": "23",
       "20FT Wind/AM(mph)": "E 3-7",
-      "20FT Wind/PM(mph)": "E 5-9 G17",
+      "20FT Wind/PM(mph)": "E 5-9",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1650",
       "Transport Wind (m/s)": "E  6",
@@ -2839,7 +2839,7 @@
       "dir": "E",
       "lo_mph": 5,
       "hi_mph": 9,
-      "gust_mph": 17
+      "gust_mph": null
      },
      "temp_f": 82,
      "rh_pct": 23,
@@ -2916,7 +2916,7 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "82",
       "Max/Min RH (%)": "32",
-      "20FT Wind/AM(mph)": "NE 4-8",
+      "20FT Wind/AM(mph)": "NE 4-8 G18",
       "20FT Wind/PM(mph)": "E 4-8",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1710",
@@ -2948,7 +2948,7 @@
       "dir": "NE",
       "lo_mph": 4,
       "hi_mph": 8,
-      "gust_mph": null
+      "gust_mph": 18
      },
      "surface_wind_pm": {
       "dir": "E",
@@ -2981,7 +2981,7 @@
   },
   "St. Tammany": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -3057,7 +3057,7 @@
       "Min/Max Temp": "82",
       "Max/Min RH (%)": "23",
       "20FT Wind/AM(mph)": "E 3-7",
-      "20FT Wind/PM(mph)": "E 5-9 G17",
+      "20FT Wind/PM(mph)": "E 5-9",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1650",
       "Transport Wind (m/s)": "E  6",
@@ -3104,7 +3104,7 @@
       "dir": "E",
       "lo_mph": 5,
       "hi_mph": 9,
-      "gust_mph": 17
+      "gust_mph": null
      },
      "temp_f": 82,
      "rh_pct": 23,
@@ -3181,7 +3181,7 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "82",
       "Max/Min RH (%)": "32",
-      "20FT Wind/AM(mph)": "NE 4-8",
+      "20FT Wind/AM(mph)": "NE 4-8 G18",
       "20FT Wind/PM(mph)": "E 4-8",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1710",
@@ -3213,7 +3213,7 @@
       "dir": "NE",
       "lo_mph": 4,
       "hi_mph": 8,
-      "gust_mph": null
+      "gust_mph": 18
      },
      "surface_wind_pm": {
       "dir": "E",
@@ -3246,7 +3246,7 @@
   },
   "Lafourche": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -3323,8 +3323,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "80",
       "Max/Min RH (%)": "38",
-      "20FT Wind/AM(mph)": "NE 7-11 G26",
-      "20FT Wind/PM(mph)": "E 11-15 G27",
+      "20FT Wind/AM(mph)": "NE 7-11 G20",
+      "20FT Wind/PM(mph)": "E 11-15 G23",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1460",
       "Transport Wind (m/s)": "E  7",
@@ -3370,13 +3370,13 @@
       "dir": "NE",
       "lo_mph": 7,
       "hi_mph": 11,
-      "gust_mph": 26
+      "gust_mph": 20
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 11,
       "hi_mph": 15,
-      "gust_mph": 27
+      "gust_mph": 23
      },
      "temp_f": 80,
      "rh_pct": 38,
@@ -3401,7 +3401,7 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "57",
       "Max/Min RH (%)": "93",
-      "20FT Wind/PM(mph)": "E 6-10 G23",
+      "20FT Wind/PM(mph)": "E 6-10 G21",
       "Avg Pcpn Amt (in)": "0.00",
       "ADI Early": "9 Poor",
       "ADI Late": "9 Poor",
@@ -3428,7 +3428,7 @@
       "dir": "E",
       "lo_mph": 6,
       "hi_mph": 10,
-      "gust_mph": 23
+      "gust_mph": 21
      },
      "temp_f": 57,
      "rh_pct": 93,
@@ -3453,8 +3453,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "78",
       "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 10-14 G29",
-      "20FT Wind/PM(mph)": "NE 12-16 G29",
+      "20FT Wind/AM(mph)": "NE 10-14 G26",
+      "20FT Wind/PM(mph)": "NE 12-16 G26",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1510",
       "Transport Wind (m/s)": "E  7",
@@ -3481,13 +3481,13 @@
       "dir": "NE",
       "lo_mph": 10,
       "hi_mph": 14,
-      "gust_mph": 29
+      "gust_mph": 26
      },
      "surface_wind_pm": {
       "dir": "NE",
       "lo_mph": 12,
       "hi_mph": 16,
-      "gust_mph": 29
+      "gust_mph": 26
      },
      "temp_f": 78,
      "rh_pct": 42,
@@ -3525,9 +3525,9 @@
     "Lower St. Charles"
    ]
   },
-  "St. Bernard": {
+  "Plaquemines": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -3604,8 +3604,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "80",
       "Max/Min RH (%)": "38",
-      "20FT Wind/AM(mph)": "NE 7-11 G26",
-      "20FT Wind/PM(mph)": "E 11-15 G27",
+      "20FT Wind/AM(mph)": "NE 7-11 G20",
+      "20FT Wind/PM(mph)": "E 11-15 G23",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1460",
       "Transport Wind (m/s)": "E  7",
@@ -3651,13 +3651,13 @@
       "dir": "NE",
       "lo_mph": 7,
       "hi_mph": 11,
-      "gust_mph": 26
+      "gust_mph": 20
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 11,
       "hi_mph": 15,
-      "gust_mph": 27
+      "gust_mph": 23
      },
      "temp_f": 80,
      "rh_pct": 38,
@@ -3682,7 +3682,7 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "57",
       "Max/Min RH (%)": "93",
-      "20FT Wind/PM(mph)": "E 6-10 G23",
+      "20FT Wind/PM(mph)": "E 6-10 G21",
       "Avg Pcpn Amt (in)": "0.00",
       "ADI Early": "9 Poor",
       "ADI Late": "9 Poor",
@@ -3709,7 +3709,7 @@
       "dir": "E",
       "lo_mph": 6,
       "hi_mph": 10,
-      "gust_mph": 23
+      "gust_mph": 21
      },
      "temp_f": 57,
      "rh_pct": 93,
@@ -3734,8 +3734,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "78",
       "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 10-14 G29",
-      "20FT Wind/PM(mph)": "NE 12-16 G29",
+      "20FT Wind/AM(mph)": "NE 10-14 G26",
+      "20FT Wind/PM(mph)": "NE 12-16 G26",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1510",
       "Transport Wind (m/s)": "E  7",
@@ -3762,294 +3762,13 @@
       "dir": "NE",
       "lo_mph": 10,
       "hi_mph": 14,
-      "gust_mph": 29
-     },
-     "surface_wind_pm": {
-      "dir": "NE",
-      "lo_mph": 12,
-      "hi_mph": 16,
-      "gust_mph": 29
-     },
-     "temp_f": 78,
-     "rh_pct": 42,
-     "precip_chance_pct": 0,
-     "vent_rate": 10570.0,
-     "dispersion_text": null,
-     "silt_f": 65,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    }
-   ],
-   "zones": [
-    "Lower St. Bernard",
-    "Eastern Orleans",
-    "Lower Plaquemines",
-    "Coastal Jefferson",
-    "Lower Lafourche",
-    "Lower Terrebonne",
-    "Assumption",
-    "St. James",
-    "St. John The Baptist",
-    "Upper St. Bernard",
-    "Western Orleans",
-    "Upper Jefferson",
-    "Upper Plaquemines",
-    "Central Plaquemines",
-    "Central Jefferson",
-    "Upper Lafourche",
-    "Upper Terrebonne",
-    "Upper St. Charles",
-    "Central St. Charles",
-    "Lower St. Charles"
-   ]
-  },
-  "Orleans": {
-   "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
-   "periods": [
-    {
-     "name": "Tonight",
-     "key": "2026-10-23-night",
-     "date": "2026-10-23",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "60",
-      "Max/Min RH (%)": "93",
-      "20FT Wind/PM(mph)": "E 2-6",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "L)",
-      "ADI Early": "4 Very Poor",
-      "ADI Late": "5 Very Poor",
-      "Max LVORI Early": "4",
-      "Max LVORI Late": "4",
-      "Stagnation Index": "3",
-      "Stability Class": "F",
-      ".FORECAST FOR DAYS 3": "THROUGH 7...",
-      ".SUNDAY NIGHT...Part": "ly cloudy. Lows",
-      "82 percent. Northeas": "t winds around",
-      ".MONDAY...Mostly sun": "ny. Highs in th",
-      "63 percent. Northeas": "t winds around",
-      ".MONDAY NIGHT...Part": "ly cloudy. Lows",
-      "96 percent. East win": "ds around 5 mph",
-      ".TUESDAY...Partly su": "nny. Highs in t",
-      "67 percent. Northeas": "t winds around",
-      ".TUESDAY NIGHT...Mos": "tly cloudy. Low",
-      "94 percent. East win": "ds around 5 mph",
-      ".WEDNESDAY...Mostly": "sunny. Highs in",
-      "64 percent. Northeas": "t winds around",
-      ".WEDNESDAY NIGHT...M": "ostly clear. Lo",
-      "95 percent. East win": "ds around 5 mph",
-      ".THURSDAY...Sunny. H": "ighs in the upp",
-      "Northeast winds arou": "nd 10 mph.",
-      ".THURSDAY NIGHT...Mo": "stly clear. Low",
-      "97 percent. East win": "ds around 5 mph",
-      ".FRIDAY...Mostly sun": "ny. Highs in th",
-      "61 percent. East win": "ds 10 to 15 mph"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": null,
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 2,
-      "hi_mph": 6,
-      "gust_mph": null
-     },
-     "temp_f": 60,
-     "rh_pct": 93,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sat",
-     "key": "2026-10-24-day",
-     "date": "2026-10-24",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "80",
-      "Max/Min RH (%)": "38",
-      "20FT Wind/AM(mph)": "NE 7-11 G26",
-      "20FT Wind/PM(mph)": "E 11-15 G27",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "1460",
-      "Transport Wind (m/s)": "E  7",
-      "Vent Rate (m**2/s)": "10220",
-      "Category Day": "4",
-      "ADI Early": "34 Fair",
-      "ADI Late": "30 Fair",
-      "Max LVORI Early": "5",
-      "Max LVORI Late": "2",
-      "SILT/500m MLT (F)": "66",
-      "Mrng Mxg Hgt (m)": "500",
-      "Stagnation Index": "2",
-      "Stability Class": "C",
-      ".SUNDAY NIGHT...Part": "in the lower",
-      "82 percent. Northeas": "10 mph.",
-      ".MONDAY...Mostly sun": "e mid 70s. Mi",
-      "63 percent. Northeas": "10 mph.",
-      ".MONDAY NIGHT...Part": "in the lower",
-      "96 percent. East win": ".",
-      ".TUESDAY...Partly su": "he upper 70s.",
-      "67 percent. Northeas": "10 mph.",
-      ".TUESDAY NIGHT...Mos": "s in the lowe",
-      "94 percent. East win": ".",
-      ".WEDNESDAY...Mostly": "the upper 70",
-      "64 percent. Northeas": "5 mph.",
-      ".WEDNESDAY NIGHT...M": "ws around 60.",
-      "95 percent. East win": ".",
-      ".THURSDAY...Sunny. H": "er 70s. Minim",
-      ".THURSDAY NIGHT...Mo": "s around 60.",
-      "97 percent. East win": ".",
-      ".FRIDAY...Mostly sun": "e upper 70s.",
-      "61 percent. East win": "."
-     },
-     "category": 4,
-     "mixing_height_ft": 4790,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 16,
-      "hi_mph": 16,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "NE",
-      "lo_mph": 7,
-      "hi_mph": 11,
       "gust_mph": 26
      },
      "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 11,
-      "hi_mph": 15,
-      "gust_mph": 27
-     },
-     "temp_f": 80,
-     "rh_pct": 38,
-     "precip_chance_pct": 0,
-     "vent_rate": 10220.0,
-     "dispersion_text": null,
-     "silt_f": 66,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    },
-    {
-     "name": "Sat Night",
-     "key": "2026-10-24-night",
-     "date": "2026-10-24",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "57",
-      "Max/Min RH (%)": "93",
-      "20FT Wind/PM(mph)": "E 6-10 G23",
-      "Avg Pcpn Amt (in)": "0.00",
-      "ADI Early": "9 Poor",
-      "ADI Late": "9 Poor",
-      "Max LVORI Early": "2",
-      "Max LVORI Late": "2",
-      "Stagnation Index": "3",
-      "Stability Class": "F",
-      ".SUNDAY NIGHT...Part": "60s. Maximum",
-      ".MONDAY...Mostly sun": "nimum RH",
-      ".MONDAY NIGHT...Part": "60s. Maximum",
-      ".TUESDAY...Partly su": "Minimum RH",
-      ".TUESDAY NIGHT...Mos": "r 60s. Maximu",
-      ".WEDNESDAY...Mostly": "s. Minimum RH",
-      ".WEDNESDAY NIGHT...M": "Maximum RH",
-      ".THURSDAY...Sunny. H": "um RH 60 perc",
-      ".THURSDAY NIGHT...Mo": "Maximum RH",
-      ".FRIDAY...Mostly sun": "Minimum RH"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": null,
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 6,
-      "hi_mph": 10,
-      "gust_mph": 23
-     },
-     "temp_f": 57,
-     "rh_pct": 93,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sun",
-     "key": "2026-10-25-day",
-     "date": "2026-10-25",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "78",
-      "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 10-14 G29",
-      "20FT Wind/PM(mph)": "NE 12-16 G29",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "1510",
-      "Transport Wind (m/s)": "E  7",
-      "Vent Rate (m**2/s)": "10570",
-      "Category Day": "4",
-      "SILT/500m MLT (F)": "65",
-      "Mrng Mxg Hgt (m)": "500",
-      "Stagnation Index": "2",
-      "Stability Class": "C",
-      ".SUNDAY NIGHT...Part": "RH",
-      ".MONDAY NIGHT...Part": "RH",
-      ".TUESDAY NIGHT...Mos": "m RH",
-      ".THURSDAY...Sunny. H": "ent."
-     },
-     "category": 4,
-     "mixing_height_ft": 4954,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 16,
-      "hi_mph": 16,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "NE",
-      "lo_mph": 10,
-      "hi_mph": 14,
-      "gust_mph": 29
-     },
-     "surface_wind_pm": {
       "dir": "NE",
       "lo_mph": 12,
       "hi_mph": 16,
-      "gust_mph": 29
+      "gust_mph": 26
      },
      "temp_f": 78,
      "rh_pct": 42,
@@ -4089,7 +3808,7 @@
   },
   "Jefferson": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -4162,8 +3881,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "80",
       "Max/Min RH (%)": "38",
-      "20FT Wind/AM(mph)": "NE 7-11 G26",
-      "20FT Wind/PM(mph)": "E 11-15 G27",
+      "20FT Wind/AM(mph)": "NE 7-11 G20",
+      "20FT Wind/PM(mph)": "E 11-15 G23",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1460",
       "Transport Wind (m/s)": "E  7",
@@ -4209,13 +3928,13 @@
       "dir": "NE",
       "lo_mph": 7,
       "hi_mph": 11,
-      "gust_mph": 26
+      "gust_mph": 20
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 11,
       "hi_mph": 15,
-      "gust_mph": 27
+      "gust_mph": 23
      },
      "temp_f": 80,
      "rh_pct": 38,
@@ -4296,8 +4015,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "78",
       "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 10-14 G29",
-      "20FT Wind/PM(mph)": "NE 12-16 G29",
+      "20FT Wind/AM(mph)": "NE 10-14 G26",
+      "20FT Wind/PM(mph)": "NE 12-16 G26",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1510",
       "Transport Wind (m/s)": "E  7",
@@ -4324,13 +4043,13 @@
       "dir": "NE",
       "lo_mph": 10,
       "hi_mph": 14,
-      "gust_mph": 29
+      "gust_mph": 26
      },
      "surface_wind_pm": {
       "dir": "NE",
       "lo_mph": 12,
       "hi_mph": 16,
-      "gust_mph": 29
+      "gust_mph": 26
      },
      "temp_f": 78,
      "rh_pct": 42,
@@ -4371,9 +4090,9 @@
     "Including the city of Lake Arthur"
    ]
   },
-  "Plaquemines": {
+  "St. Bernard": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -4450,8 +4169,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "80",
       "Max/Min RH (%)": "38",
-      "20FT Wind/AM(mph)": "NE 7-11 G26",
-      "20FT Wind/PM(mph)": "E 11-15 G27",
+      "20FT Wind/AM(mph)": "NE 7-11 G20",
+      "20FT Wind/PM(mph)": "E 11-15 G23",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1460",
       "Transport Wind (m/s)": "E  7",
@@ -4497,13 +4216,13 @@
       "dir": "NE",
       "lo_mph": 7,
       "hi_mph": 11,
-      "gust_mph": 26
+      "gust_mph": 20
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 11,
       "hi_mph": 15,
-      "gust_mph": 27
+      "gust_mph": 23
      },
      "temp_f": 80,
      "rh_pct": 38,
@@ -4528,7 +4247,7 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "57",
       "Max/Min RH (%)": "93",
-      "20FT Wind/PM(mph)": "E 6-10 G23",
+      "20FT Wind/PM(mph)": "E 6-10 G21",
       "Avg Pcpn Amt (in)": "0.00",
       "ADI Early": "9 Poor",
       "ADI Late": "9 Poor",
@@ -4555,7 +4274,7 @@
       "dir": "E",
       "lo_mph": 6,
       "hi_mph": 10,
-      "gust_mph": 23
+      "gust_mph": 21
      },
      "temp_f": 57,
      "rh_pct": 93,
@@ -4580,8 +4299,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "78",
       "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 10-14 G29",
-      "20FT Wind/PM(mph)": "NE 12-16 G29",
+      "20FT Wind/AM(mph)": "NE 10-14 G26",
+      "20FT Wind/PM(mph)": "NE 12-16 G26",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1510",
       "Transport Wind (m/s)": "E  7",
@@ -4608,13 +4327,294 @@
       "dir": "NE",
       "lo_mph": 10,
       "hi_mph": 14,
-      "gust_mph": 29
+      "gust_mph": 26
      },
      "surface_wind_pm": {
       "dir": "NE",
       "lo_mph": 12,
       "hi_mph": 16,
-      "gust_mph": 29
+      "gust_mph": 26
+     },
+     "temp_f": 78,
+     "rh_pct": 42,
+     "precip_chance_pct": 0,
+     "vent_rate": 10570.0,
+     "dispersion_text": null,
+     "silt_f": 65,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    }
+   ],
+   "zones": [
+    "Lower St. Bernard",
+    "Eastern Orleans",
+    "Lower Plaquemines",
+    "Coastal Jefferson",
+    "Lower Lafourche",
+    "Lower Terrebonne",
+    "Assumption",
+    "St. James",
+    "St. John The Baptist",
+    "Upper St. Bernard",
+    "Western Orleans",
+    "Upper Jefferson",
+    "Upper Plaquemines",
+    "Central Plaquemines",
+    "Central Jefferson",
+    "Upper Lafourche",
+    "Upper Terrebonne",
+    "Upper St. Charles",
+    "Central St. Charles",
+    "Lower St. Charles"
+   ]
+  },
+  "Orleans": {
+   "office": "LIX",
+   "issued": "2026-10-24T04:12:00+00:00",
+   "periods": [
+    {
+     "name": "Tonight",
+     "key": "2026-10-23-night",
+     "date": "2026-10-23",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "60",
+      "Max/Min RH (%)": "93",
+      "20FT Wind/PM(mph)": "E 2-6",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)",
+      "ADI Early": "4 Very Poor",
+      "ADI Late": "5 Very Poor",
+      "Max LVORI Early": "4",
+      "Max LVORI Late": "4",
+      "Stagnation Index": "3",
+      "Stability Class": "F",
+      ".FORECAST FOR DAYS 3": "THROUGH 7...",
+      ".SUNDAY NIGHT...Part": "ly cloudy. Lows",
+      "82 percent. Northeas": "t winds around",
+      ".MONDAY...Mostly sun": "ny. Highs in th",
+      "63 percent. Northeas": "t winds around",
+      ".MONDAY NIGHT...Part": "ly cloudy. Lows",
+      "96 percent. East win": "ds around 5 mph",
+      ".TUESDAY...Partly su": "nny. Highs in t",
+      "67 percent. Northeas": "t winds around",
+      ".TUESDAY NIGHT...Mos": "tly cloudy. Low",
+      "94 percent. East win": "ds around 5 mph",
+      ".WEDNESDAY...Mostly": "sunny. Highs in",
+      "64 percent. Northeas": "t winds around",
+      ".WEDNESDAY NIGHT...M": "ostly clear. Lo",
+      "95 percent. East win": "ds around 5 mph",
+      ".THURSDAY...Sunny. H": "ighs in the upp",
+      "Northeast winds arou": "nd 10 mph.",
+      ".THURSDAY NIGHT...Mo": "stly clear. Low",
+      "97 percent. East win": "ds around 5 mph",
+      ".FRIDAY...Mostly sun": "ny. Highs in th",
+      "61 percent. East win": "ds 10 to 15 mph"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": null,
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 2,
+      "hi_mph": 6,
+      "gust_mph": null
+     },
+     "temp_f": 60,
+     "rh_pct": 93,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sat",
+     "key": "2026-10-24-day",
+     "date": "2026-10-24",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "80",
+      "Max/Min RH (%)": "38",
+      "20FT Wind/AM(mph)": "NE 7-11 G20",
+      "20FT Wind/PM(mph)": "E 11-15 G23",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "1460",
+      "Transport Wind (m/s)": "E  7",
+      "Vent Rate (m**2/s)": "10220",
+      "Category Day": "4",
+      "ADI Early": "34 Fair",
+      "ADI Late": "30 Fair",
+      "Max LVORI Early": "5",
+      "Max LVORI Late": "2",
+      "SILT/500m MLT (F)": "66",
+      "Mrng Mxg Hgt (m)": "500",
+      "Stagnation Index": "2",
+      "Stability Class": "C",
+      ".SUNDAY NIGHT...Part": "in the lower",
+      "82 percent. Northeas": "10 mph.",
+      ".MONDAY...Mostly sun": "e mid 70s. Mi",
+      "63 percent. Northeas": "10 mph.",
+      ".MONDAY NIGHT...Part": "in the lower",
+      "96 percent. East win": ".",
+      ".TUESDAY...Partly su": "he upper 70s.",
+      "67 percent. Northeas": "10 mph.",
+      ".TUESDAY NIGHT...Mos": "s in the lowe",
+      "94 percent. East win": ".",
+      ".WEDNESDAY...Mostly": "the upper 70",
+      "64 percent. Northeas": "5 mph.",
+      ".WEDNESDAY NIGHT...M": "ws around 60.",
+      "95 percent. East win": ".",
+      ".THURSDAY...Sunny. H": "er 70s. Minim",
+      ".THURSDAY NIGHT...Mo": "s around 60.",
+      "97 percent. East win": ".",
+      ".FRIDAY...Mostly sun": "e upper 70s.",
+      "61 percent. East win": "."
+     },
+     "category": 4,
+     "mixing_height_ft": 4790,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 16,
+      "hi_mph": 16,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 7,
+      "hi_mph": 11,
+      "gust_mph": 20
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 11,
+      "hi_mph": 15,
+      "gust_mph": 23
+     },
+     "temp_f": 80,
+     "rh_pct": 38,
+     "precip_chance_pct": 0,
+     "vent_rate": 10220.0,
+     "dispersion_text": null,
+     "silt_f": 66,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    },
+    {
+     "name": "Sat Night",
+     "key": "2026-10-24-night",
+     "date": "2026-10-24",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "57",
+      "Max/Min RH (%)": "93",
+      "20FT Wind/PM(mph)": "E 6-10 G21",
+      "Avg Pcpn Amt (in)": "0.00",
+      "ADI Early": "9 Poor",
+      "ADI Late": "9 Poor",
+      "Max LVORI Early": "2",
+      "Max LVORI Late": "2",
+      "Stagnation Index": "3",
+      "Stability Class": "F",
+      ".SUNDAY NIGHT...Part": "60s. Maximum",
+      ".MONDAY...Mostly sun": "nimum RH",
+      ".MONDAY NIGHT...Part": "60s. Maximum",
+      ".TUESDAY...Partly su": "Minimum RH",
+      ".TUESDAY NIGHT...Mos": "r 60s. Maximu",
+      ".WEDNESDAY...Mostly": "s. Minimum RH",
+      ".WEDNESDAY NIGHT...M": "Maximum RH",
+      ".THURSDAY...Sunny. H": "um RH 60 perc",
+      ".THURSDAY NIGHT...Mo": "Maximum RH",
+      ".FRIDAY...Mostly sun": "Minimum RH"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": null,
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 6,
+      "hi_mph": 10,
+      "gust_mph": 21
+     },
+     "temp_f": 57,
+     "rh_pct": 93,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sun",
+     "key": "2026-10-25-day",
+     "date": "2026-10-25",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "78",
+      "Max/Min RH (%)": "42",
+      "20FT Wind/AM(mph)": "NE 10-14 G26",
+      "20FT Wind/PM(mph)": "NE 12-16 G26",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "1510",
+      "Transport Wind (m/s)": "E  7",
+      "Vent Rate (m**2/s)": "10570",
+      "Category Day": "4",
+      "SILT/500m MLT (F)": "65",
+      "Mrng Mxg Hgt (m)": "500",
+      "Stagnation Index": "2",
+      "Stability Class": "C",
+      ".SUNDAY NIGHT...Part": "RH",
+      ".MONDAY NIGHT...Part": "RH",
+      ".TUESDAY NIGHT...Mos": "m RH",
+      ".THURSDAY...Sunny. H": "ent."
+     },
+     "category": 4,
+     "mixing_height_ft": 4954,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 16,
+      "hi_mph": 16,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 10,
+      "hi_mph": 14,
+      "gust_mph": 26
+     },
+     "surface_wind_pm": {
+      "dir": "NE",
+      "lo_mph": 12,
+      "hi_mph": 16,
+      "gust_mph": 26
      },
      "temp_f": 78,
      "rh_pct": 42,
@@ -4654,7 +4654,7 @@
   },
   "Terrebonne": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -4731,8 +4731,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "80",
       "Max/Min RH (%)": "38",
-      "20FT Wind/AM(mph)": "NE 7-11 G26",
-      "20FT Wind/PM(mph)": "E 11-15 G27",
+      "20FT Wind/AM(mph)": "NE 7-11 G20",
+      "20FT Wind/PM(mph)": "E 11-15 G23",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1460",
       "Transport Wind (m/s)": "E  7",
@@ -4778,13 +4778,13 @@
       "dir": "NE",
       "lo_mph": 7,
       "hi_mph": 11,
-      "gust_mph": 26
+      "gust_mph": 20
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 11,
       "hi_mph": 15,
-      "gust_mph": 27
+      "gust_mph": 23
      },
      "temp_f": 80,
      "rh_pct": 38,
@@ -4809,7 +4809,7 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "57",
       "Max/Min RH (%)": "93",
-      "20FT Wind/PM(mph)": "E 6-10 G23",
+      "20FT Wind/PM(mph)": "E 6-10 G21",
       "Avg Pcpn Amt (in)": "0.00",
       "ADI Early": "9 Poor",
       "ADI Late": "9 Poor",
@@ -4836,7 +4836,7 @@
       "dir": "E",
       "lo_mph": 6,
       "hi_mph": 10,
-      "gust_mph": 23
+      "gust_mph": 21
      },
      "temp_f": 57,
      "rh_pct": 93,
@@ -4861,8 +4861,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "78",
       "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 10-14 G29",
-      "20FT Wind/PM(mph)": "NE 12-16 G29",
+      "20FT Wind/AM(mph)": "NE 10-14 G26",
+      "20FT Wind/PM(mph)": "NE 12-16 G26",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1510",
       "Transport Wind (m/s)": "E  7",
@@ -4889,13 +4889,13 @@
       "dir": "NE",
       "lo_mph": 10,
       "hi_mph": 14,
-      "gust_mph": 29
+      "gust_mph": 26
      },
      "surface_wind_pm": {
       "dir": "NE",
       "lo_mph": 12,
       "hi_mph": 16,
-      "gust_mph": 29
+      "gust_mph": 26
      },
      "temp_f": 78,
      "rh_pct": 42,
@@ -4933,9 +4933,9 @@
     "Lower St. Charles"
    ]
   },
-  "St. Charles": {
+  "Assumption": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -4975,8 +4975,8 @@
       ".THURSDAY...Sunny. H": "ighs around 80.",
       "Northeast winds arou": "nd 5 mph.",
       ".THURSDAY NIGHT...Mo": "stly clear. Low",
-      ".FRIDAY...Mostly sun": "ny with a 20 pe",
-      "in the lower 80s. Mi": "nimum RH 54 per"
+      ".FRIDAY...Mostly sun": "ny. Highs in th",
+      "54 percent. East win": "ds 10 to 15 mph"
      },
      "category": null,
      "mixing_height_ft": null,
@@ -5011,8 +5011,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "80",
       "Max/Min RH (%)": "30",
-      "20FT Wind/AM(mph)": "NE 4-8 G23",
-      "20FT Wind/PM(mph)": "E 8-12 G24",
+      "20FT Wind/AM(mph)": "NE 4-8 G19",
+      "20FT Wind/PM(mph)": "E 8-12 G20",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1460",
       "Transport Wind (m/s)": "E  6",
@@ -5040,8 +5040,8 @@
       ".WEDNESDAY NIGHT...M": "ws in the upp",
       ".THURSDAY...Sunny. H": "Minimum RH 5",
       ".THURSDAY NIGHT...Mo": "s in the uppe",
-      ".FRIDAY...Mostly sun": "rcent chance",
-      "in the lower 80s. Mi": "cent. East wi"
+      ".FRIDAY...Mostly sun": "e lower 80s.",
+      "54 percent. East win": "."
      },
      "category": 4,
      "mixing_height_ft": 4790,
@@ -5055,13 +5055,13 @@
       "dir": "NE",
       "lo_mph": 4,
       "hi_mph": 8,
-      "gust_mph": 23
+      "gust_mph": 19
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 8,
       "hi_mph": 12,
-      "gust_mph": 24
+      "gust_mph": 20
      },
      "temp_f": 80,
      "rh_pct": 30,
@@ -5103,8 +5103,7 @@
       ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
       ".THURSDAY...Sunny. H": "3 percent.",
       ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
-      ".FRIDAY...Mostly sun": "of showers. H",
-      "in the lower 80s. Mi": "nds 10 to 15"
+      ".FRIDAY...Mostly sun": "Minimum RH"
      },
      "category": null,
      "mixing_height_ft": null,
@@ -5139,8 +5138,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "79",
       "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 6-10 G24",
-      "20FT Wind/PM(mph)": "E 7-11 G24",
+      "20FT Wind/AM(mph)": "NE 6-10 G21",
+      "20FT Wind/PM(mph)": "E 7-11 G21",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1530",
       "Transport Wind (m/s)": "E  6",
@@ -5151,9 +5150,7 @@
       "Stagnation Index": "2",
       "Stability Class": "C",
       ".WEDNESDAY NIGHT...M": "um",
-      ".THURSDAY NIGHT...Mo": "m RH",
-      ".FRIDAY...Mostly sun": "ighs",
-      "in the lower 80s. Mi": "mph."
+      ".THURSDAY NIGHT...Mo": "m RH"
      },
      "category": 4,
      "mixing_height_ft": 5020,
@@ -5167,13 +5164,282 @@
       "dir": "NE",
       "lo_mph": 6,
       "hi_mph": 10,
-      "gust_mph": 24
+      "gust_mph": 21
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 7,
       "hi_mph": 11,
-      "gust_mph": 24
+      "gust_mph": 21
+     },
+     "temp_f": 79,
+     "rh_pct": 42,
+     "precip_chance_pct": 0,
+     "vent_rate": 9180.0,
+     "dispersion_text": null,
+     "silt_f": 64,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    }
+   ],
+   "zones": [
+    "Assumption",
+    "St. James",
+    "St. John The Baptist",
+    "Upper St. Bernard",
+    "Western Orleans",
+    "Upper Jefferson",
+    "Upper Plaquemines",
+    "Central Plaquemines",
+    "Central Jefferson",
+    "Upper Lafourche",
+    "Upper Terrebonne",
+    "Upper St. Charles",
+    "Central St. Charles",
+    "Lower St. Charles"
+   ]
+  },
+  "St. Charles": {
+   "office": "LIX",
+   "issued": "2026-10-24T04:12:00+00:00",
+   "periods": [
+    {
+     "name": "Tonight",
+     "key": "2026-10-23-night",
+     "date": "2026-10-23",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "57",
+      "Max/Min RH (%)": "100",
+      "20FT Wind/PM(mph)": "E 1-5",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "L)",
+      "ADI Early": "4 Very Poor",
+      "ADI Late": "4 Very Poor",
+      "Max LVORI Early": "3",
+      "Max LVORI Late": "5",
+      "Stagnation Index": "3",
+      "Stability Class": "F",
+      ".FORECAST FOR DAYS 3": "THROUGH 7...",
+      ".SUNDAY NIGHT...Part": "ly cloudy. Lows",
+      "81 percent. East win": "ds around 5 mph",
+      ".MONDAY...Mostly sun": "ny. Highs in th",
+      "59 percent. Northeas": "t winds around",
+      ".MONDAY NIGHT...Part": "ly cloudy. Lows",
+      "99 percent. East win": "ds around 5 mph",
+      ".TUESDAY...Partly su": "nny. Highs in t",
+      "61 percent. Northeas": "t winds around",
+      ".TUESDAY NIGHT...Par": "tly cloudy. Low",
+      "98 percent. Light wi": "nds.",
+      ".WEDNESDAY...Mostly": "sunny. Highs in",
+      "58 percent. Northeas": "t winds around",
+      ".WEDNESDAY NIGHT...M": "ostly clear. Lo",
+      "RH 98 percent. Light": "winds.",
+      ".THURSDAY...Sunny. H": "ighs around 80.",
+      "Northeast winds arou": "nd 5 mph.",
+      ".THURSDAY NIGHT...Mo": "stly clear. Low",
+      ".FRIDAY...Mostly sun": "ny. Highs in th",
+      "54 percent. East win": "ds 10 to 15 mph"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": null,
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 1,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 57,
+     "rh_pct": 100,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sat",
+     "key": "2026-10-24-day",
+     "date": "2026-10-24",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "80",
+      "Max/Min RH (%)": "30",
+      "20FT Wind/AM(mph)": "NE 4-8 G19",
+      "20FT Wind/PM(mph)": "E 8-12 G20",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "1460",
+      "Transport Wind (m/s)": "E  6",
+      "Vent Rate (m**2/s)": "8760",
+      "Category Day": "4",
+      "ADI Early": "33 Fair",
+      "ADI Late": "38 Fair",
+      "Max LVORI Early": "6",
+      "Max LVORI Late": "2",
+      "SILT/500m MLT (F)": "66",
+      "Mrng Mxg Hgt (m)": "500",
+      "Stagnation Index": "2",
+      "Stability Class": "B",
+      ".SUNDAY NIGHT...Part": "around 60. M",
+      "81 percent. East win": ".",
+      ".MONDAY...Mostly sun": "e upper 70s.",
+      "59 percent. Northeas": "10 mph.",
+      ".MONDAY NIGHT...Part": "around 60. M",
+      "99 percent. East win": ".",
+      ".TUESDAY...Partly su": "he upper 70s.",
+      "61 percent. Northeas": "5 mph.",
+      ".TUESDAY NIGHT...Par": "s around 60.",
+      ".WEDNESDAY...Mostly": "the upper 70",
+      "58 percent. Northeas": "5 mph.",
+      ".WEDNESDAY NIGHT...M": "ws in the upp",
+      ".THURSDAY...Sunny. H": "Minimum RH 5",
+      ".THURSDAY NIGHT...Mo": "s in the uppe",
+      ".FRIDAY...Mostly sun": "e lower 80s.",
+      "54 percent. East win": "."
+     },
+     "category": 4,
+     "mixing_height_ft": 4790,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 13,
+      "hi_mph": 13,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 4,
+      "hi_mph": 8,
+      "gust_mph": 19
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 8,
+      "hi_mph": 12,
+      "gust_mph": 20
+     },
+     "temp_f": 80,
+     "rh_pct": 30,
+     "precip_chance_pct": 0,
+     "vent_rate": 8760.0,
+     "dispersion_text": null,
+     "silt_f": 66,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    },
+    {
+     "name": "Sat Night",
+     "key": "2026-10-24-night",
+     "date": "2026-10-24",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "54",
+      "Max/Min RH (%)": "93",
+      "20FT Wind/PM(mph)": "E 2-6",
+      "Avg Pcpn Amt (in)": "0.00",
+      "ADI Early": "5 Very Poor",
+      "ADI Late": "5 Very Poor",
+      "Max LVORI Early": "3",
+      "Max LVORI Late": "3",
+      "Stagnation Index": "3",
+      "Stability Class": "F",
+      ".SUNDAY NIGHT...Part": "aximum RH",
+      ".MONDAY...Mostly sun": "Minimum RH",
+      ".MONDAY NIGHT...Part": "aximum RH",
+      ".TUESDAY...Partly su": "Minimum RH",
+      ".TUESDAY NIGHT...Par": "Maximum RH",
+      ".WEDNESDAY...Mostly": "s. Minimum RH",
+      ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
+      ".THURSDAY...Sunny. H": "3 percent.",
+      ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
+      ".FRIDAY...Mostly sun": "Minimum RH"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": null,
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 2,
+      "hi_mph": 6,
+      "gust_mph": null
+     },
+     "temp_f": 54,
+     "rh_pct": 93,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sun",
+     "key": "2026-10-25-day",
+     "date": "2026-10-25",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Min/Max Temp": "79",
+      "Max/Min RH (%)": "42",
+      "20FT Wind/AM(mph)": "NE 6-10 G21",
+      "20FT Wind/PM(mph)": "E 7-11 G21",
+      "Avg Pcpn Amt (in)": "0.00",
+      "Mixing Hgt (m-AGL/MS": "1530",
+      "Transport Wind (m/s)": "E  6",
+      "Vent Rate (m**2/s)": "9180",
+      "Category Day": "4",
+      "SILT/500m MLT (F)": "64",
+      "Mrng Mxg Hgt (m)": "500",
+      "Stagnation Index": "2",
+      "Stability Class": "C",
+      ".WEDNESDAY NIGHT...M": "um",
+      ".THURSDAY NIGHT...Mo": "m RH"
+     },
+     "category": 4,
+     "mixing_height_ft": 5020,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 13,
+      "hi_mph": 13,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "NE",
+      "lo_mph": 6,
+      "hi_mph": 10,
+      "gust_mph": 21
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 7,
+      "hi_mph": 11,
+      "gust_mph": 21
      },
      "temp_f": 79,
      "rh_pct": 42,
@@ -5207,7 +5473,7 @@
   },
   "St. John the Baptist": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -5247,8 +5513,8 @@
       ".THURSDAY...Sunny. H": "ighs around 80.",
       "Northeast winds arou": "nd 5 mph.",
       ".THURSDAY NIGHT...Mo": "stly clear. Low",
-      ".FRIDAY...Mostly sun": "ny with a 20 pe",
-      "in the lower 80s. Mi": "nimum RH 54 per"
+      ".FRIDAY...Mostly sun": "ny. Highs in th",
+      "54 percent. East win": "ds 10 to 15 mph"
      },
      "category": null,
      "mixing_height_ft": null,
@@ -5283,8 +5549,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "80",
       "Max/Min RH (%)": "30",
-      "20FT Wind/AM(mph)": "NE 4-8 G23",
-      "20FT Wind/PM(mph)": "E 8-12 G24",
+      "20FT Wind/AM(mph)": "NE 4-8 G19",
+      "20FT Wind/PM(mph)": "E 8-12 G20",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1460",
       "Transport Wind (m/s)": "E  6",
@@ -5312,8 +5578,8 @@
       ".WEDNESDAY NIGHT...M": "ws in the upp",
       ".THURSDAY...Sunny. H": "Minimum RH 5",
       ".THURSDAY NIGHT...Mo": "s in the uppe",
-      ".FRIDAY...Mostly sun": "rcent chance",
-      "in the lower 80s. Mi": "cent. East wi"
+      ".FRIDAY...Mostly sun": "e lower 80s.",
+      "54 percent. East win": "."
      },
      "category": 4,
      "mixing_height_ft": 4790,
@@ -5327,13 +5593,13 @@
       "dir": "NE",
       "lo_mph": 4,
       "hi_mph": 8,
-      "gust_mph": 23
+      "gust_mph": 19
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 8,
       "hi_mph": 12,
-      "gust_mph": 24
+      "gust_mph": 20
      },
      "temp_f": 80,
      "rh_pct": 30,
@@ -5375,8 +5641,7 @@
       ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
       ".THURSDAY...Sunny. H": "3 percent.",
       ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
-      ".FRIDAY...Mostly sun": "of showers. H",
-      "in the lower 80s. Mi": "nds 10 to 15"
+      ".FRIDAY...Mostly sun": "Minimum RH"
      },
      "category": null,
      "mixing_height_ft": null,
@@ -5411,8 +5676,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "79",
       "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 6-10 G24",
-      "20FT Wind/PM(mph)": "E 7-11 G24",
+      "20FT Wind/AM(mph)": "NE 6-10 G21",
+      "20FT Wind/PM(mph)": "E 7-11 G21",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1530",
       "Transport Wind (m/s)": "E  6",
@@ -5423,9 +5688,7 @@
       "Stagnation Index": "2",
       "Stability Class": "C",
       ".WEDNESDAY NIGHT...M": "um",
-      ".THURSDAY NIGHT...Mo": "m RH",
-      ".FRIDAY...Mostly sun": "ighs",
-      "in the lower 80s. Mi": "mph."
+      ".THURSDAY NIGHT...Mo": "m RH"
      },
      "category": 4,
      "mixing_height_ft": 5020,
@@ -5439,285 +5702,13 @@
       "dir": "NE",
       "lo_mph": 6,
       "hi_mph": 10,
-      "gust_mph": 24
+      "gust_mph": 21
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 7,
       "hi_mph": 11,
-      "gust_mph": 24
-     },
-     "temp_f": 79,
-     "rh_pct": 42,
-     "precip_chance_pct": 0,
-     "vent_rate": 9180.0,
-     "dispersion_text": null,
-     "silt_f": 64,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    }
-   ],
-   "zones": [
-    "Assumption",
-    "St. James",
-    "St. John The Baptist",
-    "Upper St. Bernard",
-    "Western Orleans",
-    "Upper Jefferson",
-    "Upper Plaquemines",
-    "Central Plaquemines",
-    "Central Jefferson",
-    "Upper Lafourche",
-    "Upper Terrebonne",
-    "Upper St. Charles",
-    "Central St. Charles",
-    "Lower St. Charles"
-   ]
-  },
-  "Assumption": {
-   "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
-   "periods": [
-    {
-     "name": "Tonight",
-     "key": "2026-10-23-night",
-     "date": "2026-10-23",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "57",
-      "Max/Min RH (%)": "100",
-      "20FT Wind/PM(mph)": "E 1-5",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "L)",
-      "ADI Early": "4 Very Poor",
-      "ADI Late": "4 Very Poor",
-      "Max LVORI Early": "3",
-      "Max LVORI Late": "5",
-      "Stagnation Index": "3",
-      "Stability Class": "F",
-      ".FORECAST FOR DAYS 3": "THROUGH 7...",
-      ".SUNDAY NIGHT...Part": "ly cloudy. Lows",
-      "81 percent. East win": "ds around 5 mph",
-      ".MONDAY...Mostly sun": "ny. Highs in th",
-      "59 percent. Northeas": "t winds around",
-      ".MONDAY NIGHT...Part": "ly cloudy. Lows",
-      "99 percent. East win": "ds around 5 mph",
-      ".TUESDAY...Partly su": "nny. Highs in t",
-      "61 percent. Northeas": "t winds around",
-      ".TUESDAY NIGHT...Par": "tly cloudy. Low",
-      "98 percent. Light wi": "nds.",
-      ".WEDNESDAY...Mostly": "sunny. Highs in",
-      "58 percent. Northeas": "t winds around",
-      ".WEDNESDAY NIGHT...M": "ostly clear. Lo",
-      "RH 98 percent. Light": "winds.",
-      ".THURSDAY...Sunny. H": "ighs around 80.",
-      "Northeast winds arou": "nd 5 mph.",
-      ".THURSDAY NIGHT...Mo": "stly clear. Low",
-      ".FRIDAY...Mostly sun": "ny with a 20 pe",
-      "in the lower 80s. Mi": "nimum RH 54 per"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": null,
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 1,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 57,
-     "rh_pct": 100,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sat",
-     "key": "2026-10-24-day",
-     "date": "2026-10-24",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "80",
-      "Max/Min RH (%)": "30",
-      "20FT Wind/AM(mph)": "NE 4-8 G23",
-      "20FT Wind/PM(mph)": "E 8-12 G24",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "1460",
-      "Transport Wind (m/s)": "E  6",
-      "Vent Rate (m**2/s)": "8760",
-      "Category Day": "4",
-      "ADI Early": "33 Fair",
-      "ADI Late": "38 Fair",
-      "Max LVORI Early": "6",
-      "Max LVORI Late": "2",
-      "SILT/500m MLT (F)": "66",
-      "Mrng Mxg Hgt (m)": "500",
-      "Stagnation Index": "2",
-      "Stability Class": "B",
-      ".SUNDAY NIGHT...Part": "around 60. M",
-      "81 percent. East win": ".",
-      ".MONDAY...Mostly sun": "e upper 70s.",
-      "59 percent. Northeas": "10 mph.",
-      ".MONDAY NIGHT...Part": "around 60. M",
-      "99 percent. East win": ".",
-      ".TUESDAY...Partly su": "he upper 70s.",
-      "61 percent. Northeas": "5 mph.",
-      ".TUESDAY NIGHT...Par": "s around 60.",
-      ".WEDNESDAY...Mostly": "the upper 70",
-      "58 percent. Northeas": "5 mph.",
-      ".WEDNESDAY NIGHT...M": "ws in the upp",
-      ".THURSDAY...Sunny. H": "Minimum RH 5",
-      ".THURSDAY NIGHT...Mo": "s in the uppe",
-      ".FRIDAY...Mostly sun": "rcent chance",
-      "in the lower 80s. Mi": "cent. East wi"
-     },
-     "category": 4,
-     "mixing_height_ft": 4790,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 13,
-      "hi_mph": 13,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "NE",
-      "lo_mph": 4,
-      "hi_mph": 8,
-      "gust_mph": 23
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 8,
-      "hi_mph": 12,
-      "gust_mph": 24
-     },
-     "temp_f": 80,
-     "rh_pct": 30,
-     "precip_chance_pct": 0,
-     "vent_rate": 8760.0,
-     "dispersion_text": null,
-     "silt_f": 66,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    },
-    {
-     "name": "Sat Night",
-     "key": "2026-10-24-night",
-     "date": "2026-10-24",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "54",
-      "Max/Min RH (%)": "93",
-      "20FT Wind/PM(mph)": "E 2-6",
-      "Avg Pcpn Amt (in)": "0.00",
-      "ADI Early": "5 Very Poor",
-      "ADI Late": "5 Very Poor",
-      "Max LVORI Early": "3",
-      "Max LVORI Late": "3",
-      "Stagnation Index": "3",
-      "Stability Class": "F",
-      ".SUNDAY NIGHT...Part": "aximum RH",
-      ".MONDAY...Mostly sun": "Minimum RH",
-      ".MONDAY NIGHT...Part": "aximum RH",
-      ".TUESDAY...Partly su": "Minimum RH",
-      ".TUESDAY NIGHT...Par": "Maximum RH",
-      ".WEDNESDAY...Mostly": "s. Minimum RH",
-      ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
-      ".THURSDAY...Sunny. H": "3 percent.",
-      ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
-      ".FRIDAY...Mostly sun": "of showers. H",
-      "in the lower 80s. Mi": "nds 10 to 15"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": null,
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 2,
-      "hi_mph": 6,
-      "gust_mph": null
-     },
-     "temp_f": 54,
-     "rh_pct": 93,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sun",
-     "key": "2026-10-25-day",
-     "date": "2026-10-25",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Min/Max Temp": "79",
-      "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 6-10 G24",
-      "20FT Wind/PM(mph)": "E 7-11 G24",
-      "Avg Pcpn Amt (in)": "0.00",
-      "Mixing Hgt (m-AGL/MS": "1530",
-      "Transport Wind (m/s)": "E  6",
-      "Vent Rate (m**2/s)": "9180",
-      "Category Day": "4",
-      "SILT/500m MLT (F)": "64",
-      "Mrng Mxg Hgt (m)": "500",
-      "Stagnation Index": "2",
-      "Stability Class": "C",
-      ".WEDNESDAY NIGHT...M": "um",
-      ".THURSDAY NIGHT...Mo": "m RH",
-      ".FRIDAY...Mostly sun": "ighs",
-      "in the lower 80s. Mi": "mph."
-     },
-     "category": 4,
-     "mixing_height_ft": 5020,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 13,
-      "hi_mph": 13,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "NE",
-      "lo_mph": 6,
-      "hi_mph": 10,
-      "gust_mph": 24
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 7,
-      "hi_mph": 11,
-      "gust_mph": 24
+      "gust_mph": 21
      },
      "temp_f": 79,
      "rh_pct": 42,
@@ -5751,7 +5742,7 @@
   },
   "St. James": {
    "office": "LIX",
-   "issued": "2026-10-23T22:38:00+00:00",
+   "issued": "2026-10-24T04:12:00+00:00",
    "periods": [
     {
      "name": "Tonight",
@@ -5791,8 +5782,8 @@
       ".THURSDAY...Sunny. H": "ighs around 80.",
       "Northeast winds arou": "nd 5 mph.",
       ".THURSDAY NIGHT...Mo": "stly clear. Low",
-      ".FRIDAY...Mostly sun": "ny with a 20 pe",
-      "in the lower 80s. Mi": "nimum RH 54 per"
+      ".FRIDAY...Mostly sun": "ny. Highs in th",
+      "54 percent. East win": "ds 10 to 15 mph"
      },
      "category": null,
      "mixing_height_ft": null,
@@ -5827,8 +5818,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "80",
       "Max/Min RH (%)": "30",
-      "20FT Wind/AM(mph)": "NE 4-8 G23",
-      "20FT Wind/PM(mph)": "E 8-12 G24",
+      "20FT Wind/AM(mph)": "NE 4-8 G19",
+      "20FT Wind/PM(mph)": "E 8-12 G20",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1460",
       "Transport Wind (m/s)": "E  6",
@@ -5856,8 +5847,8 @@
       ".WEDNESDAY NIGHT...M": "ws in the upp",
       ".THURSDAY...Sunny. H": "Minimum RH 5",
       ".THURSDAY NIGHT...Mo": "s in the uppe",
-      ".FRIDAY...Mostly sun": "rcent chance",
-      "in the lower 80s. Mi": "cent. East wi"
+      ".FRIDAY...Mostly sun": "e lower 80s.",
+      "54 percent. East win": "."
      },
      "category": 4,
      "mixing_height_ft": 4790,
@@ -5871,13 +5862,13 @@
       "dir": "NE",
       "lo_mph": 4,
       "hi_mph": 8,
-      "gust_mph": 23
+      "gust_mph": 19
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 8,
       "hi_mph": 12,
-      "gust_mph": 24
+      "gust_mph": 20
      },
      "temp_f": 80,
      "rh_pct": 30,
@@ -5919,8 +5910,7 @@
       ".WEDNESDAY NIGHT...M": "er 50s. Maxim",
       ".THURSDAY...Sunny. H": "3 percent.",
       ".THURSDAY NIGHT...Mo": "r 50s. Maximu",
-      ".FRIDAY...Mostly sun": "of showers. H",
-      "in the lower 80s. Mi": "nds 10 to 15"
+      ".FRIDAY...Mostly sun": "Minimum RH"
      },
      "category": null,
      "mixing_height_ft": null,
@@ -5955,8 +5945,8 @@
       "Chance Precip (%)": "0",
       "Min/Max Temp": "79",
       "Max/Min RH (%)": "42",
-      "20FT Wind/AM(mph)": "NE 6-10 G24",
-      "20FT Wind/PM(mph)": "E 7-11 G24",
+      "20FT Wind/AM(mph)": "NE 6-10 G21",
+      "20FT Wind/PM(mph)": "E 7-11 G21",
       "Avg Pcpn Amt (in)": "0.00",
       "Mixing Hgt (m-AGL/MS": "1530",
       "Transport Wind (m/s)": "E  6",
@@ -5967,9 +5957,7 @@
       "Stagnation Index": "2",
       "Stability Class": "C",
       ".WEDNESDAY NIGHT...M": "um",
-      ".THURSDAY NIGHT...Mo": "m RH",
-      ".FRIDAY...Mostly sun": "ighs",
-      "in the lower 80s. Mi": "mph."
+      ".THURSDAY NIGHT...Mo": "m RH"
      },
      "category": 4,
      "mixing_height_ft": 5020,
@@ -5983,13 +5971,13 @@
       "dir": "NE",
       "lo_mph": 6,
       "hi_mph": 10,
-      "gust_mph": 24
+      "gust_mph": 21
      },
      "surface_wind_pm": {
       "dir": "E",
       "lo_mph": 7,
       "hi_mph": 11,
-      "gust_mph": 24
+      "gust_mph": 21
      },
      "temp_f": 79,
      "rh_pct": 42,
@@ -6267,7 +6255,7 @@
     "Bienville"
    ]
   },
-  "Bienville": {
+  "Caddo": {
    "office": "SHV",
    "issued": "2026-10-23T19:25:00+00:00",
    "periods": [
@@ -6513,7 +6501,7 @@
     "Bienville"
    ]
   },
-  "Caddo": {
+  "Bienville": {
    "office": "SHV",
    "issued": "2026-10-23T19:25:00+00:00",
    "periods": [
@@ -7251,251 +7239,6 @@
     "Bienville"
    ]
   },
-  "Union": {
-   "office": "SHV",
-   "issued": "2026-10-23T19:25:00+00:00",
-   "periods": [
-    {
-     "name": "Tonight",
-     "key": "2026-10-23-night",
-     "date": "2026-10-23",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Temp (24h trend)": "49 (+1)",
-      "RH % (24h trend)": "88 (+1)",
-      "Wind 20ft/early(mph)": "LGT/VAR",
-      "Wind 20ft/late(mph)": "LGT/VAR",
-      "Precip Amount": "0.00",
-      "Mixing Hgt(m-agl/msl": ")",
-      "Mixing Hgt(ft-agl/ms": "l)",
-      "Max LVORI Early": "3",
-      "Max LVORI Late": "5",
-      "Stability Class": "F",
-      ".FORECAST FOR DAYS 3": "THROUGH 7...",
-      ".MONDAY...Mostly clo": "udy. Lows in th",
-      "East winds around 5": "mph.",
-      ".TUESDAY...Mostly cl": "oudy. Lows in t",
-      ".WEDNESDAY...Partly": "cloudy. Lows in",
-      "lower 80s. Light win": "ds.",
-      ".THURSDAY...Mostly c": "lear. Lows arou",
-      ".FRIDAY...Partly clo": "udy. Lows aroun"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 49,
-     "rh_pct": 88,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sat",
-     "key": "2026-10-24-day",
-     "date": "2026-10-24",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Temp (24h trend)": "85 (0)",
-      "RH % (24h trend)": "25 (+4)",
-      "Wind 20ft/early(mph)": "LGT/VAR",
-      "Wind 20ft/late(mph)": "SE  3",
-      "Precip Amount": "0.00",
-      "Mixing Hgt(m-agl/msl": "1860",
-      "Mixing Hgt(ft-agl/ms": "6090",
-      "Transport Wnd (m/s)": "E  4",
-      "Transport Wnd (mph)": "E  8",
-      "Vent Rate (m/s-m)": "7440",
-      "Vent Rate (mph-ft)": "48720",
-      "Category Day": "3",
-      "Dispersion": "Good",
-      "Max LVORI Early": "6",
-      "Max LVORI Late": "1",
-      "Mix Hgt 500": "75",
-      "Stability Class": "B",
-      ".MONDAY...Mostly clo": "e lower 50s.",
-      ".TUESDAY...Mostly cl": "he lower 50s.",
-      ".WEDNESDAY...Partly": "the lower 50",
-      ".THURSDAY...Mostly c": "nd 50. Highs",
-      ".FRIDAY...Partly clo": "d 50. Highs i"
-     },
-     "category": 3,
-     "mixing_height_ft": 6090,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 8,
-      "hi_mph": 8,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "SE",
-      "lo_mph": 3,
-      "hi_mph": 3,
-      "gust_mph": null
-     },
-     "temp_f": 85,
-     "rh_pct": 25,
-     "precip_chance_pct": 0,
-     "vent_rate": 7440.0,
-     "dispersion_text": "Good",
-     "silt_f": 75,
-     "verdict": {
-      "verdict": "BURN AFTER INVERSION LIFTS",
-      "detail": "Burning after the surface inversion has lifted. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    },
-    {
-     "name": "Sat Night",
-     "key": "2026-10-24-night",
-     "date": "2026-10-24",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Temp (24h trend)": "48",
-      "RH % (24h trend)": "89",
-      "Wind 20ft/early(mph)": "E  3",
-      "Wind 20ft/late(mph)": "LGT/VAR",
-      "Precip Amount": "0.00",
-      "Max LVORI Early": "3",
-      "Max LVORI Late": "5",
-      "Stability Class": "F",
-      ".MONDAY...Mostly clo": "Highs around",
-      ".TUESDAY...Mostly cl": "Highs around",
-      ".WEDNESDAY...Partly": "s. Highs in t",
-      ".THURSDAY...Mostly c": "in the mid 80",
-      ".FRIDAY...Partly clo": "n the lower 8"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": {
-      "dir": "E",
-      "lo_mph": 3,
-      "hi_mph": 3,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 48,
-     "rh_pct": 89,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sun",
-     "key": "2026-10-25-day",
-     "date": "2026-10-25",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Temp (24h trend)": "80",
-      "RH % (24h trend)": "26",
-      "Wind 20ft/early(mph)": "LGT/VAR",
-      "Wind 20ft/late(mph)": "E  5",
-      "Precip Amount": "0.00",
-      "Mixing Hgt(m-agl/msl": "1770",
-      "Mixing Hgt(ft-agl/ms": "5820",
-      "Transport Wnd (m/s)": "E  5",
-      "Transport Wnd (mph)": "E 10",
-      "Vent Rate (m/s-m)": "8850",
-      "Vent Rate (mph-ft)": "58200",
-      "Category Day": "4",
-      "Dispersion": "Very Good",
-      "Max LVORI Early": "6",
-      "Max LVORI Late": "1",
-      "Mix Hgt 500": "71",
-      "Stability Class": "B",
-      ".MONDAY...Mostly clo": "80.",
-      ".TUESDAY...Mostly cl": "80.",
-      ".WEDNESDAY...Partly": "he",
-      ".THURSDAY...Mostly c": "s.",
-      ".FRIDAY...Partly clo": "0s."
-     },
-     "category": 4,
-     "mixing_height_ft": 5820,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 10,
-      "hi_mph": 10,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 5,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 80,
-     "rh_pct": 26,
-     "precip_chance_pct": 0,
-     "vent_rate": 8850.0,
-     "dispersion_text": "Very Good",
-     "silt_f": 71,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    }
-   ],
-   "zones": [
-    "Lincoln",
-    "Union",
-    "Jackson",
-    "Ouachita"
-   ]
-  },
   "Lincoln": {
    "office": "SHV",
    "issued": "2026-10-23T19:25:00+00:00",
@@ -7741,7 +7484,7 @@
     "Ouachita"
    ]
   },
-  "Ouachita": {
+  "Union": {
    "office": "SHV",
    "issued": "2026-10-23T19:25:00+00:00",
    "periods": [
@@ -8231,7 +7974,252 @@
     "Ouachita"
    ]
   },
-  "De Soto": {
+  "Ouachita": {
+   "office": "SHV",
+   "issued": "2026-10-23T19:25:00+00:00",
+   "periods": [
+    {
+     "name": "Tonight",
+     "key": "2026-10-23-night",
+     "date": "2026-10-23",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp (24h trend)": "49 (+1)",
+      "RH % (24h trend)": "88 (+1)",
+      "Wind 20ft/early(mph)": "LGT/VAR",
+      "Wind 20ft/late(mph)": "LGT/VAR",
+      "Precip Amount": "0.00",
+      "Mixing Hgt(m-agl/msl": ")",
+      "Mixing Hgt(ft-agl/ms": "l)",
+      "Max LVORI Early": "3",
+      "Max LVORI Late": "5",
+      "Stability Class": "F",
+      ".FORECAST FOR DAYS 3": "THROUGH 7...",
+      ".MONDAY...Mostly clo": "udy. Lows in th",
+      "East winds around 5": "mph.",
+      ".TUESDAY...Mostly cl": "oudy. Lows in t",
+      ".WEDNESDAY...Partly": "cloudy. Lows in",
+      "lower 80s. Light win": "ds.",
+      ".THURSDAY...Mostly c": "lear. Lows arou",
+      ".FRIDAY...Partly clo": "udy. Lows aroun"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 49,
+     "rh_pct": 88,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sat",
+     "key": "2026-10-24-day",
+     "date": "2026-10-24",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp (24h trend)": "85 (0)",
+      "RH % (24h trend)": "25 (+4)",
+      "Wind 20ft/early(mph)": "LGT/VAR",
+      "Wind 20ft/late(mph)": "SE  3",
+      "Precip Amount": "0.00",
+      "Mixing Hgt(m-agl/msl": "1860",
+      "Mixing Hgt(ft-agl/ms": "6090",
+      "Transport Wnd (m/s)": "E  4",
+      "Transport Wnd (mph)": "E  8",
+      "Vent Rate (m/s-m)": "7440",
+      "Vent Rate (mph-ft)": "48720",
+      "Category Day": "3",
+      "Dispersion": "Good",
+      "Max LVORI Early": "6",
+      "Max LVORI Late": "1",
+      "Mix Hgt 500": "75",
+      "Stability Class": "B",
+      ".MONDAY...Mostly clo": "e lower 50s.",
+      ".TUESDAY...Mostly cl": "he lower 50s.",
+      ".WEDNESDAY...Partly": "the lower 50",
+      ".THURSDAY...Mostly c": "nd 50. Highs",
+      ".FRIDAY...Partly clo": "d 50. Highs i"
+     },
+     "category": 3,
+     "mixing_height_ft": 6090,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 8,
+      "hi_mph": 8,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "SE",
+      "lo_mph": 3,
+      "hi_mph": 3,
+      "gust_mph": null
+     },
+     "temp_f": 85,
+     "rh_pct": 25,
+     "precip_chance_pct": 0,
+     "vent_rate": 7440.0,
+     "dispersion_text": "Good",
+     "silt_f": 75,
+     "verdict": {
+      "verdict": "BURN AFTER INVERSION LIFTS",
+      "detail": "Burning after the surface inversion has lifted. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    },
+    {
+     "name": "Sat Night",
+     "key": "2026-10-24-night",
+     "date": "2026-10-24",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp (24h trend)": "48",
+      "RH % (24h trend)": "89",
+      "Wind 20ft/early(mph)": "E  3",
+      "Wind 20ft/late(mph)": "LGT/VAR",
+      "Precip Amount": "0.00",
+      "Max LVORI Early": "3",
+      "Max LVORI Late": "5",
+      "Stability Class": "F",
+      ".MONDAY...Mostly clo": "Highs around",
+      ".TUESDAY...Mostly cl": "Highs around",
+      ".WEDNESDAY...Partly": "s. Highs in t",
+      ".THURSDAY...Mostly c": "in the mid 80",
+      ".FRIDAY...Partly clo": "n the lower 8"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 3,
+      "hi_mph": 3,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 48,
+     "rh_pct": 89,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sun",
+     "key": "2026-10-25-day",
+     "date": "2026-10-25",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp (24h trend)": "80",
+      "RH % (24h trend)": "26",
+      "Wind 20ft/early(mph)": "LGT/VAR",
+      "Wind 20ft/late(mph)": "E  5",
+      "Precip Amount": "0.00",
+      "Mixing Hgt(m-agl/msl": "1770",
+      "Mixing Hgt(ft-agl/ms": "5820",
+      "Transport Wnd (m/s)": "E  5",
+      "Transport Wnd (mph)": "E 10",
+      "Vent Rate (m/s-m)": "8850",
+      "Vent Rate (mph-ft)": "58200",
+      "Category Day": "4",
+      "Dispersion": "Very Good",
+      "Max LVORI Early": "6",
+      "Max LVORI Late": "1",
+      "Mix Hgt 500": "71",
+      "Stability Class": "B",
+      ".MONDAY...Mostly clo": "80.",
+      ".TUESDAY...Mostly cl": "80.",
+      ".WEDNESDAY...Partly": "he",
+      ".THURSDAY...Mostly c": "s.",
+      ".FRIDAY...Partly clo": "0s."
+     },
+     "category": 4,
+     "mixing_height_ft": 5820,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 10,
+      "hi_mph": 10,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 5,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 80,
+     "rh_pct": 26,
+     "precip_chance_pct": 0,
+     "vent_rate": 8850.0,
+     "dispersion_text": "Very Good",
+     "silt_f": 71,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    }
+   ],
+   "zones": [
+    "Lincoln",
+    "Union",
+    "Jackson",
+    "Ouachita"
+   ]
+  },
+  "Sabine": {
    "office": "SHV",
    "issued": "2026-10-23T19:25:00+00:00",
    "periods": [
@@ -8475,7 +8463,7 @@
     "Natchitoches"
    ]
   },
-  "Sabine": {
+  "De Soto": {
    "office": "SHV",
    "issued": "2026-10-23T19:25:00+00:00",
    "periods": [
@@ -9205,252 +9193,6 @@
     "Red River",
     "Sabine",
     "Natchitoches"
-   ]
-  },
-  "Caldwell": {
-   "office": "SHV",
-   "issued": "2026-10-23T19:25:00+00:00",
-   "periods": [
-    {
-     "name": "Tonight",
-     "key": "2026-10-23-night",
-     "date": "2026-10-23",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Clear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Temp (24h trend)": "49 (-3)",
-      "RH % (24h trend)": "93 (+17)",
-      "Wind 20ft/early(mph)": "LGT/VAR",
-      "Wind 20ft/late(mph)": "LGT/VAR",
-      "Precip Amount": "0.00",
-      "Mixing Hgt(m-agl/msl": ")",
-      "Mixing Hgt(ft-agl/ms": "l)",
-      "Max LVORI Early": "3",
-      "Max LVORI Late": "6",
-      "Stability Class": "F",
-      ".FORECAST FOR DAYS 3": "THROUGH 7...",
-      ".MONDAY...Mostly clo": "udy. Lows in th",
-      "lower 80s. East wind": "s around 5 mph.",
-      ".TUESDAY...Mostly cl": "oudy. Lows in t",
-      "lower 80s. Light win": "ds.",
-      ".WEDNESDAY...Partly": "cloudy. Lows in",
-      "mid 80s. Light winds": ".",
-      ".THURSDAY...Mostly c": "lear. Lows in t",
-      "80s. Southeast winds": "around 5 mph.",
-      ".FRIDAY...Partly clo": "udy. Lows in th",
-      "80s. East winds arou": "nd 5 mph."
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 49,
-     "rh_pct": 93,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sat",
-     "key": "2026-10-24-day",
-     "date": "2026-10-24",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Temp (24h trend)": "85 (-1)",
-      "RH % (24h trend)": "26 (+4)",
-      "Wind 20ft/early(mph)": "LGT/VAR",
-      "Wind 20ft/late(mph)": "E  4",
-      "Precip Amount": "0.00",
-      "Mixing Hgt(m-agl/msl": "1840",
-      "Mixing Hgt(ft-agl/ms": "6030",
-      "Transport Wnd (m/s)": "E  4",
-      "Transport Wnd (mph)": "E  9",
-      "Vent Rate (m/s-m)": "7360",
-      "Vent Rate (mph-ft)": "54270",
-      "Category Day": "3",
-      "Dispersion": "Good",
-      "Max LVORI Early": "7",
-      "Max LVORI Late": "1",
-      "Mix Hgt 500": "74",
-      "Stability Class": "B",
-      ".MONDAY...Mostly clo": "e lower 50s.",
-      ".TUESDAY...Mostly cl": "he lower 50s.",
-      ".WEDNESDAY...Partly": "the lower 50",
-      ".THURSDAY...Mostly c": "he lower 50s.",
-      ".FRIDAY...Partly clo": "e lower 50s."
-     },
-     "category": 3,
-     "mixing_height_ft": 6030,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 9,
-      "hi_mph": 9,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 4,
-      "hi_mph": 4,
-      "gust_mph": null
-     },
-     "temp_f": 85,
-     "rh_pct": 26,
-     "precip_chance_pct": 0,
-     "vent_rate": 7360.0,
-     "dispersion_text": "Good",
-     "silt_f": 74,
-     "verdict": {
-      "verdict": "BURN AFTER INVERSION LIFTS",
-      "detail": "Burning after the surface inversion has lifted. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    },
-    {
-     "name": "Sat Night",
-     "key": "2026-10-24-night",
-     "date": "2026-10-24",
-     "is_night": true,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Temp (24h trend)": "48",
-      "RH % (24h trend)": "91",
-      "Wind 20ft/early(mph)": "E  3",
-      "Wind 20ft/late(mph)": "LGT/VAR",
-      "Precip Amount": "0.00",
-      "Max LVORI Early": "3",
-      "Max LVORI Late": "5",
-      "Stability Class": "F",
-      ".MONDAY...Mostly clo": "Highs in the",
-      ".TUESDAY...Mostly cl": "Highs in the",
-      ".WEDNESDAY...Partly": "s. Highs in t",
-      ".THURSDAY...Mostly c": "Highs in the",
-      ".FRIDAY...Partly clo": "Highs in the"
-     },
-     "category": null,
-     "mixing_height_ft": null,
-     "transport_wind": null,
-     "surface_wind_am": {
-      "dir": "E",
-      "lo_mph": 3,
-      "hi_mph": 3,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "Lgt/Var",
-      "lo_mph": 0,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 48,
-     "rh_pct": 91,
-     "precip_chance_pct": 0,
-     "vent_rate": null,
-     "dispersion_text": null,
-     "silt_f": null,
-     "verdict": {
-      "verdict": "NO BURNING AT NIGHT",
-      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
-      "level": "no"
-     }
-    },
-    {
-     "name": "Sun",
-     "key": "2026-10-25-day",
-     "date": "2026-10-25",
-     "is_night": false,
-     "raw": {
-      "Cloud Cover": "Mclear",
-      "Precip Type": "None",
-      "Chance Precip (%)": "0",
-      "Temp (24h trend)": "81",
-      "RH % (24h trend)": "29",
-      "Wind 20ft/early(mph)": "E  3",
-      "Wind 20ft/late(mph)": "E  5",
-      "Precip Amount": "0.00",
-      "Mixing Hgt(m-agl/msl": "1780",
-      "Mixing Hgt(ft-agl/ms": "5850",
-      "Transport Wnd (m/s)": "E  5",
-      "Transport Wnd (mph)": "E 10",
-      "Vent Rate (m/s-m)": "8900",
-      "Vent Rate (mph-ft)": "58500",
-      "Category Day": "4",
-      "Dispersion": "Very Good",
-      "Max LVORI Early": "6",
-      "Max LVORI Late": "1",
-      "Mix Hgt 500": "70",
-      "Stability Class": "B",
-      ".WEDNESDAY...Partly": "he",
-      ".THURSDAY...Mostly c": "mid",
-      ".FRIDAY...Partly clo": "mid"
-     },
-     "category": 4,
-     "mixing_height_ft": 5850,
-     "transport_wind": {
-      "dir": "E",
-      "lo_mph": 10,
-      "hi_mph": 10,
-      "gust_mph": null
-     },
-     "surface_wind_am": {
-      "dir": "E",
-      "lo_mph": 3,
-      "hi_mph": 3,
-      "gust_mph": null
-     },
-     "surface_wind_pm": {
-      "dir": "E",
-      "lo_mph": 5,
-      "hi_mph": 5,
-      "gust_mph": null
-     },
-     "temp_f": 81,
-     "rh_pct": 29,
-     "precip_chance_pct": 0,
-     "vent_rate": 8900.0,
-     "dispersion_text": "Very Good",
-     "silt_f": 70,
-     "verdict": {
-      "verdict": "FAVORABLE CONDITIONS",
-      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
-      "level": "burn"
-     }
-    }
-   ],
-   "zones": [
-    "Winn",
-    "Grant",
-    "Caldwell",
-    "La Salle"
    ]
   },
   "Winn": {
@@ -10191,7 +9933,253 @@
     "La Salle"
    ]
   },
-  "Catahoula": {
+  "Caldwell": {
+   "office": "SHV",
+   "issued": "2026-10-23T19:25:00+00:00",
+   "periods": [
+    {
+     "name": "Tonight",
+     "key": "2026-10-23-night",
+     "date": "2026-10-23",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Clear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp (24h trend)": "49 (-3)",
+      "RH % (24h trend)": "93 (+17)",
+      "Wind 20ft/early(mph)": "LGT/VAR",
+      "Wind 20ft/late(mph)": "LGT/VAR",
+      "Precip Amount": "0.00",
+      "Mixing Hgt(m-agl/msl": ")",
+      "Mixing Hgt(ft-agl/ms": "l)",
+      "Max LVORI Early": "3",
+      "Max LVORI Late": "6",
+      "Stability Class": "F",
+      ".FORECAST FOR DAYS 3": "THROUGH 7...",
+      ".MONDAY...Mostly clo": "udy. Lows in th",
+      "lower 80s. East wind": "s around 5 mph.",
+      ".TUESDAY...Mostly cl": "oudy. Lows in t",
+      "lower 80s. Light win": "ds.",
+      ".WEDNESDAY...Partly": "cloudy. Lows in",
+      "mid 80s. Light winds": ".",
+      ".THURSDAY...Mostly c": "lear. Lows in t",
+      "80s. Southeast winds": "around 5 mph.",
+      ".FRIDAY...Partly clo": "udy. Lows in th",
+      "80s. East winds arou": "nd 5 mph."
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 49,
+     "rh_pct": 93,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sat",
+     "key": "2026-10-24-day",
+     "date": "2026-10-24",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp (24h trend)": "85 (-1)",
+      "RH % (24h trend)": "26 (+4)",
+      "Wind 20ft/early(mph)": "LGT/VAR",
+      "Wind 20ft/late(mph)": "E  4",
+      "Precip Amount": "0.00",
+      "Mixing Hgt(m-agl/msl": "1840",
+      "Mixing Hgt(ft-agl/ms": "6030",
+      "Transport Wnd (m/s)": "E  4",
+      "Transport Wnd (mph)": "E  9",
+      "Vent Rate (m/s-m)": "7360",
+      "Vent Rate (mph-ft)": "54270",
+      "Category Day": "3",
+      "Dispersion": "Good",
+      "Max LVORI Early": "7",
+      "Max LVORI Late": "1",
+      "Mix Hgt 500": "74",
+      "Stability Class": "B",
+      ".MONDAY...Mostly clo": "e lower 50s.",
+      ".TUESDAY...Mostly cl": "he lower 50s.",
+      ".WEDNESDAY...Partly": "the lower 50",
+      ".THURSDAY...Mostly c": "he lower 50s.",
+      ".FRIDAY...Partly clo": "e lower 50s."
+     },
+     "category": 3,
+     "mixing_height_ft": 6030,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 9,
+      "hi_mph": 9,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 4,
+      "hi_mph": 4,
+      "gust_mph": null
+     },
+     "temp_f": 85,
+     "rh_pct": 26,
+     "precip_chance_pct": 0,
+     "vent_rate": 7360.0,
+     "dispersion_text": "Good",
+     "silt_f": 74,
+     "verdict": {
+      "verdict": "BURN AFTER INVERSION LIFTS",
+      "detail": "Burning after the surface inversion has lifted. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    },
+    {
+     "name": "Sat Night",
+     "key": "2026-10-24-night",
+     "date": "2026-10-24",
+     "is_night": true,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp (24h trend)": "48",
+      "RH % (24h trend)": "91",
+      "Wind 20ft/early(mph)": "E  3",
+      "Wind 20ft/late(mph)": "LGT/VAR",
+      "Precip Amount": "0.00",
+      "Max LVORI Early": "3",
+      "Max LVORI Late": "5",
+      "Stability Class": "F",
+      ".MONDAY...Mostly clo": "Highs in the",
+      ".TUESDAY...Mostly cl": "Highs in the",
+      ".WEDNESDAY...Partly": "s. Highs in t",
+      ".THURSDAY...Mostly c": "Highs in the",
+      ".FRIDAY...Partly clo": "Highs in the"
+     },
+     "category": null,
+     "mixing_height_ft": null,
+     "transport_wind": null,
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 3,
+      "hi_mph": 3,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "Lgt/Var",
+      "lo_mph": 0,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 48,
+     "rh_pct": 91,
+     "precip_chance_pct": 0,
+     "vent_rate": null,
+     "dispersion_text": null,
+     "silt_f": null,
+     "verdict": {
+      "verdict": "NO BURNING AT NIGHT",
+      "detail": "Burning is not allowed at night. Fires should be burned out by 4 p.m.",
+      "level": "no"
+     }
+    },
+    {
+     "name": "Sun",
+     "key": "2026-10-25-day",
+     "date": "2026-10-25",
+     "is_night": false,
+     "raw": {
+      "Cloud Cover": "Mclear",
+      "Precip Type": "None",
+      "Chance Precip (%)": "0",
+      "Temp (24h trend)": "81",
+      "RH % (24h trend)": "29",
+      "Wind 20ft/early(mph)": "E  3",
+      "Wind 20ft/late(mph)": "E  5",
+      "Precip Amount": "0.00",
+      "Mixing Hgt(m-agl/msl": "1780",
+      "Mixing Hgt(ft-agl/ms": "5850",
+      "Transport Wnd (m/s)": "E  5",
+      "Transport Wnd (mph)": "E 10",
+      "Vent Rate (m/s-m)": "8900",
+      "Vent Rate (mph-ft)": "58500",
+      "Category Day": "4",
+      "Dispersion": "Very Good",
+      "Max LVORI Early": "6",
+      "Max LVORI Late": "1",
+      "Mix Hgt 500": "70",
+      "Stability Class": "B",
+      ".WEDNESDAY...Partly": "he",
+      ".THURSDAY...Mostly c": "mid",
+      ".FRIDAY...Partly clo": "mid"
+     },
+     "category": 4,
+     "mixing_height_ft": 5850,
+     "transport_wind": {
+      "dir": "E",
+      "lo_mph": 10,
+      "hi_mph": 10,
+      "gust_mph": null
+     },
+     "surface_wind_am": {
+      "dir": "E",
+      "lo_mph": 3,
+      "hi_mph": 3,
+      "gust_mph": null
+     },
+     "surface_wind_pm": {
+      "dir": "E",
+      "lo_mph": 5,
+      "hi_mph": 5,
+      "gust_mph": null
+     },
+     "temp_f": 81,
+     "rh_pct": 29,
+     "precip_chance_pct": 0,
+     "vent_rate": 8900.0,
+     "dispersion_text": "Very Good",
+     "silt_f": 70,
+     "verdict": {
+      "verdict": "FAVORABLE CONDITIONS",
+      "detail": "Burning anytime during the day. Fires should be burned out by 4 p.m.",
+      "level": "burn"
+     }
+    }
+   ],
+   "zones": [
+    "Winn",
+    "Grant",
+    "Caldwell",
+    "La Salle"
+   ]
+  },
+  "Franklin": {
    "office": "JAN",
    "issued": "2026-10-23T18:52:00+00:00",
    "periods": [
@@ -10424,7 +10412,7 @@
     "Concordia"
    ]
   },
-  "Concordia": {
+  "Catahoula": {
    "office": "JAN",
    "issued": "2026-10-23T18:52:00+00:00",
    "periods": [
@@ -10890,7 +10878,7 @@
     "Concordia"
    ]
   },
-  "Franklin": {
+  "Concordia": {
    "office": "JAN",
    "issued": "2026-10-23T18:52:00+00:00",
    "periods": [
@@ -11356,7 +11344,7 @@
     "Madison LA"
    ]
   },
-  "West Carroll": {
+  "East Carroll": {
    "office": "JAN",
    "issued": "2026-10-23T18:52:00+00:00",
    "periods": [
@@ -12055,7 +12043,7 @@
     "Madison LA"
    ]
   },
-  "East Carroll": {
+  "West Carroll": {
    "office": "JAN",
    "issued": "2026-10-23T18:52:00+00:00",
    "periods": [
